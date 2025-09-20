@@ -1,19 +1,54 @@
 # XTTS v2 Hungarian TTS Requirements
+# Tested and working combination (2025-09-20)
+
 # Core TTS library
-TTS>=0.22.0
+TTS==0.22.0
+
+# PyTorch ecosystem - SPECIFIC versions for compatibility
+torch==2.5.1
+torchaudio==2.5.1
+torchvision==0.22.1
+# Note: Install with CUDA support:
+# pip install torch==2.5.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118
+
+# Transformers - SPECIFIC version for GPT2InferenceModel compatibility
+transformers==4.35.0
+tokenizers==0.14.1
+huggingface-hub==0.17.3
 
 # Audio processing
-torch>=2.0.0
-torchaudio>=2.0.0
-numpy>=1.21.0
+numpy==1.26.3
+librosa==0.11.0
+soundfile==0.13.1
+pydub==0.25.1
+scipy==1.16.2
 
-# Audio format conversion (optional)
-pydub>=0.25.0
+# Additional audio dependencies
+audioread==3.0.1
+soxr==1.0.0
 
-# Additional dependencies that might be needed
-librosa>=0.10.0
-soundfile>=0.12.0
-scipy>=1.9.0
+# Optional visualization (for advanced_preprocessing.py)
+matplotlib==3.10.6
 
-# For CUDA support (install manually if needed)
-# torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# Other dependencies automatically installed with TTS
+safetensors==0.6.2
+einops==0.8.1
+aiohttp==3.12.15
+Flask==3.1.2
+coqpit==0.0.17
+
+# Scientific computing
+numba==0.62.0
+scikit-learn==1.7.2
+pandas==1.5.3
+
+# Text processing (included with TTS)
+unidecode==1.4.0
+anyascii==0.3.3
+inflect==7.5.0
+pysbd==0.3.4
+
+# CRITICAL: Version constraints for stability
+# - torch < 2.6.0 (to avoid weights_only parameter issues)
+# - transformers < 4.50.0 (to maintain GPT2InferenceModel.generate compatibility)
+# - numpy < 2.0.0 (to avoid binary compatibility issues with other packages)
