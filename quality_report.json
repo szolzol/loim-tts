@@ -1,0 +1,122 @@
+{
+  "timestamp": "2025-09-20T17:19:28.344225",
+  "comparison_results": [
+    {
+      "file": "test_results/premium_test_01_enhanced.wav",
+      "label": "Prémium TTS (enhanced)",
+      "metrics": {
+        "signal_quality": {
+          "snr_db": 10.00000054318155,
+          "dynamic_range_db": 16.617478699172416,
+          "spectral_centroid_mean": 1407.665217191442,
+          "spectral_rolloff_mean": 2552.6592548076924,
+          "zero_crossing_rate_mean": 0.06179950420673077,
+          "spectral_flatness": 0.08735967427492142
+        },
+        "prosody": {
+          "f0_mean_hz": 111.65694455690225,
+          "f0_std_hz": 31.4337447762493,
+          "f0_range_hz": 164.26066442706158,
+          "pitch_variation": 0.2815207321048458,
+          "tempo": 156.25,
+          "energy_variance": 0.006956747267395258,
+          "speaking_rate": 3.6127167630057806,
+          "voiced_percentage": 0.4115384615384615
+        },
+        "naturalness": {
+          "harmonic_ratio": 0.21197006744495867,
+          "jitter": 0.07821457571837931,
+          "formant_stability": 0.031619319526778884,
+          "continuity": 0.8,
+          "mfcc_stability": 0.04969549551606178
+        },
+        "technical": {
+          "duration": 11.072,
+          "dbfs": -16.71862382527857,
+          "sample_rate": 24000
+        },
+        "overall_score": 52.52611461548729
+      }
+    },
+    {
+      "file": "test_results/test_resultspremium_test_02.wav",
+      "label": "Prémium TTS (hosszabb)",
+      "metrics": {
+        "signal_quality": {
+          "snr_db": 10.000001710693084,
+          "dynamic_range_db": 15.878161525911285,
+          "spectral_centroid_mean": 1398.8076307877755,
+          "spectral_rolloff_mean": 2691.8545081967213,
+          "zero_crossing_rate_mean": 0.052337146196209015,
+          "spectral_flatness": 0.08782561868429184
+        },
+        "prosody": {
+          "f0_mean_hz": 99.34657909151004,
+          "f0_std_hz": 22.923245290037926,
+          "f0_range_hz": 141.04996794250184,
+          "pitch_variation": 0.23074015733267358,
+          "tempo": 148.02631578947367,
+          "energy_variance": 0.010739014483988285,
+          "speaking_rate": 3.945848838701399,
+          "voiced_percentage": 0.5573770491803278
+        },
+        "naturalness": {
+          "harmonic_ratio": 0.34627520049962895,
+          "jitter": 0.07008768804489048,
+          "formant_stability": 0.03325188137780989,
+          "continuity": 0.7991803278688525,
+          "mfcc_stability": 0.052692607045173645
+        },
+        "technical": {
+          "duration": 10.391,
+          "dbfs": -15.87938160379337,
+          "sample_rate": 24000
+        },
+        "overall_score": 49.896978381782574
+      }
+    },
+    {
+      "file": "test_results/test_resultspremium_test_01.wav",
+      "label": "Prémium TTS (eredeti)",
+      "metrics": {
+        "signal_quality": {
+          "snr_db": 9.999999468480908,
+          "dynamic_range_db": 16.309671080799532,
+          "spectral_centroid_mean": 1544.2622022938408,
+          "spectral_rolloff_mean": 2899.737079326923,
+          "zero_crossing_rate_mean": 0.0647216796875,
+          "spectral_flatness": 0.08990218490362167
+        },
+        "prosody": {
+          "f0_mean_hz": 114.55583012014758,
+          "f0_std_hz": 36.167570452469334,
+          "f0_range_hz": 172.40495140849066,
+          "pitch_variation": 0.3157200328829736,
+          "tempo": 156.25,
+          "energy_variance": 0.009677591733634472,
+          "speaking_rate": 3.608805485384338,
+          "voiced_percentage": 0.45
+        },
+        "naturalness": {
+          "harmonic_ratio": 0.1831691224389034,
+          "jitter": 0.08248554319228583,
+          "formant_stability": 0.03229129769950495,
+          "continuity": 0.8,
+          "mfcc_stability": 0.050072796642780304
+        },
+        "technical": {
+          "duration": 11.084,
+          "dbfs": -16.310510644344824,
+          "sample_rate": 24000
+        },
+        "overall_score": 49.363809309224166
+      }
+    }
+  ],
+  "summary": {
+    "best_overall": "Prémium TTS (enhanced)",
+    "best_signal_quality": "Prémium TTS (hosszabb)",
+    "best_prosody": "Prémium TTS (eredeti)",
+    "best_naturalness": "Prémium TTS (hosszabb)"
+  }
+}

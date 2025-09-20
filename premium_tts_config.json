@@ -1,0 +1,27 @@
+{
+  "model_settings": {
+    "temperature": 0.35,
+    "length_penalty": 1.2,
+    "repetition_penalty": 1.1,
+    "top_k": 50,
+    "top_p": 0.85,
+    "gpt_cond_len": 12,
+    "gpt_cond_chunk_len": 8,
+    "diffusion_iterations": 100,
+    "decoder_iterations": 50
+  },
+  "audio_settings": {
+    "sample_rate": 24000,
+    "bit_depth": 16,
+    "normalize": true,
+    "remove_silence": false,
+    "crossfade_duration": 0.1
+  },
+  "conditioning_strategy": {
+    "min_ref_duration": 10.0,
+    "max_ref_duration": 15.0,
+    "ref_overlap": 0.3,
+    "diversity_threshold": 0.7,
+    "quality_threshold": 0.9
+  }
+}

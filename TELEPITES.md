@@ -15,13 +15,14 @@
 # Windows
 setup.bat
 
-# Linux/macOS  
+# Linux/macOS
 ./setup.sh
 ```
 
 ### Módszer 2: Manuális Telepítés
 
 #### 1. Virtual Environment Létrehozása
+
 ```bash
 python -m venv venv
 
@@ -33,11 +34,13 @@ source venv/bin/activate
 ```
 
 #### 2. PyTorch CUDA Telepítés
+
 ```bash
 pip install torch==2.5.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118
 ```
 
 #### 3. Fő Dependencies Telepítés
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -50,10 +53,8 @@ A következő verziók **KÖTELEZŐK** a stabil működéshez:
 
 - **torch==2.5.1** (NE torch >= 2.6.0!)
   - Elkerüli a `weights_only` parameter problémákat
-  
 - **transformers==4.35.0** (NE transformers >= 4.50.0!)
   - Biztosítja a `GPT2InferenceModel.generate()` metódus elérhetőségét
-  
 - **numpy==1.26.3** (NE numpy >= 2.0.0!)
   - Elkerüli a bináris kompatibilitási problémákat
 
@@ -72,6 +73,7 @@ pip install TTS==0.22.0
 ## 🧪 Telepítés Ellenőrzése
 
 ### 1. Python Modulok Tesztelése
+
 ```bash
 python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.cuda.is_available()}')"
 python -c "import TTS; from TTS.api import TTS; print('TTS import sikeres')"
@@ -79,11 +81,13 @@ python -c "import transformers; print(f'Transformers: {transformers.__version__}
 ```
 
 ### 2. XTTS Modell Tesztelése
+
 ```bash
 python test_tts_system.py
 ```
 
 ### 3. Teljes Rendszer Tesztelése
+
 ```bash
 python simple_xtts_hungarian.py --text "Teszt" --refs "processed_audio/optimized_clip_01.wav" --out test.wav --mp3
 ```
@@ -96,6 +100,7 @@ python simple_xtts_hungarian.py --text "Teszt" --refs "processed_audio/optimized
 ## 🔍 Gyakori Telepítési Problémák
 
 ### PyTorch CUDA Probléma
+
 ```bash
 # Hiba: "RuntimeError: No CUDA devices available"
 # Megoldás: CUDA drivers frissítése vagy CPU használat
@@ -103,6 +108,7 @@ python simple_xtts_hungarian.py --device cpu [további paraméterek]
 ```
 
 ### TTS Compilation Probléma
+
 ```bash
 # Hiba: "Microsoft Visual C++ 14.0 is required"
 # Megoldás: Visual Studio Build Tools telepítése
@@ -110,6 +116,7 @@ python simple_xtts_hungarian.py --device cpu [további paraméterek]
 ```
 
 ### Transformers Kompatibilitási Probléma
+
 ```bash
 # Hiba: "'GPT2InferenceModel' object has no attribute 'generate'"
 # Megoldás: Pontos transformers verzió
@@ -117,6 +124,7 @@ pip install transformers==4.35.0 --force-reinstall
 ```
 
 ### Memory Error
+
 ```bash
 # Hiba: "RuntimeError: CUDA out of memory"
 # Megoldás: CPU használat vagy kisebb batch size
@@ -126,6 +134,7 @@ export CUDA_VISIBLE_DEVICES=""  # CPU force
 ## ✅ Sikeres Telepítés Jelei
 
 Ha minden működik, akkor:
+
 - ✅ CUDA elérhető: `torch.cuda.is_available() == True`
 - ✅ TTS modell betölthető hibamentesen
 - ✅ Magyar szintézis működik naturális kiejtéssel

@@ -23,15 +23,12 @@ env/
 .DS_Store
 Thumbs.db
 
-# Audio files (except reference clips and original sample)
-*.wav
-*.mp3
-!vago_vagott.mp3
-!processed_audio/*.wav
+# Audio files - Allow all test and reference audio files
+!*.wav
+!*.mp3
 
-# Test results (except documentation)
-test_results/*
-!test_results/README.md
+# Test results - Allow all test files
+!test_results/*
 
 # Temporary files
 *.tmp
