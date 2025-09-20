@@ -30,6 +30,9 @@ Thumbs.db
 # Test results - Allow all test files
 !test_results/*
 
+# Legacy code (archived development files)
+legacy/
+
 # Temporary files
 *.tmp
 *.temp

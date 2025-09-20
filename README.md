@@ -5,6 +5,7 @@ Ez a projekt lehetővé teszi a **"Legyen Ön Is Milliomos"** magyar kvízműsor
 ## 🎯 Projekt Célja
 
 A műsor eredeti hangulatának megőrzése mellett:
+
 - **Dinamikus kérdés-felolvasás** TTS-szel
 - **Autentikus Vágó István hangszín** klónozás
 - **Professional broadcasting minőség** elérése
@@ -13,12 +14,14 @@ A műsor eredeti hangulatának megőrzése mellett:
 ## 🚀 Fő Funkciók
 
 ### TTS Minőség Optimalizálás
+
 - **Prémium hangszintézis**: 52.5/100 minőségi pontszám (ElevenLabs benchmark: 90-95)
 - **Magyar nyelv specialista**: Natív `language="hu"` támogatás
 - **6 darab optimalizált referencia klip**: 12 másodperces szegmensek
 - **Post-processing pipeline**: Spektrális tisztítás, dinamikus optimalizálás
 
 ### Műsor-specifikus Elemek
+
 - **Kérdés dinamikus generálás**: Kategóriák és nehézségi szintek szerint
 - **Autentikus beszédstílus**: Vágó István karakterisztikus intonációja
 - **Broadcasting ready kimenet**: 24kHz, professional audio szint
@@ -41,7 +44,7 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 ```
 
-### Részletes telepítési útmutató: [TELEPITES.md](TELEPITES.md)
+### Részletes telepítési útmutató: [docs/TELEPITES.md](docs/TELEPITES.md)
 
 ## 🎬 Használat
 
@@ -79,6 +82,7 @@ python audio_post_processor.py \
 ## 🎵 Audio Minőség Elemzés
 
 ### Jelenlegi Eredmények
+
 - **Overall Score**: 52.5/100 (enhanced verzió)
 - **SNR**: 10-12 dB (cél: 20-25 dB)
 - **Pitch Variation**: 0.28-0.32 (természetes tartomány)
@@ -115,12 +119,13 @@ loim-tts/
 ├── 📊 Eredmények és Tesztek
 │   ├── test_results/                      # Generált műsorelemek
 │   ├── quality_report.json               # Részletes minőségi metrikák
-│   └── ELEVENLABS_OPTIMIZATION_REPORT.md  # Fejlesztési jelentés
+│   └── docs/ELEVENLABS_OPTIMIZATION_REPORT.md  # Fejlesztési jelentés
 │
 ├── 📚 Dokumentáció
 │   ├── README.md                          # Ez a fájl
-│   ├── TELEPITES.md                       # Részletes telepítési útmutató
-│   └── test_results/README.md             # Teszt dokumentáció
+│   ├── docs/TELEPITES.md                  # Részletes telepítési útmutató
+│   ├── docs/ELEVENLABS_OPTIMIZATION_REPORT.md # Fejlesztési jelentés
+│   └── docs/TEST_RESULTS.md               # Teszt dokumentáció
 │
 └── 🗄️ Legacy
     └── legacy/                            # Régi fejlesztési fájlok
@@ -173,6 +178,7 @@ python quality_comparison.py
 ## 📈 Fejlesztési Roadmap
 
 ### Jelenlegi Állapot (v1.0)
+
 - ✅ Vágó István hang klónozás alapjai
 - ✅ Magyar TTS optimalizálás
 - ✅ Prémium referencia klipek
@@ -180,6 +186,7 @@ python quality_comparison.py
 - ✅ Objektív minőség mérés
 
 ### Következő Célok (v2.0)
+
 - 🎯 ElevenLabs paritás elérése (80+ pont)
 - 🎯 Real-time műsorelem generálás
 - 🎯 Emotion-aware beszédszintézis
@@ -190,15 +197,16 @@ python quality_comparison.py
 A projekt objektív minőség értékeléssel dolgozik:
 
 - **Signal Quality**: SNR, dinamikus tartomány
-- **Prosody**: Pitch variáció, energia konzisztencia  
+- **Prosody**: Pitch variáció, energia konzisztencia
 - **Naturalness**: Harmonikus arány, folytonosság
 - **Overall Score**: Súlyozott összesített pontszám
 
-Részletek: [ELEVENLABS_OPTIMIZATION_REPORT.md](ELEVENLABS_OPTIMIZATION_REPORT.md)
+Részletek: [docs/ELEVENLABS_OPTIMIZATION_REPORT.md](docs/ELEVENLABS_OPTIMIZATION_REPORT.md)
 
 ## 🎵 Referencia Audio
 
 A projekt 6 darab optimalizált Vágó István referencia klipet tartalmaz:
+
 - **12 másodperces szegmensek** a legjobb audio minőségű részekből
 - **-26 dB átlagos szint** broadcasting standardnek megfelelően
 - **Manuálisan szűrt és enhanced** a maximális minőségért
@@ -220,6 +228,7 @@ A projekt 6 darab optimalizált Vágó István referencia klipet tartalmaz:
 ## 🤝 Hozzájárulás
 
 A projekt nyitott a közösségi fejlesztésre! Különösen keresünk:
+
 - **Audio engineering** szakértőket
 - **Magyar nyelvi** optimalizálást
 - **Real-time processing** fejlesztést
