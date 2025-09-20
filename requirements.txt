@@ -1,0 +1,19 @@
+# XTTS v2 Hungarian TTS Requirements
+# Core TTS library
+TTS>=0.22.0
+
+# Audio processing
+torch>=2.0.0
+torchaudio>=2.0.0
+numpy>=1.21.0
+
+# Audio format conversion (optional)
+pydub>=0.25.0
+
+# Additional dependencies that might be needed
+librosa>=0.10.0
+soundfile>=0.12.0
+scipy>=1.9.0
+
+# For CUDA support (install manually if needed)
+# torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118

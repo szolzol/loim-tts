@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.coverage
+
+# Virtual Environment
+venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Audio files (except reference clips and original sample)
+*.wav
+*.mp3
+!vago_vagott.mp3
+!processed_audio/*.wav
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Model downloads
+.cache/
+models/
