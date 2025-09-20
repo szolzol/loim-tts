@@ -60,44 +60,42 @@ pip install -r requirements.txt
 ### Alapvető szintézis
 
 ```bash
-python xtts_hungarian_tts.py \
+python simple_xtts_hungarian.py \
   --text "Jó reggelt, üdv mindenkinek!" \
-  --refs voice1.wav \
-  --refs voice2.wav \
-  --refs voice3.wav \
-  --out output.wav
-```
-
-### MP3 kimenettel
-
-```bash
-python xtts_hungarian_tts.py \
-  --text "Szép napot kívánok!" \
-  --refs reference_voice.wav \
+  --refs "processed_audio/optimized_clip_01.wav" \
   --out greeting.wav \
   --mp3
 ```
 
-### Finomhangolt paraméterek
+### Többszörös referencia (jobb minőség)
 
 ```bash
-python xtts_hungarian_tts.py \
-  --text "Köszönöm szépen a figyelmet." \
-  --refs voice1.wav --refs voice2.wav \
-  --out presentation.wav \
-  --temperature 0.6 \
-  --gpt-cond-len 8 \
-  --gpt-cond-chunk-len 6 \
+python simple_xtts_hungarian.py \
+  --text "Szép napot kívánok!" \
+  --refs "processed_audio/optimized_clip_01.wav,processed_audio/optimized_clip_02.wav,processed_audio/optimized_clip_03.wav" \
+  --out greeting.wav \
   --mp3
 ```
+
+### Maximális minőség (8 optimalizált klip)
+
+```bash
+python simple_xtts_hungarian.py \
+  --text "Köszönöm szépen a figyelmet." \
+  --refs "processed_audio/optimized_clip_01.wav,processed_audio/optimized_clip_02.wav,processed_audio/optimized_clip_03.wav,processed_audio/optimized_clip_04.wav,processed_audio/optimized_clip_05.wav,processed_audio/optimized_clip_06.wav,processed_audio/optimized_clip_07.wav,processed_audio/optimized_clip_08.wav" \
+  --out presentation.wav \
+  --mp3
+```
+
+**📁 Minden generált fájl automatikusan a `test_results/` mappába kerül!**
 
 ## Paraméterek magyarázata
 
 ### Kötelező paraméterek:
 
 - `--text`: Szintetizálandó magyar szöveg
-- `--refs`: Referencia hangfájl(ok) - többször megadható
-- `--out`: Kimeneti fájl útvonala
+- `--refs`: Referencia hangfájl(ok) - vessző elválasztva
+- `--out`: Kimeneti fájl neve (automatikusan test_results/ mappába kerül)
 
 ### Opcionális paraméterek:
 
@@ -149,6 +147,29 @@ length_penalty = 1.0
 ```
 
 ## Hibakezelés
+## 📁 Projekt Szerkezet
+
+```
+loim-tts/
+├── vago_vagott.mp3              # Eredeti hangminta (forrás)
+├── simple_xtts_hungarian.py     # Fő TTS szkript
+├── advanced_preprocessing.py    # Fejlett audio elemzés
+├── processed_audio/             # Referencia klipek
+│   ├── reference_clip_01-04.wav # Eredeti klipek
+│   └── optimized_clip_01-08.wav # Optimalizált klipek ⭐
+├── test_results/                # 🎯 Összes generált teszt fájl
+│   ├── hungarian_test.mp3       # Alapvető tesztek
+│   ├── optimized_test_full.mp3  # Legjobb eredmény
+│   └── README.md                # Teszt dokumentáció
+└── README.md                    # Ez a fájl
+```
+
+### 🎯 Test Results Mappa
+
+Minden generált audio fájl automatikusan a `test_results/` mappába kerül:
+- Tiszta projekt szerkezet
+- Könnyű fájlkezelés  
+- Dedikált teszt dokumentáció
 
 ### Gyakori problémák:
 

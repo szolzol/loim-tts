@@ -70,8 +70,13 @@ def main():
                 
             print(f"\n🔊 Szintézis: '{args.text}'")
             
-            # Ensure output is WAV
-            output_path = str(Path(args.out).with_suffix('.wav'))
+            # Ensure test_results directory exists
+            test_results_dir = Path("test_results")
+            test_results_dir.mkdir(exist_ok=True)
+            
+            # Ensure output is WAV and in test_results directory
+            output_filename = Path(args.out).name
+            output_path = str(test_results_dir / Path(output_filename).with_suffix('.wav'))
             
             # Use multiple references or single reference
             speaker_wav = valid_refs if len(valid_refs) > 1 else valid_refs[0]
@@ -90,7 +95,8 @@ def main():
             if args.mp3:
                 try:
                     from pydub import AudioSegment
-                    mp3_path = str(Path(args.out).with_suffix('.mp3'))
+                    mp3_filename = Path(args.out).with_suffix('.mp3').name
+                    mp3_path = str(test_results_dir / mp3_filename)
                     audio = AudioSegment.from_wav(output_path)
                     audio.export(mp3_path, format="mp3", bitrate="192k")
                     print(f"✅ MP3 létrehozva: {mp3_path}")

@@ -29,6 +29,10 @@ Thumbs.db
 !vago_vagott.mp3
 !processed_audio/*.wav
 
+# Test results (except documentation)
+test_results/*
+!test_results/README.md
+
 # Temporary files
 *.tmp
 *.temp
