@@ -1,0 +1,126 @@
+{
+  "timestamp": "2025-09-21T13:35:32",
+  "source_file": "vago_vagott.mp3",
+  "clips": [
+    {
+      "filename": "vago_premium_clip_01_q86.wav",
+      "path": "processed_audio\\vago_premium_clip_01_q86.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.036830697",
+        "peak_amplitude": "0.29814595",
+        "dynamic_range": "0.29814595",
+        "snr_db": 31.768089001932204,
+        "pitch_stability": 0.9548544826375094,
+        "spectral_clarity": 0.6805964419129718,
+        "noise_level": 0.0003295237942886381,
+        "quality_score": 85.86568712908978
+      }
+    },
+    {
+      "filename": "vago_premium_clip_02_q86.wav",
+      "path": "processed_audio\\vago_premium_clip_02_q86.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.035331856",
+        "peak_amplitude": "0.32756716",
+        "dynamic_range": "0.32756713",
+        "snr_db": 29.99830024101128,
+        "pitch_stability": 0.9533808748112093,
+        "spectral_clarity": 0.704004273359356,
+        "noise_level": 0.0003552812558024246,
+        "quality_score": 85.54330768258798
+      }
+    },
+    {
+      "filename": "vago_premium_clip_03_q85.wav",
+      "path": "processed_audio\\vago_premium_clip_03_q85.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.040748",
+        "peak_amplitude": "0.33387387",
+        "dynamic_range": "0.33387387",
+        "snr_db": 30.852325714974405,
+        "pitch_stability": 0.8581546668107287,
+        "spectral_clarity": 0.6733281804893477,
+        "noise_level": 0.00046775312870664057,
+        "quality_score": 84.8736549671845
+      }
+    },
+    {
+      "filename": "vago_premium_clip_04_q84.wav",
+      "path": "processed_audio\\vago_premium_clip_04_q84.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.04667628",
+        "peak_amplitude": "0.37044856",
+        "dynamic_range": "0.37044856",
+        "snr_db": 30.762197514506777,
+        "pitch_stability": 0.7985009239478906,
+        "spectral_clarity": 0.7045943935956853,
+        "noise_level": 0.0004166279414673099,
+        "quality_score": 84.01274817646424
+      }
+    },
+    {
+      "filename": "vago_premium_clip_05_q83.wav",
+      "path": "processed_audio\\vago_premium_clip_05_q83.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.04755355",
+        "peak_amplitude": "0.3393545",
+        "dynamic_range": "0.3393545",
+        "snr_db": 28.93713002591458,
+        "pitch_stability": 0.8155318294154712,
+        "spectral_clarity": 0.7036001386778665,
+        "noise_level": 0.00047494151940473563,
+        "quality_score": 83.34993438291822
+      }
+    },
+    {
+      "filename": "vago_premium_clip_06_q83.wav",
+      "path": "processed_audio\\vago_premium_clip_06_q83.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.036761824",
+        "peak_amplitude": "0.29814595",
+        "dynamic_range": "0.29814595",
+        "snr_db": 29.92486347405108,
+        "pitch_stability": 0.8319041899238607,
+        "spectral_clarity": 0.7040479691592714,
+        "noise_level": 0.00032778026744955313,
+        "quality_score": 83.15156159939058
+      }
+    },
+    {
+      "filename": "vago_premium_clip_07_q83.wav",
+      "path": "processed_audio\\vago_premium_clip_07_q83.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.038475107",
+        "peak_amplitude": "0.37044856",
+        "dynamic_range": "0.37044856",
+        "snr_db": 30.464986489547073,
+        "pitch_stability": 0.7941608875113972,
+        "spectral_clarity": 0.7032082589915324,
+        "noise_level": 0.0004588933877542856,
+        "quality_score": 83.10985172964487
+      }
+    },
+    {
+      "filename": "vago_premium_clip_08_q83.wav",
+      "path": "processed_audio\\vago_premium_clip_08_q83.wav",
+      "metrics": {
+        "duration": 8.0,
+        "rms_energy": "0.032332342",
+        "peak_amplitude": "0.3294265",
+        "dynamic_range": "0.3294265",
+        "snr_db": 28.54657363459745,
+        "pitch_stability": 0.9644986122288057,
+        "spectral_clarity": 0.7040944956993405,
+        "noise_level": 0.0003632849205108643,
+        "quality_score": 82.87077142126574
+      }
+    }
+  ]
+}

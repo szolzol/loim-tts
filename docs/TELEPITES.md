@@ -3,11 +3,9 @@
 ## 🔧 Rendszerkövetelmények
 
 - **Python**: 3.8-3.11 (ajánlott: 3.11)
-- **GPU**: NVIDIA GPU CUDA 11.8 támogatással (opcionális - CPU is működik!)
+- **GPU**: NVIDIA GPU CUDA 11.8 támogatással (ajánlott)
 - **RAM**: Minimum 8GB, ajánlott 16GB
 - **Storage**: ~5GB szabad hely (modellek + dependencies)
-
-**⚠️ Fontos**: A rendszer CPU-n is teljesen működik! GPU nem kötelező.
 
 ## 📦 Telepítési Módszerek
 
@@ -74,23 +72,7 @@ pip install TTS==0.22.0
 
 ## 🧪 Telepítés Ellenőrzése
 
-### 1. Virtual Environment Aktiválás (KRITIKUS!)
-
-```bash
-# Windows
-cd f:/CODE/tts
-source venv/Scripts/activate
-
-# Linux/Mac
-cd /path/to/loim-tts
-source venv/bin/activate
-
-# Ellenőrzés - a következőt kell látnod:
-# Virtual env: F:\CODE\tts\venv (vagy hasonló path)
-python -c "import sys; print('Virtual env:', sys.prefix)"
-```
-
-### 2. Python Modulok Tesztelése
+### 1. Python Modulok Tesztelése
 
 ```bash
 python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.cuda.is_available()}')"
@@ -107,26 +89,7 @@ python test_tts_system.py
 ### 3. Teljes Rendszer Tesztelése
 
 ```bash
-# FONTOS: Virtual environment aktiválás után!
-source venv/Scripts/activate  # Windows
-# source venv/bin/activate    # Linux/Mac
-
-# Teszt magyar szöveggel
-python premium_xtts_hungarian.py \
-  --text "Jöjjön a következő kérdés egymillió forintért!" \
-  --refs "processed_audio/premium_clip_01.wav,processed_audio/premium_clip_02.wav,processed_audio/premium_clip_03.wav" \
-  --out "teszt_egymillio.wav" \
-  --mp3
-```
-
-**Sikeres kimenet jelei:**
-```
-✅ Premium XTTS modell betöltve (CPU)
-> Text splitted to sentences.
-> Processing time: 7.671572208404541
-> Real-time factor: 1.7071508880522377
-✅ Prémium szintézis kész: test_results\teszt_egymillio.wav
-✅ MP3 export kész: test_results\teszt_egymillio.mp3
+python simple_xtts_hungarian.py --text "Teszt" --refs "processed_audio/optimized_clip_01.wav" --out test.wav --mp3
 ```
 
 ## 📁 Requirements Fájlok Magyarázata
@@ -136,24 +99,12 @@ python premium_xtts_hungarian.py \
 
 ## 🔍 Gyakori Telepítési Problémák
 
-### Virtual Environment Nem Aktiválva
-
-```bash
-# Hiba: "No module named 'TTS'"
-# OK: Virtual env: C:\Python311 (rossz!)
-# Megoldás: Virtual environment aktiválás
-source venv/Scripts/activate  # Windows
-# source venv/bin/activate    # Linux/Mac
-# OK: Virtual env: F:\CODE\tts\venv (jó!)
-```
-
 ### PyTorch CUDA Probléma
 
 ```bash
-# Hiba: "CUDA is not availabe on this machine"
-# Megoldás: Automatikus CPU fallback (már beépített)
-# A rendszer automatikusan "Premium XTTS modell betöltve (CPU)" módba vált
-# CPU működés: ~1.7x real-time faktor, teljesen stabil
+# Hiba: "RuntimeError: No CUDA devices available"
+# Megoldás: CUDA drivers frissítése vagy CPU használat
+python simple_xtts_hungarian.py --device cpu [további paraméterek]
 ```
 
 ### TTS Compilation Probléma
@@ -184,38 +135,17 @@ export CUDA_VISIBLE_DEVICES=""  # CPU force
 
 Ha minden működik, akkor:
 
-- ✅ Virtual environment aktiválva: `Virtual env: F:\CODE\tts\venv`
-- ✅ TTS modell betölthető: `Premium XTTS modell betöltve (CPU)`
-- ✅ Magyar szintézis működik: Processing time ~7-8 másodperc
-- ✅ MP3 export hibamentesen: WAV és MP3 fájlok generálódnak
-- ✅ Magyar karakterek kezelése: ő, ü, á, stb. helyesen működik
-
-### Típikus Működési Példa
-
-```bash
-$ python premium_xtts_hungarian.py --text "Teszt magyar szöveg" --refs "..." --out test.wav --mp3
-> tts_models/multilingual/multi-dataset/xtts_v2 is already downloaded.
-✅ Premium XTTS modell betöltve (CPU)
-> Text splitted to sentences.
-> Processing time: 7.67
-> Real-time factor: 1.70
-✅ Prémium szintézis kész: test_results\test.wav
-✅ MP3 export kész: test_results\test.mp3
-```
+- ✅ CUDA elérhető: `torch.cuda.is_available() == True`
+- ✅ TTS modell betölthető hibamentesen
+- ✅ Magyar szintézis működik naturális kiejtéssel
+- ✅ MP3 export hibamentesen működik
 
 ## 🚀 Következő Lépések
 
-1. **Virtual Environment**: `source venv/Scripts/activate` (MINDEN alkalommal!)
-2. **Audio előkészítés**: `python preprocess_audio.py --input your_voice.mp3`
-3. **Optimalizálás**: `python advanced_preprocessing.py`
-4. **Szintézis**: 
-   ```bash
-   python premium_xtts_hungarian.py \
-     --text "Jöjjön a következő kérdés egymillió forintért!" \
-     --refs "processed_audio/premium_clip_01.wav,processed_audio/premium_clip_02.wav" \
-     --out output.wav --mp3
-   ```
+1. **Audio előkészítés**: `python preprocess_audio.py --input your_voice.mp3`
+2. **Optimalizálás**: `python advanced_preprocessing.py`
+3. **Szintézis**: `python simple_xtts_hungarian.py --text "..." --refs "..." --out test.wav --mp3`
 
 ---
 
-**💡 Legfontosabb Tipp**: A virtual environment aktiválása a LEGGYAKORIBB probléma forrása! Mindig ellenőrizze, hogy a `Virtual env:` path a project mappájára mutat-e!
+**💡 Tipp**: Ha bármilyen telepítési problémába ütközik, először próbálja a requirements.txt pontos verzióival, majd kérjen segítséget a hibaüzenet másolásával!
