@@ -48,8 +48,9 @@ class PremiumXTTSHungarian:
             torch.load = patched_load
             
             from TTS.api import TTS
-            self.tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2", gpu=True)
-            print("✅ Premium XTTS modell betöltve")
+            # Use CPU since CUDA is not available
+            self.tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2", gpu=False)
+            print("✅ Premium XTTS modell betöltve (CPU)")
             return True
             
         except Exception as e:

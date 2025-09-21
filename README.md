@@ -48,6 +48,20 @@ pip install -r requirements.txt
 
 ## 🎬 Használat
 
+### ⚠️ Fontos: Virtual Environment Aktiválás
+
+**MINDIG** aktiválja a virtual environment-et használat előtt:
+
+```bash
+# Windows
+cd f:/CODE/tts
+source venv/Scripts/activate
+
+# Linux/Mac
+cd /path/to/loim-tts
+source venv/bin/activate
+```
+
 ### Alapvető Műsorelem Generálás
 
 ```bash
@@ -157,6 +171,19 @@ python premium_xtts_hungarian.py \
 
 ## 🔧 Speciális Funkciók
 
+### 🖥️ CPU/GPU Automatikus Kezelés
+
+A rendszer automatikusan CPU-ra vált, ha CUDA nem elérhető:
+- ✅ **CPU működés**: Stabil, de lassabb (1.7x real-time faktor)
+- ✅ **CUDA működés**: Gyorsabb, ha GPU elérhető
+- ✅ **Automatikus fallback**: Hibamentesen vált CPU-ra
+
+### 📁 Kimenet Kezelés
+
+Az összes generált fájl a `test_results/` mappában található:
+- **WAV fájl**: Magas minőségű eredeti (pl. 198 KB)
+- **MP3 fájl**: Tömörített verzió (pl. 85 KB, 128kbps)
+
 ### Batch Műsorelem Generálás
 
 ```bash
@@ -213,10 +240,20 @@ A projekt 6 darab optimalizált Vágó István referencia klipet tartalmaz:
 
 ## 💡 Tippek a Legjobb Eredményért
 
-1. **Műsor-specifikus szövegek**: Használja az eredeti műsor kifejezéseit
-2. **Megfelelő intonáció**: A kérdések emelkedő, válaszok erősítő hangsúllyal
-3. **Post-processing**: Mindig alkalmazza broadcast ready kimenethez
-4. **Multiple reference**: 2-3 referencia klip használata jobb minőségért
+1. **Virtual Environment**: MINDIG aktiválja a venv-et futtatás előtt
+2. **Műsor-specifikus szövegek**: Használja az eredeti műsor kifejezéseit
+3. **Megfelelő intonáció**: A kérdések emelkedő, válaszok erősítő hangsúllyal
+4. **Post-processing**: Mindig alkalmazza broadcast ready kimenethez
+5. **Multiple reference**: 2-3 referencia klip használata jobb minőségért
+6. **CPU vs GPU**: CPU működés is teljesen stabil, csak lassabb
+
+### 🎯 Sikeres Generálás Jelei
+
+- ✅ "Premium XTTS modell betöltve (CPU)" üzenet
+- ✅ Processing time: ~7-8 másodperc
+- ✅ Real-time factor: ~1.7x
+- ✅ Két fájl generálva: `.wav` és `.mp3`
+- ✅ Magyar karakterek helyesen kezelve (ő, ü, á, stb.)
 
 ## 🏆 Eredmények
 
