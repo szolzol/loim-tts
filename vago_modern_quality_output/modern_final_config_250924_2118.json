@@ -1,0 +1,14 @@
+{
+  "name": "modern_final",
+  "description": "Final modern quality - no more 1980s sound",
+  "temperature": 0.72,
+  "repetition_penalty": 1.18,
+  "speed_factor": 1.05,
+  "length_penalty": 0.95,
+  "top_k": 65,
+  "top_p": 0.93,
+  "modern_enhancement": true,
+  "vintage_removal": true,
+  "clarity_boost": true,
+  "warmth_balanced": true
+}

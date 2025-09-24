@@ -1,0 +1,23 @@
+{
+  "reference_audio": "F:\\CODE\\tts\\vago_finetune.mp3",
+  "target_speaker": "vago_istvan_finetuned",
+  "language": "hu",
+  "training_phrases": [
+    "Jó estét! Üdvözlöm a Legyen Ön Is Milliomos műsorában!",
+    "Itt vagyok, Vágó István, és ma este ismét nagy lehetőségek várnak!",
+    "De vigyázat! Egy rossz válasz, és minden odavan!",
+    "Na, ez még könnyű volt, ugye? Látom a szemén, hogy tudja!",
+    "Brávó! A helyes válasz valóban ez volt! Nagyszerű!",
+    "Itt már nem játszunk, uraim. Ez már komoly pénz!",
+    "Na most figyeljen! Ezt tudni kell! Mi a válasza?",
+    "Fantasztikus! Lenyűgöző! Tökéletes válasz!",
+    "Ez már olyan összeg, amiből egy életre kijön!",
+    "Most koncentráljon... minden a következő pillanaton múlik...",
+    "A helyes válasz... és most... figyeljen ide...",
+    "Biztosan ezt választja végső válaszként?",
+    "Gratulálok! Ön lett a mai főnyertes!",
+    "Hihetetlen! Fantasztikus teljesítmény!",
+    "Ennyi volt a ma esti adás! Remélem, élvezték!"
+  ],
+  "total_phrases": 15
+}
