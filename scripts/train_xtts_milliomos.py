@@ -34,8 +34,8 @@ OUTPUT_PATH = PROJECT_ROOT / "run" / "training_milliomos"
 CHECKPOINTS_OUT_PATH = OUTPUT_PATH / "XTTS_v2.0_original_model_files"
 
 # Training settings
-RUN_NAME = f"XTTS_Vago_Milliomos_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-PROJECT_NAME = "Vago_Milliomos_QuizShow"
+RUN_NAME = f"XTTS_{datetime.now().strftime('%Y%m%d_%H%M')}"  # Shorter to avoid path limits
+PROJECT_NAME = "Vago"
 DASHBOARD_LOGGER = "tensorboard"
 
 # Hyperparameters (RTX 4070 - 12GB VRAM)
@@ -191,11 +191,11 @@ def setup_training():
         num_loader_workers=0,  # Windows-friendly
         eval_split_max_size=256,
         eval_split_size=eval_split_size,
-        print_step=50,
+        print_step=1,  # Print EVERY step for terminal monitoring
         plot_step=100,
         log_model_step=100,
-        save_step=500,  # Save more frequently
-        save_n_checkpoints=1,  # Keep best checkpoint
+        save_step=100,  # Save every 100 steps (more frequent for safety)
+        save_n_checkpoints=2,  # Keep 2 checkpoints
         save_checkpoints=True,
         print_eval=True,
         # Optimizer - matching reference implementation
@@ -357,24 +357,79 @@ def main():
         return
     
     # Calculate total steps for progress tracking
-    total_steps = 27 * NUM_EPOCHS  # Approximately 27 steps per epoch
+    steps_per_epoch = len(train_samples) / BATCH_SIZE
+    total_steps = int(steps_per_epoch * NUM_EPOCHS)
     
     # Start training with progress monitoring
     print("\n" + "="*60)
     print("TRAINING IN PROGRESS")
     print("="*60)
     print(f"Total epochs: {NUM_EPOCHS}")
-    print(f"Steps per epoch: ~27")
-    print(f"Total steps: ~{total_steps}")
-    print(f"\nProgress will be shown every 5 steps")
-    print(f"Checkpoints saved every 500 steps")
-    print(f"\nMonitor live with TensorBoard:")
-    print(f"  tensorboard --logdir {OUTPUT_PATH}")
+    print(f"Steps per epoch: {steps_per_epoch:.1f}")
+    print(f"Total steps: {total_steps}")
+    print(f"\nProgress shown EVERY step in terminal")
+    print(f"Checkpoints saved every 100 steps to:")
+    print(f"  {OUTPUT_PATH}")
+    print("\nLoss values to watch:")
+    print("  loss_text_ce: Text prediction loss (target: <0.1)")
+    print("  loss_mel_ce: Audio quality loss (target: <1.5)")
+    print("  loss: Total loss (target: <2.0)")
     print("="*60 + "\n")
     
     try:
         start_time = time.time()
-        trainer.fit()
+        
+        # Training loop with progress tracking
+        print("\n🚀 Starting training loop...\n")
+        last_print_time = time.time()
+        
+        # Monkey-patch to add progress callback
+        original_fit = trainer.fit
+        step_counter = [0]  # Use list to modify in nested function
+        
+        def fit_with_progress():
+            # Hook into trainer events
+            def on_train_step_end(trainer_instance, batch_num_steps, step, loss_dict, *args, **kwargs):
+                step_counter[0] = step
+                elapsed = time.time() - start_time
+                progress = (step / total_steps) * 100 if total_steps > 0 else 0
+                
+                # Print progress every step
+                if step % 1 == 0 or step == total_steps:
+                    elapsed_min = elapsed / 60
+                    steps_remaining = total_steps - step
+                    time_per_step = elapsed / max(step, 1)
+                    eta_min = (steps_remaining * time_per_step) / 60
+                    
+                    print(f"\n{'='*60}")
+                    print(f"Step {step}/{total_steps} ({progress:.1f}%) | Epoch {step // int(steps_per_epoch) + 1}/{NUM_EPOCHS}")
+                    print(f"{'='*60}")
+                    print(f"⏱️  Time: {elapsed_min:.1f}m elapsed | {eta_min:.1f}m remaining")
+                    
+                    if loss_dict:
+                        print(f"📉 Losses:")
+                        for key, val in loss_dict.items():
+                            if 'loss' in key.lower():
+                                print(f"   {key}: {val:.4f}")
+                    
+                    # Memory info
+                    if USE_CUDA:
+                        mem_used = torch.cuda.memory_allocated() / 1024**3
+                        mem_cached = torch.cuda.memory_reserved() / 1024**3
+                        print(f"🎮 GPU Memory: {mem_used:.2f}GB used, {mem_cached:.2f}GB cached")
+                    
+                    print(f"{'='*60}\n")
+            
+            # Store original callback if exists
+            original_callback = getattr(trainer, 'on_train_step_end', None)
+            trainer.on_train_step_end = lambda *args, **kwargs: on_train_step_end(trainer, *args, **kwargs)
+            
+            # Run training
+            return original_fit()
+        
+        # Run training with progress
+        fit_with_progress()
+        
         elapsed = time.time() - start_time
         
         print("\n" + "="*60)
@@ -382,13 +437,16 @@ def main():
         print("="*60)
         print(f"Finished: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"Total time: {elapsed/60:.1f} minutes ({elapsed/3600:.2f} hours)")
+        print(f"Final step: {step_counter[0]}/{total_steps}")
         print(f"\nModel saved to: {OUTPUT_PATH}")
+        print(f"\nBest checkpoint: Look for 'best_model.pth' in output folder")
         print(f"\nTest the model:")
         print(f"  python scripts\\zero_shot_inference.py --model_path {OUTPUT_PATH}")
         
     except KeyboardInterrupt:
         print("\n⚠ Training interrupted by user")
         print(f"Checkpoints saved to: {OUTPUT_PATH}")
+        print(f"Completed {step_counter[0]}/{total_steps} steps")
     except Exception as e:
         print(f"\n❌ Training error: {e}")
         import traceback
