@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+xtts_env/
+tts_env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Training outputs
+run/
+checkpoints/*
+!checkpoints/.gitkeep
+output/*
+!output/.gitkeep
+logs/
+tensorboard/
+
+# Large model files
+*.pth
+*.ckpt
+*.pt
+*.safetensors
+
+# Audio files (except samples)
+*.wav
+*.mp3
+*.flac
+!output/samples/*.wav
+
+# Dataset
+dataset/
+!dataset/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary
+temp/
+tmp/
+*.tmp
+*.bak
+
+# Credentials
+.env
+secrets.json
+api_keys.txt
