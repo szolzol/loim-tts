@@ -32,18 +32,23 @@ SOURCE_CLIPS_DIR = PROJECT_ROOT / "source_clips"
 OUTPUT_DIR = PROJECT_ROOT / "output" / "zero_shot"
 
 # Reference audio files (use 2-3 for best results)
+# Using most energetic/expressive clips for better prosody
 REFERENCE_AUDIO = [
-    SOURCE_CLIPS_DIR / "vago_vagott_01.wav",
-    SOURCE_CLIPS_DIR / "vago_vagott_02.wav",
-    SOURCE_CLIPS_DIR / "vago_vagott_03.wav",
+    SOURCE_CLIPS_DIR / "vago_vagott_02.wav",  # Most energetic
+    SOURCE_CLIPS_DIR / "vago_vagott_05.wav",  # High expression
+    SOURCE_CLIPS_DIR / "vago_vagott_03.wav",  # Dynamic delivery
 ]
 
 LANGUAGE = "hu"  # Hungarian
 
-# Inference settings for quality
-TEMPERATURE = 0.75
+# Inference settings - OPTIMIZED FOR SMOOTHER SPEECH
+# Reducing temperature and adjusting settings for less choppy output
+TEMPERATURE = 0.7  # Lower = more stable/smooth (was 0.95)
 LENGTH_PENALTY = 1.0
-REPETITION_PENALTY = 5.0
+REPETITION_PENALTY = 5.0  # Lower = smoother flow (was 7.0)
+SPEED = 1.0  # Normal speed for natural flow
+TOP_K = 50  # Limit vocabulary for more stable output
+TOP_P = 0.85  # Nucleus sampling for smoother generation
 
 # Test phrases in Hungarian (quiz show style)
 TEST_PHRASES = [
@@ -124,22 +129,43 @@ def generate_speech(tts, text, speaker_wav, output_path):
     """
     
     try:
-        # Generate speech
+        import time
+        start_time = time.time()
+        
+        # Generate speech with optimized parameters for smooth output
         tts.tts_to_file(
             text=text,
             speaker_wav=speaker_wav,
             language=LANGUAGE,
             file_path=str(output_path),
-            # Quality settings
+            # Optimized settings for smooth, natural flow
             temperature=TEMPERATURE,
             length_penalty=LENGTH_PENALTY,
             repetition_penalty=REPETITION_PENALTY,
+            speed=SPEED,
+            top_k=TOP_K,
+            top_p=TOP_P,
         )
+        
+        # Calculate generation time
+        elapsed = time.time() - start_time
+        
+        # Get audio duration
+        try:
+            import torchaudio
+            waveform, sample_rate = torchaudio.load(str(output_path))
+            duration = waveform.shape[1] / sample_rate
+            rtf = elapsed / duration  # Real-time factor
+            print(f"  ⏱️ Generated in {elapsed:.2f}s (RTF: {rtf:.2f}x)")
+        except:
+            print(f"  ⏱️ Generated in {elapsed:.2f}s")
         
         return True
         
     except Exception as e:
         print(f"  ❌ Error: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 
