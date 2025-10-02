@@ -5,6 +5,7 @@ Optimized for RTX 4070, Hungarian language, quiz show prosody
 
 import os
 import sys
+import time
 import torch
 from pathlib import Path
 from datetime import datetime
@@ -133,85 +134,88 @@ def setup_training():
         language=LANGUAGE,
     )
     
-    # Audio config
-    audio_config = XttsAudioConfig(
-        sample_rate=SAMPLE_RATE,
-        dvae_sample_rate=SAMPLE_RATE,
-        output_sample_rate=SAMPLE_RATE,
-    )
+    # Calculate minimum eval split for 80 samples
+    # Need at least 1 sample for eval, so 1/80 = 0.0125
+    eval_split_size = 0.02  # 2% = ~2 samples for eval
     
-    # GPT model config
-    config = GPTTrainerConfig(
-        output_path=str(OUTPUT_PATH),
-        model_args=GPTArgs(
-            max_conditioning_length=132300,  # 6 seconds of conditioning audio
-            min_conditioning_length=66150,   # 3 seconds minimum
-            debug_loading_failures=False,
-            max_wav_length=MAX_AUDIO_LENGTH,  # Maximum ~11.6 seconds
-            max_text_length=200,
-            mel_norm_file=str(CHECKPOINTS_OUT_PATH / "mel_stats.pth"),
-            dvae_checkpoint=str(CHECKPOINTS_OUT_PATH / "dvae.pth"),
-            xtts_checkpoint=str(CHECKPOINTS_OUT_PATH / "model.pth"),
-            tokenizer_file=str(CHECKPOINTS_OUT_PATH / "vocab.json"),
-            gpt_num_audio_tokens=1026,
-            gpt_start_audio_token=1024,
-            gpt_stop_audio_token=1025,
-            gpt_use_masking_gt_prompt_approach=True,
-            gpt_use_perceiver_resampler=True,
-        ),
-        audio=audio_config,
-        batch_size=BATCH_SIZE,
-        batch_group_size=48,
-        eval_batch_size=BATCH_SIZE,
-        num_loader_workers=0,  # Windows-friendly
-        eval_split_max_size=256,
-        eval_split_size=0.01,
-        print_step=50,
-        plot_step=100,
-        log_model_step=1000,
-        save_step=5000,
-        save_n_checkpoints=2,
-        save_checkpoints=True,
-        target_loss="loss",
-        print_eval=False,
-        run_eval=True,
-        test_sentences=[
-            # Quiz show phrases for testing
-            {"text": "Gratulálok! Helyes válasz!", "speaker_wav": "greeting/greeting_001.wav", "language": LANGUAGE},
-            {"text": "Jöjjön a következő kérdés!", "speaker_wav": "transition/transition_001.wav", "language": LANGUAGE},
-            {"text": "Ez egy nehéz kérdés, gondolkodjon!", "speaker_wav": "tension/tension_001.wav", "language": LANGUAGE},
-            {"text": "Nagyszerű teljesítmény!", "speaker_wav": "excitement/excitement_001.wav", "language": LANGUAGE},
-        ],
-        epochs=NUM_EPOCHS,
-        batch_size=BATCH_SIZE,
-        grad_acumm_steps=GRAD_ACUMM_STEPS,
-        seq_len=1,
-        lr=LR,
-        lr_scheduler=LR_SCHEDULER,
-        lr_scheduler_params={"step_size": LR_STEP_SIZE, "gamma": LR_GAMMA},
-        test_sentences_file="",
-        mel_norm_file="",
-        datasets=[config_dataset],
-        temperature=0.2,
-        weighted_loss_attrs={
-            "wav_loss": 1.0,
-        },
-        weighted_loss_multipliers={
-            "text_ce": 0.01,
-            "wav_ce": 1.0,
-        },
-        gpt_max_audio_tokens=605,
-        gpt_max_text_tokens=402,
-        gpt_max_prompt_tokens=70,
-        gpt_layers=30,
-        gpt_n_model_channels=1024,
-        gpt_n_heads=16,
-        gpt_number_text_tokens=6681,
-        gpt_start_text_token=None,
+    # Model checkpoint paths
+    model_path = "C:\\Users\\szolzol\\AppData\\Local\\tts\\tts_models--multilingual--multi-dataset--xtts_v2"
+    
+    # GPT model config - Based on reference implementation
+    model_args = GPTArgs(
+        max_conditioning_length=132300,  # 6 secs
+        min_conditioning_length=66150,   # 3 secs
+        debug_loading_failures=False,
+        max_wav_length=MAX_AUDIO_LENGTH,  # ~11.6 seconds
+        max_text_length=300,  # Increased to avoid truncation for Hungarian
+        mel_norm_file=f"{model_path}\\mel_stats.pth",
+        dvae_checkpoint=f"{model_path}\\dvae.pth",
+        xtts_checkpoint=f"{model_path}\\model.pth",
+        tokenizer_file=f"{model_path}\\vocab.json",
         gpt_num_audio_tokens=1026,
+        gpt_start_audio_token=1024,
         gpt_stop_audio_token=1025,
         gpt_use_masking_gt_prompt_approach=True,
         gpt_use_perceiver_resampler=True,
+    )
+    
+    # Audio config - Try to set dvae_sample_rate if supported
+    try:
+        audio_config = XttsAudioConfig(
+            sample_rate=SAMPLE_RATE, 
+            dvae_sample_rate=SAMPLE_RATE, 
+            output_sample_rate=24000
+        )
+    except TypeError:
+        # Fallback for older TTS versions
+        audio_config = XttsAudioConfig(
+            sample_rate=SAMPLE_RATE,
+            output_sample_rate=24000
+        )
+        # Monkey-patch for compatibility
+        audio_config.dvae_sample_rate = SAMPLE_RATE
+    
+    # Training config
+    config = GPTTrainerConfig(
+        output_path=str(OUTPUT_PATH),
+        model_args=model_args,
+        run_name=RUN_NAME,
+        project_name=PROJECT_NAME,
+        run_description="XTTS-v2 fine-tuning for István Vágó quiz show voice",
+        dashboard_logger=DASHBOARD_LOGGER,
+        logger_uri=None,
+        audio=audio_config,
+        batch_size=BATCH_SIZE,
+        batch_group_size=16,
+        eval_batch_size=BATCH_SIZE,
+        num_loader_workers=0,  # Windows-friendly
+        eval_split_max_size=256,
+        eval_split_size=eval_split_size,
+        print_step=50,
+        plot_step=100,
+        log_model_step=100,
+        save_step=500,  # Save more frequently
+        save_n_checkpoints=1,  # Keep best checkpoint
+        save_checkpoints=True,
+        print_eval=True,
+        # Optimizer - matching reference implementation
+        optimizer="AdamW",
+        optimizer_wd_only_on_weights=True,
+        optimizer_params={"betas": [0.9, 0.96], "eps": 1e-8, "weight_decay": 1e-5},
+        lr=3e-6,  # Learning rate from reference
+        lr_scheduler="StepLR",
+        lr_scheduler_params={"step_size": 50, "gamma": 0.5, "last_epoch": -1},
+        # Epochs
+        epochs=NUM_EPOCHS,
+        # Test sentences
+        test_sentences=[
+            {"text": "Gratulálok! Helyes válasz!", "speaker_wav": str(DATASET_PATH / "greeting" / "greeting_001.wav"), "language": LANGUAGE},
+            {"text": "Jöjjön a következő kérdés!", "speaker_wav": str(DATASET_PATH / "transition" / "transition_001.wav"), "language": LANGUAGE},
+            {"text": "Ez egy nehéz kérdés!", "speaker_wav": str(DATASET_PATH / "tension" / "tension_001.wav"), "language": LANGUAGE},
+            {"text": "Nagyszerű teljesítmény!", "speaker_wav": str(DATASET_PATH / "excitement" / "excitement_001.wav"), "language": LANGUAGE},
+        ],
+        # Datasets
+        datasets=[config_dataset],
     )
     
     # Summary
@@ -221,8 +225,6 @@ def setup_training():
     print(f"Language: {LANGUAGE}")
     print(f"\nTraining parameters:")
     print(f"  Batch size: {BATCH_SIZE}")
-    print(f"  Gradient accumulation: {GRAD_ACUMM_STEPS}")
-    print(f"  Effective batch: {BATCH_SIZE * GRAD_ACUMM_STEPS}")
     print(f"  Epochs: {NUM_EPOCHS}")
     print(f"  Learning rate: {LR}")
     print(f"  Max audio length: {MAX_AUDIO_LENGTH/SAMPLE_RATE:.2f}s")
@@ -245,18 +247,17 @@ def estimate_training_time(config):
         sample_count = len(f.readlines()) - 1  # Subtract header
     
     # Calculate steps
-    effective_batch = BATCH_SIZE * GRAD_ACUMM_STEPS
-    steps_per_epoch = sample_count / effective_batch
+    steps_per_epoch = sample_count / BATCH_SIZE
     total_steps = steps_per_epoch * NUM_EPOCHS
     
     # Estimate time (rough approximation)
-    # RTX 4070: ~1.5-2 seconds per step with batch=3, grad_accum=84
-    seconds_per_step = 1.8
+    # RTX 4070: ~2-3 seconds per step with batch=3
+    seconds_per_step = 2.5
     total_seconds = total_steps * seconds_per_step
     hours = total_seconds / 3600
     
     print(f"Dataset: {sample_count} samples")
-    print(f"Effective batch size: {effective_batch}")
+    print(f"Batch size: {BATCH_SIZE}")
     print(f"Steps per epoch: {steps_per_epoch:.1f}")
     print(f"Total steps: {total_steps:.0f}")
     print(f"\nEstimated duration: {hours:.1f} hours ({total_seconds/60:.0f} minutes)")
@@ -265,6 +266,9 @@ def estimate_training_time(config):
 
 def main():
     """Main training entry point"""
+    import sys
+    auto_start = '--auto-start' in sys.argv or '-y' in sys.argv
+    
     print("="*60)
     print("XTTS-V2 FINE-TUNING - ISTVÁN VÁGÓ MILLIOMOS")
     print("="*60)
@@ -293,10 +297,13 @@ def main():
     print(f"\nCheckpoints will be saved every 5000 steps to:")
     print(f"  {OUTPUT_PATH}")
     
-    response = input("\nStart training? (y/n): ")
-    if response.lower() != 'y':
-        print("Training cancelled.")
-        sys.exit(0)
+    if not auto_start:
+        response = input("\nStart training? (y/n): ")
+        if response.lower() != 'y':
+            print("Training cancelled.")
+            sys.exit(0)
+    else:
+        print("\n✅ Auto-starting training (--auto-start flag detected)")
     
     # Initialize and train
     print("\n" + "="*60)
@@ -306,40 +313,86 @@ def main():
     # Create output directory
     OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
     
-    # Initialize trainer
-    trainer = Trainer(
-        TrainerArgs(
-            restore_path=None,
-            skip_train_epoch=False,
-            continue_path=str(OUTPUT_PATH) if (OUTPUT_PATH / "checkpoint.pth").exists() else None,
-        ),
-        config=config,
-        output_path=str(OUTPUT_PATH),
-        model=GPTTrainer,
-        train_samples=load_tts_samples(
-            config.datasets,
-            eval_split=False,
-            eval_split_max_size=config.eval_split_max_size,
-            eval_split_size=config.eval_split_size,
-        ),
-        eval_samples=load_tts_samples(
+    # Initialize model
+    print("\n🤖 Initializing XTTS model...")
+    try:
+        model = GPTTrainer.init_from_config(config)
+        print("  ✅ Model initialized")
+    except Exception as e:
+        print(f"  ❌ Error initializing model: {e}")
+        return
+    
+    # Load training samples
+    print("\n📚 Loading training samples...")
+    try:
+        train_samples, eval_samples = load_tts_samples(
             config.datasets,
             eval_split=True,
             eval_split_max_size=config.eval_split_max_size,
             eval_split_size=config.eval_split_size,
-        ),
-    )
+        )
+        print(f"  ✅ Training samples: {len(train_samples)}")
+        print(f"  ✅ Evaluation samples: {len(eval_samples)}")
+    except Exception as e:
+        print(f"  ❌ Error loading samples: {e}")
+        return
     
-    # Start training
-    trainer.fit()
+    # Initialize trainer
+    print("\n🚀 Initializing trainer...")
+    try:
+        trainer = Trainer(
+            TrainerArgs(
+                restore_path=None,
+                skip_train_epoch=False,
+            ),
+            config,
+            output_path=str(OUTPUT_PATH),
+            model=model,
+            train_samples=train_samples,
+            eval_samples=eval_samples,
+        )
+        print("  ✅ Trainer initialized")
+    except Exception as e:
+        print(f"  ❌ Error initializing trainer: {e}")
+        return
     
+    # Calculate total steps for progress tracking
+    total_steps = 27 * NUM_EPOCHS  # Approximately 27 steps per epoch
+    
+    # Start training with progress monitoring
     print("\n" + "="*60)
-    print("✓ TRAINING COMPLETE!")
+    print("TRAINING IN PROGRESS")
     print("="*60)
-    print(f"Finished: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"\nModel saved to: {OUTPUT_PATH}")
-    print(f"\nTest the model:")
-    print(f"  python scripts\\zero_shot_inference.py --model_path {OUTPUT_PATH}")
+    print(f"Total epochs: {NUM_EPOCHS}")
+    print(f"Steps per epoch: ~27")
+    print(f"Total steps: ~{total_steps}")
+    print(f"\nProgress will be shown every 5 steps")
+    print(f"Checkpoints saved every 500 steps")
+    print(f"\nMonitor live with TensorBoard:")
+    print(f"  tensorboard --logdir {OUTPUT_PATH}")
+    print("="*60 + "\n")
+    
+    try:
+        start_time = time.time()
+        trainer.fit()
+        elapsed = time.time() - start_time
+        
+        print("\n" + "="*60)
+        print("✓ TRAINING COMPLETE!")
+        print("="*60)
+        print(f"Finished: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"Total time: {elapsed/60:.1f} minutes ({elapsed/3600:.2f} hours)")
+        print(f"\nModel saved to: {OUTPUT_PATH}")
+        print(f"\nTest the model:")
+        print(f"  python scripts\\zero_shot_inference.py --model_path {OUTPUT_PATH}")
+        
+    except KeyboardInterrupt:
+        print("\n⚠ Training interrupted by user")
+        print(f"Checkpoints saved to: {OUTPUT_PATH}")
+    except Exception as e:
+        print(f"\n❌ Training error: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 if __name__ == "__main__":
