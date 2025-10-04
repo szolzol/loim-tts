@@ -61,12 +61,25 @@ tts-2/
 │           ├── config.json
 │           └── vocab.json
 │
-├── scripts/
-│   ├── generate_quiz_phase2.py       ⭐ Main generation script
-│   ├── inference.py                  # Alternative inference
-│   └── [utility scripts]
+├── scripts/                          # 11 essential scripts (82 KB)
+│   ├── Training Scripts:
+│   │   ├── train_combined_phase2.py  ⭐ Phase 2 fine-tuning
+│   │   ├── train_combined.py         Phase 1 training
+│   │   └── train_phase2.py           Alternative training
+│   │
+│   ├── Generation Scripts:
+│   │   ├── generate_quiz_phase2.py   ⭐ Production samples (temp 0.40)
+│   │   ├── inference.py              ⭐ General inference
+│   │   ├── generate_best_samples.py  Quality testing
+│   │   └── zero_shot_inference.py    Zero-shot cloning
+│   │
+│   └── Dataset Scripts:
+│       ├── prepare_dataset.py        ⭐ Prepare training data
+│       ├── transcribe_audio.py       Create transcripts
+│       ├── verify_dataset.py         Validate dataset
+│       └── monitor_training.py       Training monitor
 │
-├── quiz_samples_phase2_final/        ⭐ Generated samples (15)
+├── quiz_samples_phase2_final/        ⭐ Generated samples (5)
 ├── processed_clips/                  # Reference audio
 ├── dataset_combined/                 # Training metadata
 │
@@ -100,7 +113,77 @@ tts-2/
 
 ---
 
-## 📖 Documentation
+## � Scripts Reference
+
+### Training Scripts (3)
+
+**`train_combined_phase2.py`** ⭐ Main fine-tuning script
+- Continues training from Phase 1 checkpoint
+- Lower learning rate (1e-6) for fine-tuning
+- Required for future model improvements
+- Usage: `python scripts\train_combined_phase2.py`
+
+**`train_combined.py`** - Phase 1 training
+- Initial training combining Milliomos + Blikk datasets
+- Can be used to retrain from scratch
+- Reference for training configuration
+
+**`train_phase2.py`** - Alternative Phase 2 approach
+- Experimental training configuration
+- Useful for comparing approaches
+
+### Generation Scripts (4)
+
+**`generate_quiz_phase2.py`** ⭐ Production generator
+- Optimized settings (temperature=0.40)
+- Generates quiz questions with natural pauses
+- Current: 5 questions with A/B/C/D options
+- Usage: `python scripts\generate_quiz_phase2.py`
+
+**`inference.py`** ⭐ General inference
+- Generate custom audio with any text
+- Flexible parameters (temperature, etc.)
+- Useful for ad-hoc generation
+- Usage: `python scripts\inference.py --text "Your text here"`
+
+**`generate_best_samples.py`** - Quality testing
+- Generates test samples from best model
+- Useful for comparing model versions
+- Validates model quality
+
+**`zero_shot_inference.py`** - Zero-shot cloning
+- Clone any voice with just 6-second sample
+- No training required
+- Useful for testing new voices
+
+### Dataset Scripts (3)
+
+**`prepare_dataset.py`** ⭐ Dataset preparation
+- Prepares audio + transcript pairs
+- Creates metadata.csv
+- Essential for adding new training data
+- Usage: `python scripts\prepare_dataset.py`
+
+**`transcribe_audio.py`** - Auto transcription
+- Creates transcripts from audio files
+- Uses Whisper or manual input
+- Needed when adding new samples
+
+**`verify_dataset.py`** - Dataset validation
+- Checks audio quality
+- Validates transcript format
+- Ensures dataset is ready for training
+
+### Utility Scripts (1)
+
+**`monitor_training.py`** - Training monitor
+- Real-time training progress
+- Tracks loss curves
+- Useful during long training runs
+
+---
+
+## �📖 Documentation
 
 ### Essential Docs
 
