@@ -26,6 +26,7 @@ This will create 15 realistic quiz show samples in `quiz_samples_phase2_final/`
 ### Files You Need
 
 **Phase 2 Best Model** (30 GB total):
+
 ```
 run/training_combined_phase2/XTTS_Combined_Phase2-October-04-2025_03+00PM-fb239cd/
 ├── best_model_1901.pth  (5.22 GB) ⭐
@@ -34,6 +35,7 @@ run/training_combined_phase2/XTTS_Combined_Phase2-October-04-2025_03+00PM-fb239c
 ```
 
 **Reference Audio**:
+
 ```
 processed_clips/
 └── vago_vagott_01.wav  (used for voice cloning)
@@ -73,11 +75,11 @@ tts-2/
 
 ## � Training Journey
 
-| Phase | Mel CE | Improvement | Quality | Status |
-|-------|--------|-------------|---------|--------|
-| Baseline (Milliomos) | 5.046 | - | 7.5/10 | ✅ |
-| Phase 1 (Combined) | 3.507 | -30.5% | 8.5/10 | ✅ |
-| **Phase 2 (Best)** | **2.971** | **-41.1%** | **9/10** | **✅ PROD** |
+| Phase                | Mel CE    | Improvement | Quality  | Status      |
+| -------------------- | --------- | ----------- | -------- | ----------- |
+| Baseline (Milliomos) | 5.046     | -           | 7.5/10   | ✅          |
+| Phase 1 (Combined)   | 3.507     | -30.5%      | 8.5/10   | ✅          |
+| **Phase 2 (Best)**   | **2.971** | **-41.1%**  | **9/10** | **✅ PROD** |
 
 ---
 
@@ -116,6 +118,7 @@ tts-2/
 Location: `quiz_samples_phase2_final/`
 
 15 realistic quiz show scenarios:
+
 - Show opening/closing
 - Questions (easy, medium, hard)
 - Correct/wrong answer reactions
@@ -131,11 +134,13 @@ Location: `quiz_samples_phase2_final/`
 ### For Production Use
 
 1. Copy the model directory:
+
    ```
    run/training_combined_phase2/XTTS_Combined_Phase2-.../
    ```
 
 2. Ensure these files exist:
+
    - `best_model_1901.pth` (5.22 GB)
    - `config.json`
    - `vocab.json` ← **Critical for tokenizer!**
@@ -185,12 +190,14 @@ outputs = model.inference(
 ## 📊 Training Stats
 
 ### Dataset
+
 - **Total Samples**: 311 (80 Milliomos + 231 Blikk)
 - **Total Duration**: 39.7 minutes
 - **Train/Eval Split**: 265/46
 - **Language**: Hungarian
 
 ### Training Configuration
+
 - **Learning Rate (Phase 2)**: 1e-6 (ultra-fine tuning)
 - **Batch Size**: 3
 - **Epochs**: 30
@@ -199,6 +206,7 @@ outputs = model.inference(
 - **Training Time**: ~25 hours total
 
 ### Best Results
+
 - **Mel CE**: 2.971 (target: <2.5, nearly achieved!)
 - **Text CE**: 0.0282 (excellent)
 - **Improvement**: -41.1% from baseline
@@ -208,32 +216,38 @@ outputs = model.inference(
 
 ## 💾 Disk Usage
 
-| Component | Size |
-|-----------|------|
-| Phase 2 Model | 30 GB |
-| Generated Samples | 9 MB |
-| Reference Audio | <50 MB |
-| Documentation | <1 MB |
-| **Total** | **~31 GB** |
+| Component         | Size       |
+| ----------------- | ---------- |
+| Phase 2 Model     | 30 GB      |
+| Generated Samples | 9 MB       |
+| Reference Audio   | <50 MB     |
+| Documentation     | <1 MB      |
+| **Total**         | **~31 GB** |
 
-*45 GB freed through cleanup (was 76 GB)*
+_45 GB freed through cleanup (was 76 GB)_
 
 ---
 
 ## ⚠️ Important Notes
 
 ### Tokenizer Issue
+
 Always include `vocab.json` when loading the model:
+
 ```python
 model.load_checkpoint(..., vocab_path="path/to/vocab.json")
 ```
+
 Without it, you'll get: `'NoneType' object has no attribute 'encode'`
 
 ### Reference Audio
+
 Use high-quality reference audio (vago_vagott_01.wav) for consistent results.
 
 ### GPU Memory
+
 If you encounter CUDA errors, restart Python to clear GPU memory:
+
 ```powershell
 Get-Process python | Stop-Process -Force
 ```
@@ -260,9 +274,9 @@ Get-Process python | Stop-Process -Force
 
 ---
 
-*Model: best_model_1901.pth (Mel CE: 2.971)*  
-*Status: Production-Ready ✅*  
-*Date: October 4, 2025*
+_Model: best_model_1901.pth (Mel CE: 2.971)_  
+_Status: Production-Ready ✅_  
+_Date: October 4, 2025_
 
 - [Coqui TTS Documentation](https://docs.coqui.ai/)
 - [XTTS-v2 Paper](https://arxiv.org/abs/2309.08519)

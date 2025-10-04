@@ -47,11 +47,6 @@ tensorboard/
 *.pt
 *.safetensors
 
-# Audio files (except samples)
-*.wav
-*.mp3
-*.flac
-!output/samples/*.wav
 
 # Dataset
 dataset/
