@@ -18,6 +18,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 This will:
+
 - Create a Python virtual environment
 - Install PyTorch with CUDA support
 - Install all dependencies
@@ -34,6 +35,7 @@ python scripts\prepare_dataset.py
 ```
 
 **⚠️ IMPORTANT BEFORE TRAINING:**
+
 1. Open `dataset\metadata.csv`
 2. Replace placeholder Hungarian text with ACCURATE transcriptions
 3. Ensure proper Hungarian diacritics (á, é, í, ó, ö, ő, ú, ü, ű)
@@ -71,6 +73,7 @@ python scripts\check_system.py
 ```
 
 This verifies:
+
 - ✅ Python version (3.9-3.11)
 - ✅ Required packages installed
 - ✅ GPU/CUDA working
@@ -101,9 +104,11 @@ tts-2/
 ### Key Files to Review
 
 1. **`scripts/prepare_dataset.py`** (Lines 25-39)
+
    - Edit TRANSCRIPTIONS dictionary with accurate Hungarian text
 
 2. **`scripts/train_xtts.py`** (Lines 30-50)
+
    - Adjust BATCH_SIZE if you get GPU memory errors
    - Modify NUM_EPOCHS for longer/shorter training
 
@@ -112,11 +117,11 @@ tts-2/
 
 ## 🎯 Expected Training Timeline
 
-| GPU | Batch Size | Hours/Epoch | Total (25 epochs) |
-|-----|-----------|-------------|-------------------|
-| RTX 4070 | 2 | 15-20 min | 6-8 hours |
-| RTX 3080 | 2 | 20-25 min | 8-10 hours |
-| CPU Only | 1 | 4-6 hours | 100+ hours ⚠️ |
+| GPU      | Batch Size | Hours/Epoch | Total (25 epochs) |
+| -------- | ---------- | ----------- | ----------------- |
+| RTX 4070 | 2          | 15-20 min   | 6-8 hours         |
+| RTX 3080 | 2          | 20-25 min   | 8-10 hours        |
+| CPU Only | 1          | 4-6 hours   | 100+ hours ⚠️     |
 
 ## 📊 Monitoring Training
 
@@ -129,6 +134,7 @@ tts-2/
 ### Listen to Generated Samples
 
 During training, audio samples are generated every few epochs:
+
 - Check `run/training/[run_name]/test_audios/`
 - Listen to progression over epochs
 - Stop training if quality starts degrading (overfitting)
@@ -148,6 +154,7 @@ pip install --force-reinstall TTS==0.22.0
 ### Issue: CUDA out of memory
 
 Edit `scripts/train_xtts.py`:
+
 ```python
 BATCH_SIZE = 1  # Reduce from 2 to 1
 ```
@@ -155,12 +162,14 @@ BATCH_SIZE = 1  # Reduce from 2 to 1
 ### Issue: Training is very slow
 
 1. Verify GPU is being used:
+
 ```powershell
 python -c "import torch; print(torch.cuda.is_available())"
 # Should print: True
 ```
 
 2. Check GPU utilization:
+
 ```powershell
 nvidia-smi
 # Should show python.exe using GPU memory
@@ -186,6 +195,7 @@ nvidia-smi
 ### About the Source Data
 
 Your current dataset (~13 clips) is **minimal**. For production quality:
+
 - **Good**: 15-20 minutes of clean audio
 - **Better**: 30 minutes
 - **Best**: 45+ minutes with diverse content
@@ -193,6 +203,7 @@ Your current dataset (~13 clips) is **minimal**. For production quality:
 ### About Hungarian Language
 
 XTTS-v2 supports Hungarian, but quality depends on:
+
 - Accurate transcriptions with proper diacritics
 - Natural speaking patterns in training data
 - Sufficient phonetic diversity
@@ -222,6 +233,7 @@ If you encounter issues:
 ## 🎯 Success Criteria
 
 Your model is ready when:
+
 - ✅ Generated speech sounds like István Vágó
 - ✅ Hungarian pronunciation is accurate
 - ✅ Natural prosody and intonation

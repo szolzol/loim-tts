@@ -7,6 +7,7 @@
 ## 📦 What Has Been Created
 
 ### Core Scripts (Production-Ready)
+
 - ✅ **`scripts/setup_environment.ps1`** - Automated Windows environment setup
 - ✅ **`scripts/prepare_dataset.py`** - Professional audio preprocessing pipeline
 - ✅ **`scripts/train_xtts.py`** - RTX 4070 optimized training script
@@ -15,6 +16,7 @@
 - ✅ **`scripts/git_checkpoint.ps1`** - Version control automation
 
 ### Comprehensive Documentation
+
 - ✅ **`README.md`** - Project overview and technical specs
 - ✅ **`QUICKSTART.md`** - Step-by-step beginner guide
 - ✅ **`WORKFLOW.md`** - Complete implementation roadmap
@@ -22,11 +24,13 @@
 - ✅ **`TROUBLESHOOTING.md`** - Solutions to common issues
 
 ### Project Configuration
+
 - ✅ **`requirements.txt`** - All dependencies with versions
 - ✅ **`.gitignore`** - Proper file exclusions
 - ✅ **Git repository** - Version control initialized
 
 ### Directory Structure
+
 ```
 tts-2/
 ├── 📜 Documentation (5 guides)
@@ -44,23 +48,27 @@ tts-2/
 ## 🎯 Key Features & Optimizations
 
 ### Windows Compatibility ✅
+
 - PowerShell scripts optimized for Windows
 - Path handling for Windows file system
 - RTX 4070 GPU specific optimizations
 
 ### Hungarian Language Support ✅
+
 - Proper UTF-8 encoding handling
 - Diacritic marks support (á, é, í, ó, ö, ő, ú, ü, ű)
 - Hungarian phoneme considerations
 - Natural prosody for quiz show style
 
 ### Quality-Focused Design ✅
+
 - ElevenLabs/Fish Audio quality targets
 - Professional audio preprocessing
 - Noise reduction and normalization
 - Optimal hyperparameters for fine-tuning
 
 ### Production-Ready Features ✅
+
 - Comprehensive error handling
 - Progress monitoring with TensorBoard
 - Automatic checkpoint saving
@@ -72,6 +80,7 @@ tts-2/
 ## 🚀 Next Steps (YOUR ACTION ITEMS)
 
 ### 1. IMMEDIATE (Today - 30 minutes)
+
 ```powershell
 # Step 1: Run environment setup
 .\scripts\setup_environment.ps1
@@ -84,11 +93,13 @@ python scripts\prepare_dataset.py
 ```
 
 ### 2. CRITICAL (Today - 1 hour)
+
 **Edit `dataset/metadata.csv` with accurate Hungarian transcriptions**
 
 This is THE MOST IMPORTANT step for quality!
 
 Current file has placeholder text like:
+
 ```
 1_vago_finetune2|Üdvözlöm önöket a kvízműsorban!|istvan_vago
 ```
@@ -96,6 +107,7 @@ Current file has placeholder text like:
 You MUST replace with accurate word-for-word transcriptions of what István Vágó says in each audio file.
 
 Tips:
+
 - Listen to each clip carefully
 - Type exactly what you hear
 - Use proper Hungarian diacritics
@@ -103,6 +115,7 @@ Tips:
 - Have a native speaker verify if possible
 
 ### 3. START TRAINING (Tonight - 6-8 hours)
+
 ```powershell
 # This will run overnight
 python scripts\train_xtts.py
@@ -112,6 +125,7 @@ tensorboard --logdir run\training
 ```
 
 ### 4. EVALUATE (Tomorrow)
+
 ```powershell
 # Generate samples
 python scripts\inference.py
@@ -121,7 +135,9 @@ python scripts\inference.py
 ```
 
 ### 5. ITERATE (This week)
+
 Based on results:
+
 - Collect more István Vágó audio (critical if quality is low)
 - Adjust hyperparameters
 - Refine transcriptions
@@ -131,17 +147,18 @@ Based on results:
 
 ## 📊 Current Dataset Status
 
-| Metric | Current | Recommended | Status |
-|--------|---------|-------------|--------|
-| Audio Files | 13 clips | 20-50 clips | ⚠️ Low |
-| Total Duration | ~1.7 min | 15-30 min | ⚠️ Low |
-| Sample Rate | 22050 Hz | 22050 Hz | ✅ Good |
-| Audio Quality | TBD | >20 dB SNR | 🔄 Check |
-| Transcriptions | Placeholder | Accurate | ⚠️ TODO |
+| Metric         | Current     | Recommended | Status   |
+| -------------- | ----------- | ----------- | -------- |
+| Audio Files    | 13 clips    | 20-50 clips | ⚠️ Low   |
+| Total Duration | ~1.7 min    | 15-30 min   | ⚠️ Low   |
+| Sample Rate    | 22050 Hz    | 22050 Hz    | ✅ Good  |
+| Audio Quality  | TBD         | >20 dB SNR  | 🔄 Check |
+| Transcriptions | Placeholder | Accurate    | ⚠️ TODO  |
 
 **Priority**: Get more István Vágó audio! This is critical for quality.
 
 Potential sources:
+
 - YouTube clips of his quiz shows
 - TV archives
 - Interviews
@@ -154,6 +171,7 @@ Target: 20-30 minutes of diverse, clean audio
 ## 🎓 What You'll Learn
 
 This project covers:
+
 - ✅ Advanced TTS model fine-tuning
 - ✅ Audio signal processing
 - ✅ Deep learning training optimization
@@ -166,6 +184,7 @@ This project covers:
 ## 💡 Key Insights & Design Decisions
 
 ### Why XTTS-v2?
+
 - Open source (no API costs)
 - Multi-lingual by design (excellent Hungarian support)
 - Can achieve commercial quality with proper tuning
@@ -173,6 +192,7 @@ This project covers:
 - Full control over model and data
 
 ### Why These Hyperparameters?
+
 ```python
 BATCH_SIZE = 2              # RTX 4070 sweet spot (12GB VRAM)
 GRAD_ACUMM_STEPS = 126      # Effective batch = 252 (paper recommendation)
@@ -182,6 +202,7 @@ TEMPERATURE = 0.75          # Balanced (consistency + expressiveness)
 ```
 
 ### Why This Audio Processing Pipeline?
+
 1. **Noise reduction** - Clean training data = better quality
 2. **Silence trimming** - Focus on speech, reduce wasted computation
 3. **RMS normalization** - Consistent volume across clips
@@ -191,16 +212,16 @@ TEMPERATURE = 0.75          # Balanced (consistency + expressiveness)
 
 ## 📈 Expected Timeline
 
-| Phase | Duration | Status |
-|-------|----------|--------|
-| Environment Setup | 15 min | ✅ Scripts ready |
-| Dataset Prep | 1 hour | 🔄 Transcriptions needed |
-| First Training | 6-8 hours | ⏳ Waiting |
-| Evaluation | 2 hours | ⏳ Waiting |
-| Iteration #2 | 6-8 hours | ⏳ Waiting |
-| Iteration #3 | 6-8 hours | ⏳ Waiting |
-| Final Optimization | 1 day | ⏳ Waiting |
-| **TOTAL** | **3-5 days** | 🎯 In progress |
+| Phase              | Duration     | Status                   |
+| ------------------ | ------------ | ------------------------ |
+| Environment Setup  | 15 min       | ✅ Scripts ready         |
+| Dataset Prep       | 1 hour       | 🔄 Transcriptions needed |
+| First Training     | 6-8 hours    | ⏳ Waiting               |
+| Evaluation         | 2 hours      | ⏳ Waiting               |
+| Iteration #2       | 6-8 hours    | ⏳ Waiting               |
+| Iteration #3       | 6-8 hours    | ⏳ Waiting               |
+| Final Optimization | 1 day        | ⏳ Waiting               |
+| **TOTAL**          | **3-5 days** | 🎯 In progress           |
 
 ---
 
@@ -209,6 +230,7 @@ TEMPERATURE = 0.75          # Balanced (consistency + expressiveness)
 You'll know you've succeeded when:
 
 ### Technical Metrics ✅
+
 - [ ] Training loss converged (<2.0)
 - [ ] Evaluation loss stable (<2.5)
 - [ ] No overfitting (train/eval gap small)
@@ -216,6 +238,7 @@ You'll know you've succeeded when:
 - [ ] No audio artifacts
 
 ### Subjective Quality ✅
+
 - [ ] Sounds like István Vágó (4.5+/5.0)
 - [ ] Natural Hungarian speech (4.5+/5.0)
 - [ ] Clear pronunciation (4.8+/5.0)
@@ -223,6 +246,7 @@ You'll know you've succeeded when:
 - [ ] Native speaker approved
 
 ### Production Ready ✅
+
 - [ ] Generates consistent quality
 - [ ] Works with diverse text inputs
 - [ ] Handles quiz-specific phrases
@@ -234,19 +258,23 @@ You'll know you've succeeded when:
 ## 🔗 Quick Reference Links
 
 ### Get Started
+
 - [QUICKSTART.md](QUICKSTART.md) ← **Start here!**
 - [scripts/setup_environment.ps1](scripts/setup_environment.ps1) ← Run first
 
 ### During Development
+
 - [WORKFLOW.md](WORKFLOW.md) ← Full implementation plan
 - [QUALITY_GUIDE.md](QUALITY_GUIDE.md) ← Achieving top quality
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) ← When things break
 
 ### Training Phase
+
 - [scripts/train_xtts.py](scripts/train_xtts.py) ← Main training script
 - TensorBoard: `http://localhost:6006` ← Monitor progress
 
 ### Inference Phase
+
 - [scripts/inference.py](scripts/inference.py) ← Generate audio
 - [output/](output/) ← Generated files
 
@@ -292,6 +320,7 @@ Track your progress:
 Everything is ready. Time to create an amazing István Vágó voice clone!
 
 **First command to run**:
+
 ```powershell
 .\scripts\setup_environment.ps1
 ```
@@ -303,18 +332,22 @@ Then follow the steps in [QUICKSTART.md](QUICKSTART.md)
 ## 📞 Support & Resources
 
 ### Documentation
+
 All guides are comprehensive and cover:
+
 - Step-by-step instructions
 - Troubleshooting for common issues
 - Best practices and pro tips
 - Windows-specific considerations
 
 ### Community
+
 - Coqui TTS Discord
 - GitHub Issues
 - r/speechtech
 
 ### Technical Papers
+
 - [XTTS Paper](https://arxiv.org/abs/2309.08519)
 - [VITS Architecture](https://arxiv.org/abs/2106.06103)
 
@@ -323,6 +356,7 @@ All guides are comprehensive and cover:
 ## 🎓 Final Notes
 
 **Remember**:
+
 1. **Quality takes time** - Don't expect perfection on first try
 2. **Data is king** - More István Vágó audio = better results
 3. **Iterate quickly** - Train, evaluate, improve, repeat
@@ -347,4 +381,4 @@ All guides are comprehensive and cover:
 
 **Good luck building an amazing István Vágó voice for your quiz app!** 🎤🎯🚀
 
-*Questions? Check QUICKSTART.md or TROUBLESHOOTING.md first!*
+_Questions? Check QUICKSTART.md or TROUBLESHOOTING.md first!_
