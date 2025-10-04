@@ -1,6 +1,6 @@
 # István Vágó Voice Clone - Production Ready 🎯
 
-**Phase 2 training complete! Production-ready voice model achieved.**
+**Phase 2 training complete! Production-ready voice model with optimized prosody.**
 
 ---
 
@@ -10,6 +10,7 @@
 - **Total Improvement**: -41.1% from baseline
 - **Quality Rating**: 9/10 (production-ready)
 - **Training**: 311 samples (Milliomos + Blikk), 4400+ steps
+- **Prosody**: Optimized with temperature=0.40 for stable, natural delivery
 
 ---
 
@@ -21,7 +22,13 @@
 python scripts\generate_quiz_phase2.py
 ```
 
-This will create 15 realistic quiz show samples in `quiz_samples_phase2_final/`
+This will create 5 realistic quiz show questions in `quiz_samples_phase2_final/`
+
+**Optimized Settings:**
+
+- Temperature: 0.40 (ultra-stable, no waviness)
+- Pauses: "..." between answer options
+- Natural phrasing with context words
 
 ### Files You Need
 
@@ -262,13 +269,68 @@ Get-Process python | Stop-Process -Force
 
 ---
 
-## 🏆 Achievement
+## � Prosody Optimization
+
+### Temperature Testing Results
+
+After extensive testing with real quiz questions, we found:
+
+**Optimal Settings (Production):**
+
+- **Temperature**: 0.40 (ultra-stable, no waviness)
+- **top_p**: 0.80
+- **top_k**: 40
+- **repetition_penalty**: 6.0
+
+### Key Findings
+
+| Issue                               | Solution                                               |
+| ----------------------------------- | ------------------------------------------------------ |
+| Too wavy/dramatic intonation        | Lower temperature (0.70 → 0.40)                        |
+| Insufficient pauses between answers | Use "..." ellipsis in text                             |
+| Number sequences sound choppy       | Add context words ("kilenc játékos" not just "kilenc") |
+| Chemical abbreviations jumbled      | Replace with full words or simpler questions           |
+| Enthusiasm spikes on last option    | Lower temperature + higher repetition_penalty          |
+
+### Best Practices
+
+**Text Formatting:**
+
+```python
+# Good - with pauses and context
+"Melyik ország fővárosa Budapest? Magyarország... Románia... Ausztria... vagy Szlovákia."
+
+# Bad - no pauses, bare numbers
+"Hány játékos? 9, 10, 11, vagy 12?"
+```
+
+**Sentence Guidelines:**
+
+- Add context words to numbers ("kilenc játékos" instead of "kilenc")
+- Use "..." for natural pauses between options
+- Avoid rapid-fire abbreviations (O2, H2O, CO2)
+- End with period for neutral tone, not question mark
+
+### Temperature Guide
+
+| Temp  | Use Case                     | Quality                 |
+| ----- | ---------------------------- | ----------------------- |
+| 0.40  | Quiz questions, professional | ⭐⭐⭐⭐⭐ Ultra stable |
+| 0.50  | General content              | ⭐⭐⭐⭐ Very stable    |
+| 0.60  | Short sentences              | ⭐⭐⭐ Stable           |
+| 0.65  | Long sentences               | ⭐⭐⭐ Good flow        |
+| 0.70+ | Creative/dramatic            | ⭐⭐ Too wavy (avoid)   |
+
+---
+
+## �🏆 Achievement
 
 **Production-ready István Vágó voice model achieved!**
 
 - ✅ 41.1% improvement from baseline
 - ✅ 9/10 quality rating
-- ✅ 15 test samples generated
+- ✅ Optimized prosody (temp 0.40)
+- ✅ 5 perfect quiz question samples
 - ✅ Ready for deployment
 - ✅ Clean, optimized project structure
 
@@ -277,6 +339,8 @@ Get-Process python | Stop-Process -Force
 _Model: best_model_1901.pth (Mel CE: 2.971)_  
 _Status: Production-Ready ✅_  
 _Date: October 4, 2025_
+
+### References
 
 - [Coqui TTS Documentation](https://docs.coqui.ai/)
 - [XTTS-v2 Paper](https://arxiv.org/abs/2309.08519)

@@ -22,28 +22,17 @@ except ImportError as e:
 PROJECT_ROOT = Path("f:/CODE/tts-2")
 MODEL_DIR = PROJECT_ROOT / "run" / "training_combined_phase2" / "XTTS_Combined_Phase2-October-04-2025_03+00PM-fb239cd"
 OUTPUT_DIR = PROJECT_ROOT / "quiz_samples_phase2_final"
-REFERENCE_DIR = PROJECT_ROOT / "processed_clips"
 
-# Reference audio (use consistent high-quality reference)
-REFERENCE_AUDIO = str(REFERENCE_DIR / "vago_vagott_01.wav")
+# Reference audio (use neutral reference from dataset)
+REFERENCE_AUDIO = "dataset_combined/neutral/neutral_002.wav"
 
-# Quiz show phrases for Phase 2 testing
+# Quiz show phrases - 5 complete questions with A/B/C/D options (with longer pauses between answers)
 TEST_PHRASES = [
-    ("opening", "Jó estét kívánok mindenkinek! Üdvözlöm Önöket a Legyen Ön is milliomos mai adásában!"),
-    ("question", "Most pedig nézzük meg a mai első kérdést. Ötszáz forintért hangzik el."),
-    ("easy", "Melyik ország fővárosa Budapest? A: Magyarország, B: Románia, C: Ausztria, vagy D: Szlovákia?"),
-    ("correct", "Helyes válasz! Gratulálok! Ez ötezer forint az Ön bankszámlájára!"),
-    ("wrong", "Sajnos ez nem a helyes válasz. A helyes válasz az A opció volt."),
-    ("medium", "Most következik a tízezer forintos kérdés. Gondolkodjon alaposan!"),
-    ("confirm", "Biztosan ennél a válasznál marad? Ez a végső döntése?"),
-    ("lifeline", "Felhasználná valamelyik segítséget? Rendelkezésére áll a telefonos segítség."),
-    ("audience", "Nézzük, mit mondott a közönség! A nézők szerint a helyes válasz ötvennégy százalékkal az A!"),
-    ("million", "Most jön a legnehezebb kérdés. Ez már egymillió forintért hangzik el!"),
-    ("bigwin", "Fantasztikus! Briliáns válasz! Gratulálok, Ön megnyerte az egymillió forintot!"),
-    ("tension", "Ez most nagyon nehéz döntés lesz. Gondolja át alaposan."),
-    ("countdown", "Öt másodperc van hátra! Négy... három... kettő... egy... Most!"),
-    ("outro", "Hölgyeim és Uraim, itt az idő hogy köszönjük a mai játékost!"),
-    ("closing", "Ez volt a mai Legyen Ön is milliomos! Köszönöm, hogy itt voltak velünk!"),
+    ("q1_geography", "Melyik ország fővárosa Budapest? Magyarország... Románia... Ausztria... vagy Szlovákia."),
+    ("q2_history", "Melyik évben fedezte fel Kolumbusz Amerikát? Ezernégyszázkilencvenkettő... ezernégyszáznyolcvannyolc... ezernégyszázhetvenhat... vagy ezernégyszázkilencvenhat."),
+    ("q3_science", "Hány proton van egy hidrogén atom magjában? Egy proton... kettő proton... három proton... vagy négy proton."),
+    ("q4_literature", "Ki írta a Rómeó és Júliát? William Shakespeare... Charles Dickens... Victor Hugo... vagy Mark Twain."),
+    ("q5_sports", "Hány játékos játszik egy futballcsapatban egyszerre? Kilenc játékos... tíz játékos... tizenegy játékos... vagy tizenkettő játékos."),
 ]
 
 
@@ -141,16 +130,23 @@ def generate_samples(model, config):
                 audio_path=[ref_audio]
             )
             
+            # Extremely low temperature for maximum stability
+            # 0.40 = ultra stable, perfectly even delivery
+            temperature = 0.40
+            
+            char_count = len(text)
+            print(f"Length: {char_count} chars → temp={temperature}")
+            
             # Generate speech using inference method
             out = model.inference(
                 text=text,
                 language="hu",
                 gpt_cond_latent=gpt_cond_latent,
                 speaker_embedding=speaker_embedding,
-                temperature=0.75,  # Slightly creative
-                top_p=0.85,
-                top_k=50,
-                repetition_penalty=5.0,
+                temperature=temperature,  # Ultra low temp for maximum stability
+                top_p=0.80,  # Lower for more predictability
+                top_k=40,    # Lower for less variation
+                repetition_penalty=6.0,  # Higher to prevent emphasis spikes
                 length_penalty=1.0,
             )
             
