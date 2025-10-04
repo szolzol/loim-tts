@@ -47,6 +47,10 @@ tensorboard/
 *.pt
 *.safetensors
 
+# Large audio source files (>100MB)
+new_source/*.wav
+source_clips/*.wav
+
 
 # Dataset
 dataset/
