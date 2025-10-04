@@ -12,6 +12,7 @@
 ## 🎯 Target Profile for István Vágó
 
 ### What Makes His Voice Unique?
+
 - ✨ **High energy** - Enthusiastic quiz show presenter style
 - 🎭 **Dramatic range** - Questions rise, celebrations peak
 - ⚡ **Dynamic pacing** - Varies speed for tension/excitement
@@ -19,7 +20,9 @@
 - 🗣️ **Clear articulation** - Professional broadcast quality
 
 ### Why Zero-Shot Is Monotone
+
 Zero-shot uses **generic prosody** from the base model trained on audiobooks and podcasts (neutral reading style). It doesn't capture:
+
 - Rising question intonation
 - Excitement peaks
 - Tension building
@@ -32,27 +35,26 @@ Zero-shot uses **generic prosody** from the base model trained on audiobooks and
 ## 📊 Collection Checklist
 
 ### Phase 1: Minimum Viable (10 minutes)
+
 Target: Basic prosody improvement
 
 - [ ] **Questions (4 min)** - 30-40 question clips
   - Rising intonation samples
   - "Ki volt...?", "Mikor...?", "Hol...?"
   - Mix of short/long questions
-  
 - [ ] **Excitement (3 min)** - 20-30 celebration clips
   - "Gratulálok!", "Helyes!"
   - Peak energy samples
   - Victory announcements
-  
 - [ ] **Tension (2 min)** - 15-20 suspense clips
   - "Az idő múlik...", "Gondolkozzon..."
   - Building anticipation
-  
 - [ ] **Neutral (1 min)** - 8-12 explanation clips
   - Transitions, rules
   - Calm delivery
 
 ### Phase 2: Production Quality (20 minutes)
+
 Target: Commercial-grade results
 
 - [ ] Double each category from Phase 1
@@ -61,6 +63,7 @@ Target: Commercial-grade results
 - [ ] Cover full emotional spectrum
 
 ### Phase 3: Professional (30+ minutes)
+
 Target: ElevenLabs/Fish Audio level
 
 - [ ] Comprehensive coverage of all quiz scenarios
@@ -75,6 +78,7 @@ Target: ElevenLabs/Fish Audio level
 ### YouTube Search Terms (Hungarian)
 
 **Quiz Shows:**
+
 ```
 "Vágó István Póker"
 "Vágó István Maradj talpon"
@@ -85,6 +89,7 @@ Target: ElevenLabs/Fish Audio level
 ```
 
 **Content Types:**
+
 ```
 "Vágó István legjobb pillanatok"  (best moments)
 "Vágó István gratulálok"  (celebrations)
@@ -95,6 +100,7 @@ Target: ElevenLabs/Fish Audio level
 ### Finding Clean Audio
 
 **✅ LOOK FOR:**
+
 - Studio recordings (TV shows)
 - Clear foreground voice
 - Minimal background music
@@ -102,6 +108,7 @@ Target: ElevenLabs/Fish Audio level
 - HD quality videos
 
 **❌ AVOID:**
+
 - Compilations with music overlay
 - Interviews (wrong energy)
 - Panel shows with crosstalk
@@ -111,6 +118,7 @@ Target: ElevenLabs/Fish Audio level
 ### Quality Indicators
 
 **Video Quality Hints:**
+
 - 720p+ resolution (better audio)
 - Official channel uploads
 - Professional production
@@ -118,6 +126,7 @@ Target: ElevenLabs/Fish Audio level
 - Recent upload dates
 
 **Audio Quality Check:**
+
 - Listen for background noise
 - Check for music during speech
 - Verify single speaker clarity
@@ -131,11 +140,13 @@ Target: ElevenLabs/Fish Audio level
 ### Step 1: Download Videos
 
 **Install yt-dlp:**
+
 ```powershell
 pip install yt-dlp
 ```
 
 **Download Audio (Best Quality):**
+
 ```powershell
 # Single video
 yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 "https://youtube.com/watch?v=VIDEO_ID"
@@ -148,6 +159,7 @@ yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 -o "f:\
 ```
 
 **Tips:**
+
 - Use `--playlist-items 1-5` to limit playlist downloads
 - Use `-o` to organize downloads by content type
 - Check file sizes (large = better quality)
@@ -157,24 +169,28 @@ yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 -o "f:\
 **Download:** https://www.audacityteam.org/
 
 **Import Audio:**
+
 1. File > Open > Select downloaded WAV
 2. Analyze waveform for speech segments
 
 **Extract Clean Speech Segments:**
 
 **Finding Good Clips:**
+
 - Look for Vágó speaking WITHOUT music
 - Avoid audience applause/laughter
 - Skip overlapping speakers
 - Target 4-8 second segments
 
 **Selection Process:**
+
 1. Click and drag to select segment
 2. Play to verify (Space bar)
 3. Adjust selection edges (fine-tune)
 4. Export: File > Export > Export Selected Audio
 
 **Keyboard Shortcuts:**
+
 - `Space` - Play/Pause
 - `C` - Play selection
 - `Ctrl+1` - Zoom to selection
@@ -184,30 +200,31 @@ yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 -o "f:\
 ### Step 3: Batch Processing Pipeline
 
 **Noise Reduction (One-time per file):**
+
 1. Select 1-2 sec of silence (background noise)
 2. Effect > Noise Reduction > Get Noise Profile
 3. Select all (Ctrl+A)
 4. Effect > Noise Reduction > Apply
-5. Settings: 
+5. Settings:
    - Noise reduction: 12 dB
    - Sensitivity: 6.00
    - Frequency smoothing: 3 bands
 
 **Per-Clip Processing:**
+
 1. **Trim Silence:** Effect > Truncate Silence
    - Threshold: -40 dB
    - Duration: 0.3 seconds
-   
 2. **Normalize:** Effect > Normalize
    - Normalize peak: -1.0 dB
    - Remove DC offset: ✓
-   
 3. **Check Quality:**
    - Listen at 0.5x speed (check for artifacts)
    - Verify no clicks/pops
    - Ensure smooth start/end
 
 **Export Settings:**
+
 - Format: WAV (Microsoft) 16-bit PCM
 - Sample Rate: 22050 Hz
 - Channels: Mono
@@ -215,6 +232,7 @@ yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 -o "f:\
 ### Step 4: File Organization
 
 **Naming Convention:**
+
 ```
 {category}_{number}_{content_hint}.wav
 
@@ -226,6 +244,7 @@ neutral_01_magyarazat.wav
 ```
 
 **Folder Structure:**
+
 ```
 f:\CODE\tts-2\
 ├── new_collection/
@@ -247,18 +266,21 @@ f:\CODE\tts-2\
 ### Step 5: Transcription
 
 **Option A: Whisper AI (Then Correct)**
+
 ```powershell
 # Use existing script
 python scripts\transcribe_audio.py
 ```
 
 **Option B: Manual (Most Accurate)**
+
 1. Play audio slowly (0.7x speed in Audacity)
 2. Type exactly what you hear
 3. Include ALL punctuation (affects prosody!)
 4. Use proper Hungarian diacritics
 
 **Transcription Rules:**
+
 ```
 ✅ GOOD:
 "Ki volt az, aki 1848-ban vezette a forradalmat?"
@@ -276,6 +298,7 @@ python scripts\transcribe_audio.py
 ```
 
 **Critical Punctuation:**
+
 - `.` - Falling intonation (statement)
 - `?` - Rising intonation (question) ← **ESSENTIAL!**
 - `!` - High energy (excitement) ← **ESSENTIAL!**
@@ -285,12 +308,14 @@ python scripts\transcribe_audio.py
 ### Step 6: Quality Validation
 
 **Audio Checks:**
+
 ```powershell
 # Run our analysis tool
 python scripts\prepare_dataset.py --analyze-only
 ```
 
 **Manual Verification:**
+
 - [ ] All files mono 22050 Hz
 - [ ] No clipping (waveform doesn't hit edges)
 - [ ] Consistent volume levels
@@ -298,6 +323,7 @@ python scripts\prepare_dataset.py --analyze-only
 - [ ] Clean start/end (no cutoff words)
 
 **Transcription Checks:**
+
 - [ ] 100% word accuracy
 - [ ] All diacritics correct (á, é, í, ó, ö, ő, ú, ü, ű)
 - [ ] Punctuation matches delivery
@@ -319,6 +345,7 @@ python scripts\prepare_dataset.py --analyze-only
 **Total duration added:** [X.X minutes]
 
 ### Clips Added:
+
 - Questions: X clips, X.X minutes
 - Excitement: X clips, X.X minutes
 - Tension: X clips, X.X minutes
@@ -327,6 +354,7 @@ python scripts\prepare_dataset.py --analyze-only
 **Running Total:** X.X / 20.0 minutes target
 
 ### Notes:
+
 - Quality issues encountered
 - Best clips found
 - Areas still needed
@@ -335,6 +363,7 @@ python scripts\prepare_dataset.py --analyze-only
 ### Dataset Inventory
 
 **Current Status:**
+
 ```
 Questions:     X.X min (Target: 8 min)  [====      ] 40%
 Excitement:    X.X min (Target: 6 min)  [===       ] 30%
@@ -351,16 +380,19 @@ Total:         1.7 min (Target: 20 min) [=         ] 8.5%
 ### For Fastest Collection:
 
 1. **Find ONE good source** (20-30 min show)
+
    - Download entire episode
    - Extract 10-15 clips systematically
    - Get 5+ minutes in one session
 
 2. **Batch similar content**
+
    - Extract all questions from one video
    - Then all excitement clips
    - More efficient than switching
 
 3. **Quality over quantity**
+
    - 5 perfect clips > 20 mediocre ones
    - Skip anything with background noise
    - Don't waste time cleaning bad audio
@@ -373,18 +405,22 @@ Total:         1.7 min (Target: 20 min) [=         ] 8.5%
 ### Common Mistakes to Avoid:
 
 ❌ **Collecting too much neutral speech**
+
 - Quiz shows need energy!
 - Boring clips won't help prosody
 
 ❌ **Ignoring transcription quality**
+
 - Bad transcriptions = bad training
 - Missing punctuation = wrong prosody
 
 ❌ **Using low-quality sources**
+
 - YouTube auto-transcripts are unreliable
 - Compressed audio hurts results
 
 ❌ **Inconsistent processing**
+
 - Different sample rates break training
 - Mixed mono/stereo causes issues
 
@@ -395,11 +431,13 @@ Total:         1.7 min (Target: 20 min) [=         ] 8.5%
 **Recommended Shows to Mine:**
 
 1. **"Maradj talpon" (Stay Standing)**
+
    - Great question pacing
    - Clear excitement moments
    - Good energy throughout
 
 2. **"Legyen Ön is milliomos" (Who Wants to Be a Millionaire)**
+
    - Excellent tension building
    - Clear question/answer structure
    - Professional audio quality
@@ -410,6 +448,7 @@ Total:         1.7 min (Target: 20 min) [=         ] 8.5%
    - Lots of usable content
 
 **Search Strategy:**
+
 ```
 1. Search: "Vágó István [show name] teljes adás"  (full episode)
 2. Filter: This year (for quality)
@@ -425,29 +464,33 @@ Total:         1.7 min (Target: 20 min) [=         ] 8.5%
 Once you have 15-20 minutes:
 
 1. **Organize files:**
+
    ```powershell
    # Copy to source_clips
    Copy-Item "new_collection\*\*.wav" "source_clips\"
    ```
 
 2. **Update metadata:**
+
    ```powershell
    # Run transcription
    python scripts\transcribe_audio.py
-   
+
    # Review and correct
    # Edit processed_clips\metadata.csv
    ```
 
 3. **Validate dataset:**
+
    ```powershell
    # Check quality
    python scripts\prepare_dataset.py
-   
+
    # Review output statistics
    ```
 
 4. **Start fine-tuning:**
+
    ```powershell
    # Train on expanded dataset
    python scripts\train_xtts.py
@@ -463,24 +506,28 @@ Once you have 15-20 minutes:
 ## 💡 Pro Tips from Experience
 
 **Finding Gold:**
+
 - Episode climaxes have best energy
 - Final answer reveals = pure excitement
 - Wrong answer moments = good tension
 - Opening segments = best questions
 
 **Audio Quality Shortcuts:**
+
 - Official broadcaster channels → better quality
 - Newer shows → higher production value
 - Quiz shows → cleaner audio than talk shows
 - Studio recordings → better than field recordings
 
 **Efficiency Hacks:**
+
 - Use 1.5x playback speed to scan videos faster
 - Mark good timestamps before extracting
 - Process in batches (10 clips at once)
 - Save Audacity presets for consistency
 
 **Red Flags (Skip These):**
+
 - Heavy music throughout
 - Poor audio balance (music louder than voice)
 - Multiple speakers talking over each other
@@ -493,16 +540,19 @@ Once you have 15-20 minutes:
 ## 📞 Resources
 
 **Tools:**
+
 - **yt-dlp:** https://github.com/yt-dlp/yt-dlp
 - **Audacity:** https://www.audacityteam.org/
 - **VLC Media Player:** For quick preview
 
 **Hungarian Resources:**
+
 - **MTV Archive:** https://mediaklikk.hu/
 - **YouTube:** Search "Vágó István"
 - **Hungarian TV Networks:** TV2, RTL Klub
 
 **Community:**
+
 - Coqui TTS Discord: https://discord.gg/coqui
 - TTS Subreddit: r/TTSmodding
 
@@ -513,12 +563,14 @@ Once you have 15-20 minutes:
 **Immediate Action Plan:**
 
 1. **Today (2 hours):**
+
    - Search YouTube for 3-5 good videos
    - Download best quality
    - Extract 10-15 clips
    - Target: +5 minutes
 
 2. **This Week (1 hour/day):**
+
    - Continue extracting clips
    - Focus on questions and excitement
    - Target: +10 minutes total

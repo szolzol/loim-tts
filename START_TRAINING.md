@@ -18,6 +18,7 @@ python scripts\train_xtts_milliomos.py
 ```
 
 This will:
+
 1. ✅ Verify dataset (80 clips, 14.8 min)
 2. ✅ Download XTTS-v2 base model (if needed)
 3. ✅ Show training configuration
@@ -38,6 +39,7 @@ python scripts\train_xtts_milliomos.py
 ## 📊 Monitor Training
 
 ### Open TensorBoard (in separate terminal)
+
 ```powershell
 tensorboard --logdir run\training_milliomos
 ```
@@ -45,43 +47,48 @@ tensorboard --logdir run\training_milliomos
 Then open browser: http://localhost:6006
 
 ### Watch GPU Usage
+
 ```powershell
 nvidia-smi -l 1
 ```
 
 ## ⏱️ Training Timeline
 
-| Stage | Duration | What's Happening |
-|-------|----------|------------------|
-| Setup | 2-5 min | Download base model, verify dataset |
-| Epoch 1-10 | 2 hours | Initial learning, loss drops quickly |
-| Epoch 11-20 | 2 hours | Fine-tuning prosody patterns |
-| Epoch 21-30 | 1.5 hours | Polish and stabilize |
-| **TOTAL** | **~5-6 hours** | Complete fine-tuning |
+| Stage       | Duration       | What's Happening                     |
+| ----------- | -------------- | ------------------------------------ |
+| Setup       | 2-5 min        | Download base model, verify dataset  |
+| Epoch 1-10  | 2 hours        | Initial learning, loss drops quickly |
+| Epoch 11-20 | 2 hours        | Fine-tuning prosody patterns         |
+| Epoch 21-30 | 1.5 hours      | Polish and stabilize                 |
+| **TOTAL**   | **~5-6 hours** | Complete fine-tuning                 |
 
 ### Checkpoints Saved
+
 - Every 5000 steps: `run/training_milliomos/checkpoint_5000.pth`
 - Test audio: `run/training_milliomos/eval_samples/`
 
 ## 🎤 What You'll Get
 
 ### Before (Zero-Shot)
+
 ❌ Slow, monotone speech  
 ❌ Choppy delivery ("darabos")  
 ❌ Generic prosody  
-❌ Lacks quiz show energy  
+❌ Lacks quiz show energy
 
 ### After (Fine-Tuned)
+
 ✅ Natural quiz show pacing  
 ✅ Smooth, fluid speech  
 ✅ Proper question intonation  
 ✅ Excitement: "Gratulálok!" with energy  
 ✅ Tension: suspenseful delivery  
-✅ 85-95% voice similarity  
+✅ 85-95% voice similarity
 
 ## 📁 Dataset Details
 
 ### Content Distribution
+
 ```
 Questions    (28.7%) - "Tegyék időrendi sorrendbe..."
 Tension      (21.2%) - "Gondolkodjon még..."
@@ -93,6 +100,7 @@ Confirmation (1.2%)  - "Igen, helyes!"
 ```
 
 ### Quality Metrics
+
 - ✅ 22050 Hz, mono, WAV
 - ✅ SNR ~35+ dB (excellent)
 - ✅ Proper Hungarian diacritics
@@ -115,13 +123,16 @@ Duration:    ~5-6 hours
 ## 🎯 Test After Training
 
 ### Quick Test
+
 ```powershell
 # Use the trained model for inference
 python scripts\zero_shot_inference.py --model_path run\training_milliomos\best_model.pth
 ```
 
 ### Test Phrases
+
 Try these quiz show phrases:
+
 - "Gratulálok! Helyes válasz!"
 - "Jöjjön a következő kérdés!"
 - "Ez egy nehéz kérdés, gondolkodjon!"
@@ -130,6 +141,7 @@ Try these quiz show phrases:
 ## 📊 Success Indicators
 
 Training is working when:
+
 - ✅ Loss decreases steadily (check TensorBoard)
 - ✅ Test audio samples improve each epoch
 - ✅ Speech sounds smoother and more natural
@@ -139,6 +151,7 @@ Training is working when:
 ## 🐛 Quick Troubleshooting
 
 ### "CUDA out of memory"
+
 ```python
 # Edit scripts\train_xtts_milliomos.py
 BATCH_SIZE = 2  # Reduce from 3 to 2
@@ -146,28 +159,31 @@ GRAD_ACUMM_STEPS = 126  # Increase from 84 to 126
 ```
 
 ### Training Too Slow
+
 - Check nvidia-smi shows GPU usage
 - Close other GPU applications
 - Restart computer if needed
 
 ### Poor Quality After Training
+
 - Run more epochs (40-50 instead of 30)
 - Check TensorBoard - loss should be <2.0
 - Verify test audio samples improved
 
 ## 📈 Expected Results
 
-| Metric | Zero-Shot | Fine-Tuned |
-|--------|-----------|------------|
-| Voice Match | 70-80% | 85-95% |
-| Smoothness | Poor | Good |
-| Quiz Energy | No | Yes |
-| Pronunciation | Generic | Native |
-| Prosody | Flat | Dynamic |
+| Metric        | Zero-Shot | Fine-Tuned |
+| ------------- | --------- | ---------- |
+| Voice Match   | 70-80%    | 85-95%     |
+| Smoothness    | Poor      | Good       |
+| Quiz Energy   | No        | Yes        |
+| Pronunciation | Generic   | Native     |
+| Prosody       | Flat      | Dynamic    |
 
 ## 🎉 Ready to Go!
 
 Everything is prepared:
+
 - ✅ 80 quiz show clips extracted
 - ✅ Timestamped Hungarian transcripts
 - ✅ Training script optimized
@@ -175,6 +191,7 @@ Everything is prepared:
 - ✅ Documentation complete
 
 **Just run:**
+
 ```powershell
 python scripts\train_xtts_milliomos.py
 ```

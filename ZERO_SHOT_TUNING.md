@@ -13,12 +13,12 @@
 
 Controls variation and expressiveness in speech.
 
-| Value | Effect | Use Case |
-|-------|--------|----------|
-| 0.3-0.5 | Very stable, monotone | Audiobooks, neutral narration |
-| 0.65-0.75 | Default, balanced | General purpose |
-| **0.85-0.95** | **More dynamic, expressive** | **Quiz shows, excitement** ⭐ |
-| 1.0+ | Very variable, may be unstable | Experimental |
+| Value         | Effect                         | Use Case                      |
+| ------------- | ------------------------------ | ----------------------------- |
+| 0.3-0.5       | Very stable, monotone          | Audiobooks, neutral narration |
+| 0.65-0.75     | Default, balanced              | General purpose               |
+| **0.85-0.95** | **More dynamic, expressive**   | **Quiz shows, excitement** ⭐ |
+| 1.0+          | Very variable, may be unstable | Experimental                  |
 
 **Recommended for Vágó:** `0.90-0.95`
 
@@ -27,6 +27,7 @@ TEMPERATURE = 0.95  # Maximum expressiveness without instability
 ```
 
 **What it does:**
+
 - ✅ Adds natural pitch variation
 - ✅ Creates emotional dynamics
 - ✅ Prevents flat/robotic delivery
@@ -38,13 +39,13 @@ TEMPERATURE = 0.95  # Maximum expressiveness without instability
 
 Controls speech rate directly.
 
-| Value | Effect | Speed Change |
-|-------|--------|--------------|
-| 0.8 | Slower | -20% |
-| 1.0 | Normal (default) | baseline |
-| **1.1-1.15** | **Slightly faster** | **+10-15%** ⭐ |
-| 1.2-1.3 | Faster | +20-30% |
-| 1.5+ | Very fast | May lose clarity |
+| Value        | Effect              | Speed Change     |
+| ------------ | ------------------- | ---------------- |
+| 0.8          | Slower              | -20%             |
+| 1.0          | Normal (default)    | baseline         |
+| **1.1-1.15** | **Slightly faster** | **+10-15%** ⭐   |
+| 1.2-1.3      | Faster              | +20-30%          |
+| 1.5+         | Very fast           | May lose clarity |
 
 **Recommended for Vágó:** `1.10-1.15`
 
@@ -53,6 +54,7 @@ SPEED = 1.15  # 15% faster speech
 ```
 
 **What it does:**
+
 - ✅ Matches natural quiz show pacing
 - ✅ Adds energy and urgency
 - ✅ Reduces monotony
@@ -64,10 +66,10 @@ SPEED = 1.15  # 15% faster speech
 
 Prevents word/phrase repetition artifacts.
 
-| Value | Effect |
-|-------|--------|
-| 1.0-3.0 | Low penalty, may repeat |
-| 5.0 | Default, balanced |
+| Value        | Effect                         |
+| ------------ | ------------------------------ |
+| 1.0-3.0      | Low penalty, may repeat        |
+| 5.0          | Default, balanced              |
 | **7.0-10.0** | **Higher penalty, cleaner** ⭐ |
 
 **Recommended for Vágó:** `7.0-8.0`
@@ -77,6 +79,7 @@ REPETITION_PENALTY = 7.0  # Reduce repetition artifacts
 ```
 
 **What it does:**
+
 - ✅ Prevents stuttering/looping
 - ✅ Cleaner output
 - ⚠️ Too high (>15) = unnatural pauses
@@ -87,11 +90,11 @@ REPETITION_PENALTY = 7.0  # Reduce repetition artifacts
 
 Controls generated audio duration vs text length.
 
-| Value | Effect |
-|-------|--------|
-| 0.5-0.8 | Shorter, faster |
+| Value   | Effect                  |
+| ------- | ----------------------- |
+| 0.5-0.8 | Shorter, faster         |
 | **1.0** | **Default, natural** ⭐ |
-| 1.2-1.5 | Longer, slower |
+| 1.2-1.5 | Longer, slower          |
 
 **Recommended for Vágó:** `1.0` (keep default)
 
@@ -106,11 +109,12 @@ LENGTH_PENALTY = 1.0  # Natural duration
 **Critical for Quality!** Your reference clips define the voice characteristics.
 
 ### Current Setup:
+
 ```python
 REFERENCE_AUDIO = [
-    "vago_vagott_01.wav",  # 
-    "vago_vagott_02.wav",  # 
-    "vago_vagott_03.wav",  # 
+    "vago_vagott_01.wav",  #
+    "vago_vagott_02.wav",  #
+    "vago_vagott_03.wav",  #
 ]
 ```
 
@@ -119,6 +123,7 @@ REFERENCE_AUDIO = [
 #### Step 1: Analyze Your Clips
 
 Listen to each clip and rate:
+
 - **Energy level** (1-10): How enthusiastic?
 - **Clarity** (1-10): How clear is speech?
 - **Prosody** (1-10): Natural intonation?
@@ -127,12 +132,14 @@ Listen to each clip and rate:
 #### Step 2: Select Best Clips
 
 **Criteria:**
+
 1. ✅ **High energy** (quiz show excitement)
 2. ✅ **Clear articulation** (no mumbling)
 3. ✅ **Dynamic prosody** (rising/falling tones)
 4. ✅ **Clean audio** (minimal noise)
 
 **How many clips?**
+
 - **1 clip:** Fast, but limited variation
 - **2-3 clips:** **Optimal balance** ⭐
 - **4+ clips:** More robust, but slower
@@ -143,7 +150,7 @@ Listen to each clip and rate:
 ❌ Mumbled/unclear speech  
 ❌ Background music/noise  
 ❌ Very long clips (>15 sec)  
-❌ Multiple speakers  
+❌ Multiple speakers
 
 ### Recommended Configuration:
 
@@ -211,6 +218,7 @@ Run each configuration and compare outputs.
 ## 📊 Recommended Configurations
 
 ### Configuration 1: **Balanced** (Default)
+
 ```python
 TEMPERATURE = 0.85
 SPEED = 1.05
@@ -223,11 +231,13 @@ REFERENCE_AUDIO = [
     SOURCE_CLIPS_DIR / "vago_vagott_03.wav",
 ]
 ```
+
 **Best for:** General quiz show use
 
 ---
 
 ### Configuration 2: **Maximum Energy** ⚡
+
 ```python
 TEMPERATURE = 0.95
 SPEED = 1.15
@@ -239,11 +249,13 @@ REFERENCE_AUDIO = [
     SOURCE_CLIPS_DIR / "vago_vagott_05.wav",
 ]
 ```
+
 **Best for:** Excitement, celebrations, "Gratulálok!"
 
 ---
 
 ### Configuration 3: **Fast & Clear** 🏃
+
 ```python
 TEMPERATURE = 0.80
 SPEED = 1.20
@@ -254,11 +266,13 @@ REFERENCE_AUDIO = [
     SOURCE_CLIPS_DIR / "vago_vagott_03.wav",  # Clear articulation
 ]
 ```
+
 **Best for:** Quick questions, rapid-fire quiz format
 
 ---
 
 ### Configuration 4: **Dramatic** 🎭
+
 ```python
 TEMPERATURE = 0.95
 SPEED = 1.0  # Normal speed for emphasis
@@ -270,6 +284,7 @@ REFERENCE_AUDIO = [
     SOURCE_CLIPS_DIR / "vago_vagott_02.wav",
 ]
 ```
+
 **Best for:** Tension building, "Az idő múlik..."
 
 ---
@@ -280,16 +295,12 @@ Try these in order:
 
 - [ ] **Step 1:** Increase TEMPERATURE to 0.90
   - Test: Does it sound more expressive?
-  
 - [ ] **Step 2:** Increase SPEED to 1.15
   - Test: Is pacing better?
-  
 - [ ] **Step 3:** Select 2 most energetic reference clips
   - Test: More quiz show energy?
-  
 - [ ] **Step 4:** Adjust REPETITION_PENALTY to 7.0
   - Test: Fewer artifacts?
-  
 - [ ] **Step 5:** Fine-tune based on results
   - Test: Overall quality acceptable?
 
@@ -300,24 +311,28 @@ Try these in order:
 ### For Different Text Types:
 
 **Questions (rising intonation):**
+
 ```python
 TEMPERATURE = 0.90  # Dynamic
 SPEED = 1.1
 ```
 
 **Excitement (high energy):**
+
 ```python
 TEMPERATURE = 0.95  # Maximum variation
 SPEED = 1.15  # Faster for excitement
 ```
 
 **Explanations (neutral):**
+
 ```python
 TEMPERATURE = 0.75  # More stable
 SPEED = 1.0
 ```
 
 **Tension (dramatic pauses):**
+
 ```python
 TEMPERATURE = 0.85
 SPEED = 0.95  # Slightly slower
@@ -329,18 +344,21 @@ LENGTH_PENALTY = 1.1  # Longer pauses
 ## 📈 Expected Results
 
 ### Current (Slow & Monotone):
+
 - ❌ Flat delivery
 - ❌ Slow pacing
 - ❌ Lacks energy
 - ❌ Generic prosody
 
 ### After Optimization:
+
 - ✅ More dynamic delivery
 - ✅ Faster, natural pacing
 - ✅ Better energy
 - ✅ Improved prosody
 
 ### With Fine-Tuning (Future):
+
 - ✅ Perfect voice match
 - ✅ Natural quiz show style
 - ✅ Full emotional range
@@ -359,18 +377,23 @@ LENGTH_PENALTY = 1.1  # Longer pauses
 ### Common Issues & Fixes:
 
 **Issue:** Still too slow
+
 - **Fix:** Increase SPEED to 1.2-1.25
 
 **Issue:** Sounds robotic
+
 - **Fix:** Increase TEMPERATURE to 0.95
 
 **Issue:** Garbled/unstable
+
 - **Fix:** Decrease TEMPERATURE to 0.85
 
 **Issue:** Word repetition
+
 - **Fix:** Increase REPETITION_PENALTY to 8-10
 
 **Issue:** Wrong voice character
+
 - **Fix:** Use different reference audio clips
 
 ---
@@ -378,17 +401,20 @@ LENGTH_PENALTY = 1.1  # Longer pauses
 ## 🚀 Quick Command Reference
 
 ### Test Current Configuration:
+
 ```powershell
 python scripts\zero_shot_inference.py
 ```
 
 ### Generate Single Phrase (Interactive):
+
 ```powershell
 python scripts\zero_shot_inference.py
 # Choose option 2: Interactive mode
 ```
 
 ### Batch Generate with New Parameters:
+
 1. Edit `scripts/zero_shot_inference.py`
 2. Modify TEMPERATURE, SPEED, etc.
 3. Run: `python scripts\zero_shot_inference.py`
@@ -426,16 +452,19 @@ Next Steps:
 ## ✅ What to Expect
 
 **Zero-shot optimization can improve:**
+
 - Speech rate (speed parameter)
 - Expressiveness (temperature parameter)
 - Reference voice characteristics (audio selection)
 
 **Zero-shot CANNOT match:**
+
 - Perfect voice similarity (needs fine-tuning)
 - Learned prosody patterns (needs training)
 - Context-aware delivery (needs fine-tuning)
 
 **Bottom Line:**
+
 - **Quick wins:** 30-50% improvement with parameter tuning
 - **Production quality:** Requires 15-30 min dataset + fine-tuning
 

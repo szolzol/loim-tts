@@ -1,6 +1,7 @@
 # 🎯 István Vágó Fine-Tuning - Gyűjtési Terv
 
 ## Jelenlegi helyzet
+
 - **Van:** 1.7 perc audio (13 klip)
 - **Kell:** 15-20 perc minimum (jó minőséghez)
 - **Cél:** Sima, természetes beszéd kvíz show energiával
@@ -10,6 +11,7 @@
 ## 🎤 PONTOS hangminta követelmények
 
 ### Mennyiség
+
 ```
 Minimum (teszteléshez):     10 perc  →  ~80 klip
 Ajánlott (jó minőség):      15-20 perc  →  ~120-160 klip  ⭐
@@ -17,6 +19,7 @@ Optimális (profi minőség):  25-30 perc  →  ~200-240 klip
 ```
 
 ### Klip hosszak (ideális eloszlás)
+
 ```
 40% →  4-8 másodperc   (rövid kérdések, reagálások)
 35% →  8-12 másodperc  (teljes mondatok)
@@ -28,9 +31,11 @@ Optimális (profi minőség):  25-30 perc  →  ~200-240 klip
 ## 🎭 Tartalom típusok (KRITIKUS a prosódiához!)
 
 ### 1. KÉRDÉSEK (40% - ~6-8 perc)
+
 **Miért fontos:** Tanítja a felfelé ívelő intonációt
 
 Példák amit keresni kell:
+
 ```
 ✅ "Ki volt az, aki...?"
 ✅ "Mikor történt...?"
@@ -40,14 +45,17 @@ Példák amit keresni kell:
 ✅ "Mit gondol, helyes a válasz?"
 ```
 
-**Honnan:** 
+**Honnan:**
+
 - YouTube: "Vágó István kvíz kérdések"
 - Keress videókat ahol sokat kérdez
 
 ### 2. IZGALOM/ÜNNEPLÉS (25% - ~4-5 perc)
+
 **Miért fontos:** Tanítja az energikus, lelkes hangot
 
 Példák:
+
 ```
 ✅ "Gratulálok! Helyes válasz!"
 ✅ "Fantasztikus teljesítmény!"
@@ -58,13 +66,16 @@ Példák:
 ```
 
 **Honnan:**
+
 - YouTube: "Vágó István gratulálok"
 - Keress helyes válasz pillanatokat
 
 ### 3. FESZÜLTSÉG/DRÁMA (20% - ~3-4 perc)
+
 **Miért fontos:** Tanítja a tempó változtatást, drámát
 
 Példák:
+
 ```
 ✅ "Az idő múlik..."
 ✅ "Gondolkozzon csak..."
@@ -74,13 +85,16 @@ Példák:
 ```
 
 **Honnan:**
+
 - Időzítős jelenetek
 - Nehéz kérdések előtti pillanatok
 
 ### 4. SEMLEGES/MAGYARÁZAT (15% - ~2-3 perc)
+
 **Miért fontos:** Alapvető, nyugodt hang
 
 Példák:
+
 ```
 ✅ "A helyes válasz a következő..."
 ✅ "Most következik..."
@@ -95,6 +109,7 @@ Példák:
 ### YouTube keresési kifejezések:
 
 **Legjobb találatok:**
+
 ```
 1. "Vágó István Póker teljes adás"
 2. "Vágó István Maradj talpon"
@@ -104,6 +119,7 @@ Példák:
 ```
 
 **Trükkök:**
+
 - Szűrő: "Ez az év" (jobb minőség)
 - Rendezés: "Nézettség szerint"
 - Keress: 20-30 perces teljes epizódokat
@@ -111,11 +127,13 @@ Példák:
 ### Konkrét műsorok (amiket érdemes megnézni):
 
 1. **"Maradj talpon"**
+
    - Sok kérdés
    - Jó tempó
    - Tiszta audio
 
-2. **"Póker"** 
+2. **"Póker"**
+
    - Vágó show-ja
    - Sok érzelem
    - Profi felvétel
@@ -130,6 +148,7 @@ Példák:
 ## ⚠️ MIT KERÜLJ EL!
 
 ### Rossz audio minőség jelek:
+
 ```
 ❌ Túl sok háttérzaj
 ❌ Közönség zaja túl hangos
@@ -140,6 +159,7 @@ Példák:
 ```
 
 ### Rossz tartalom jelek:
+
 ```
 ❌ Interjúk (más stílus)
 ❌ Politikai viták (komoly hangnem)
@@ -152,6 +172,7 @@ Példák:
 ## 🛠️ GYORS munkamenet (2-3 óra alatt 10 perc)
 
 ### Lépés 1: Találd meg a forrást (20 perc)
+
 ```powershell
 # YouTube videó letöltése
 pip install yt-dlp
@@ -161,6 +182,7 @@ yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 "https:
 ```
 
 ### Lépés 2: Audacity-ben szegmentálás (90 perc)
+
 ```
 1. Nyisd meg a letöltött WAV-ot
 2. Hallgasd végig 1.5x sebességgel
@@ -172,6 +194,7 @@ yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 "https:
 ```
 
 ### Lépés 3: Automatikus átírás (30 perc)
+
 ```powershell
 # Whisper átírás
 python scripts\transcribe_audio.py
@@ -180,6 +203,7 @@ python scripts\transcribe_audio.py
 ```
 
 ### Lépés 4: Ellenőrzés (20 perc)
+
 ```powershell
 # Adatkészlet előkészítés
 python scripts\prepare_dataset.py
@@ -192,6 +216,7 @@ python scripts\prepare_dataset.py
 ## 📊 Gyors minőség ellenőrzés
 
 ### Minden klipnél:
+
 ```
 ✓ Tiszta Vágó hang?
 ✓ Nincs háttérzene?
@@ -210,6 +235,7 @@ Ha bármi ✗ → Dobáljel
 ## 🎯 Egyszerűsített gyűjtési terv
 
 ### OPCIÓ A: Gyors (10 perc, 2 óra munka)
+
 ```
 1 jó YouTube videó (30 perc epizód)
 → Kiválogatni 80 tiszta klipet
@@ -218,6 +244,7 @@ Ha bármi ✗ → Dobáljel
 ```
 
 ### OPCIÓ B: Kiváló (20 perc, 4 óra munka)
+
 ```
 2-3 jó YouTube videó
 → 160 klip kiválogatás
@@ -231,6 +258,7 @@ Ha bármi ✗ → Dobáljel
 ## 💡 TIPP: Kezdd ezzel
 
 1. **Most rögtön (10 perc):**
+
    ```
    - Menj YouTube-ra
    - Keress: "Vágó István Póker teljes"
@@ -239,6 +267,7 @@ Ha bármi ✗ → Dobáljel
    ```
 
 2. **Töltsd le:**
+
    ```powershell
    yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 "URL"
    ```
@@ -287,6 +316,7 @@ Ha bármi ✗ → Dobáljel
 ## ✅ GARANTÁLT EREDMÉNY
 
 Ha gyűjtesz:
+
 - **10 perc** → 50% javulás a zero-shot-hoz képest
 - **15 perc** → 70% javulás, használható kvíz app-hoz
 - **20+ perc** → 90% javulás, profi minőség

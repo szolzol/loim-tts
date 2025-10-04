@@ -5,6 +5,7 @@
 You've successfully prepared everything for István Vágó's quiz show voice fine-tuning:
 
 ### What We Did:
+
 1. ✅ Analyzed 16-minute Milliomos episode with timestamped transcripts
 2. ✅ Extracted 80 high-quality clips (14.8 minutes) across 7 categories
 3. ✅ Created optimized training script based on reference implementation
@@ -25,6 +26,7 @@ python scripts\train_xtts_milliomos.py --auto-start
 ### What to Expect:
 
 **Training Details:**
+
 - **Duration**: 30-60 minutes (~800 steps)
 - **Epochs**: 30 epochs
 - **Steps per epoch**: ~27 steps
@@ -33,6 +35,7 @@ python scripts\train_xtts_milliomos.py --auto-start
 - **GPU**: RTX 4070 (12GB VRAM)
 
 **Console Output:**
+
 ```
 ============================================================
 TRAINING IN PROGRESS
@@ -56,6 +59,7 @@ Checkpoints saved every 500 steps
 ```
 
 **Progress Indicators:**
+
 - `STEP: X/27` - Current step in epoch (0-27)
 - `GLOBAL_STEP: X` - Total steps completed (0-810)
 - `EPOCH: X/30` - Current epoch (0-30)
@@ -64,18 +68,24 @@ Checkpoints saved every 500 steps
 ## 📊 Monitor Training (Optional)
 
 ### Option 1: TensorBoard (Recommended)
+
 Open a **second terminal**:
+
 ```powershell
 cd F:\CODE\tts-2
 tensorboard --logdir run\training_milliomos
 ```
+
 Then open: http://localhost:6006
 
 ### Option 2: GPU Monitoring
+
 Open a **third terminal**:
+
 ```powershell
 nvidia-smi -l 2
 ```
+
 Watch GPU usage, temperature, and memory.
 
 ## 🎯 Training Progress
@@ -83,26 +93,31 @@ Watch GPU usage, temperature, and memory.
 ### Epoch Breakdown (30 epochs total):
 
 **Epochs 1-5** (First ~5 minutes)
+
 - Loss drops rapidly from ~5.4 to ~2.0
 - Model learns basic phonetics
 - GPU usage: 90-100%
 
 **Epochs 6-15** (Minutes 5-15)
+
 - Loss stabilizes around 1.5-2.0
 - Model learns prosody patterns
 - First checkpoint saved (step 500)
 
 **Epochs 16-25** (Minutes 15-25)
+
 - Loss refines to 1.0-1.5
 - Model learns quiz show energy
 - Second checkpoint may save (step 500+)
 
 **Epochs 26-30** (Minutes 25-30)
+
 - Final polish, loss ~0.8-1.2
 - Best model selected
 - Training completes!
 
 ### Loss Values Guide:
+
 - **5.0-6.0**: Initial random state
 - **2.0-3.0**: Basic learning happening
 - **1.0-2.0**: Good progress (GOAL)
@@ -126,12 +141,15 @@ run/training_milliomos/
 ## 🎤 Test the Trained Model
 
 ### Option 1: Quick Test
+
 ```powershell
 python scripts\zero_shot_inference.py
 ```
 
 ### Option 2: Custom Test
+
 Create a test script:
+
 ```python
 import torch
 import torchaudio
@@ -173,16 +191,19 @@ for i, text in enumerate(test_phrases):
 ## 🔧 Troubleshooting
 
 ### Training Stops/Crashes:
+
 - **CUDA out of memory**: Reduce BATCH_SIZE to 2 in script
 - **Process killed**: Close Chrome, check GPU with nvidia-smi
 - **Python crashes**: Restart computer, try again
 
 ### Poor Quality Results:
+
 - **Loss not decreasing**: May need more epochs (edit NUM_EPOCHS to 40-50)
 - **Loss < 0.5**: Overfitting - reduce epochs or add more data
 - **Choppy audio**: Training incomplete - run more epochs
 
 ### Can't Find Output:
+
 ```powershell
 Get-ChildItem -Path "run\training_milliomos" -Recurse -Filter "*.pth"
 ```
@@ -190,6 +211,7 @@ Get-ChildItem -Path "run\training_milliomos" -Recurse -Filter "*.pth"
 ## 📊 Success Criteria
 
 Training is successful when:
+
 - ✅ Completes all 30 epochs without errors
 - ✅ Final loss < 1.5 (ideally 0.8-1.2)
 - ✅ Test audio samples sound natural
@@ -198,14 +220,14 @@ Training is successful when:
 
 ## 🎯 Expected Results vs Zero-Shot
 
-| Metric | Zero-Shot | Fine-Tuned (Expected) |
-|--------|-----------|----------------------|
-| Voice similarity | 70-80% | 85-95% |
-| Smoothness | Poor (choppy) | Excellent |
-| Quiz energy | None | Natural |
-| Prosody | Flat/monotone | Dynamic |
-| Question intonation | Wrong | Correct |
-| Excitement delivery | Generic | Authentic |
+| Metric              | Zero-Shot     | Fine-Tuned (Expected) |
+| ------------------- | ------------- | --------------------- |
+| Voice similarity    | 70-80%        | 85-95%                |
+| Smoothness          | Poor (choppy) | Excellent             |
+| Quiz energy         | None          | Natural               |
+| Prosody             | Flat/monotone | Dynamic               |
+| Question intonation | Wrong         | Correct               |
+| Excitement delivery | Generic       | Authentic             |
 
 ## ⏱️ Timeline
 

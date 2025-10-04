@@ -5,12 +5,14 @@ This guide documents best practices for achieving commercial-grade TTS quality w
 ## 🎯 Quality Targets
 
 ### Subjective Metrics (MOS - Mean Opinion Score, 1-5 scale)
+
 - **Naturalness**: 4.5+ (sounds like real human speech)
 - **Intelligibility**: 4.8+ (words are clear and understandable)
 - **Speaker Similarity**: 4.5+ (sounds like the target speaker)
 - **Prosody**: 4.3+ (natural rhythm, intonation, emphasis)
 
 ### Objective Metrics
+
 - **Word Error Rate (WER)**: <5%
 - **Signal-to-Noise Ratio**: >25 dB
 - **Latency**: <500ms for real-time applications
@@ -19,18 +21,21 @@ This guide documents best practices for achieving commercial-grade TTS quality w
 ## 📊 ElevenLabs vs Fish Audio vs XTTS-v2
 
 ### ElevenLabs Strengths
+
 - Extremely natural prosody
 - Excellent emotional control
 - Very low latency (<200ms)
 - Consistent quality across languages
 
-### Fish Audio Strengths  
+### Fish Audio Strengths
+
 - High fidelity in target language
 - Excellent cloning with minimal data
 - Good preservation of voice characteristics
 - Fast inference
 
 ### XTTS-v2 Strengths
+
 - **Open source** and locally runnable
 - Multi-lingual by design (17 languages)
 - Can match commercial quality with proper tuning
@@ -42,6 +47,7 @@ This guide documents best practices for achieving commercial-grade TTS quality w
 ### 1. Audio Quality Requirements
 
 #### Minimum Standards
+
 - **Sample Rate**: 22050 Hz (training), 24000 Hz (output)
 - **Bit Depth**: 16-bit or higher
 - **Format**: WAV (lossless)
@@ -50,6 +56,7 @@ This guide documents best practices for achieving commercial-grade TTS quality w
 - **Dynamic Range**: Good variation (avoid over-compression)
 
 #### Optimal Standards
+
 - Clean studio recordings
 - No background music or noise
 - Consistent recording environment
@@ -72,14 +79,15 @@ This guide documents best practices for achieving commercial-grade TTS quality w
 
 ### 3. Dataset Size
 
-| Duration | Quality Expected |
-|----------|------------------|
-| 5-10 min | Acceptable for testing |
-| 10-20 min | Good quality possible |
-| 20-30 min | Very good quality |
-| 30+ min | Excellent quality |
+| Duration  | Quality Expected       |
+| --------- | ---------------------- |
+| 5-10 min  | Acceptable for testing |
+| 10-20 min | Good quality possible  |
+| 20-30 min | Very good quality      |
+| 30+ min   | Excellent quality      |
 
 **István Vágó Dataset**: ~13 clips × 8 seconds = ~1.7 minutes
+
 - ⚠️ This is MINIMAL - recommend collecting 15-30 minutes for production quality
 
 ### 4. Text Transcriptions
@@ -87,12 +95,14 @@ This guide documents best practices for achieving commercial-grade TTS quality w
 **Critical Importance**: Transcription accuracy directly affects quality!
 
 #### Hungarian Specific Considerations
+
 - Use proper diacritics: á, é, í, ó, ö, ő, ú, ü, ű
 - Accurate punctuation for prosody
 - Natural sentence structure
 - Match speaking style (quiz show formal/enthusiastic tone)
 
 #### Transcription Guidelines
+
 ```
 ✅ GOOD: "Üdvözlöm önöket a kvízműsorban!"
 ❌ BAD:  "Udvozlom onoket a kviзmusorban!" (wrong encoding)
@@ -102,6 +112,7 @@ This guide documents best practices for achieving commercial-grade TTS quality w
 ## ⚙️ Training Hyperparameters for Quality
 
 ### Learning Rate Strategy
+
 ```python
 # Conservative for quality
 LEARNING_RATE = 5e-6  # Start conservative
@@ -113,6 +124,7 @@ gamma = 0.5  # Halve learning rate
 ```
 
 ### Batch Size and Accumulation
+
 ```python
 # RTX 4070 (12GB) optimized
 BATCH_SIZE = 2
@@ -123,6 +135,7 @@ GRAD_ACCUM_STEPS = 126
 ```
 
 ### Training Duration
+
 ```python
 EPOCHS = 25  # Start here
 # Monitor validation loss - stop when plateaus
@@ -130,6 +143,7 @@ EPOCHS = 25  # Start here
 ```
 
 ### Early Stopping
+
 ```python
 # Stop training if validation loss doesn't improve for N steps
 # Prevents overfitting while maintaining quality
@@ -138,6 +152,7 @@ EPOCHS = 25  # Start here
 ## 🎛️ Inference Parameters for Maximum Quality
 
 ### Temperature (Diversity vs Consistency)
+
 ```python
 TEMPERATURE = 0.75  # Sweet spot for quality
 # 0.5-0.7: More consistent, less expressive
@@ -146,6 +161,7 @@ TEMPERATURE = 0.75  # Sweet spot for quality
 ```
 
 ### Sampling Parameters
+
 ```python
 TOP_P = 0.85  # Nucleus sampling
 TOP_K = 50    # Top-k sampling
@@ -154,6 +170,7 @@ LENGTH_PENALTY = 1.0  # Natural length
 ```
 
 ### Speaker Conditioning
+
 ```python
 # Use 2-3 high-quality reference clips
 REFERENCE_AUDIO = [
@@ -166,11 +183,13 @@ REFERENCE_AUDIO = [
 ## 🔬 Quality Evaluation Methods
 
 ### 1. Subjective Listening Tests
+
 - **ABX Testing**: Compare your model vs reference
 - **MOS Scoring**: Rate 1-5 on naturalness, similarity, etc.
 - **Native Speaker Evaluation**: Critical for Hungarian accuracy
 
 ### 2. Objective Metrics
+
 ```python
 # Automated testing (implement after training)
 - WER (Word Error Rate) using ASR
@@ -180,6 +199,7 @@ REFERENCE_AUDIO = [
 ```
 
 ### 3. A/B Testing Against Benchmarks
+
 - Generate same text with:
   - Your model
   - Original Vágó audio (if available)
@@ -189,6 +209,7 @@ REFERENCE_AUDIO = [
 ## 🚀 Advanced Techniques for Quality Boost
 
 ### 1. Data Augmentation (Carefully!)
+
 ```python
 # Subtle augmentations that preserve voice characteristics
 - Slight pitch variation (±5%)
@@ -198,6 +219,7 @@ REFERENCE_AUDIO = [
 ```
 
 ### 2. Multi-Stage Training
+
 ```python
 # Stage 1: Warm-up (5 epochs, lr=1e-6)
 # Stage 2: Main training (15 epochs, lr=5e-6)
@@ -205,6 +227,7 @@ REFERENCE_AUDIO = [
 ```
 
 ### 3. Ensemble Reference Audio
+
 ```python
 # Use diverse references for conditioning
 - Different emotions/tones
@@ -213,6 +236,7 @@ REFERENCE_AUDIO = [
 ```
 
 ### 4. Post-Processing (Minimal!)
+
 ```python
 # Light post-processing can help
 - Gentle normalization
@@ -224,24 +248,28 @@ REFERENCE_AUDIO = [
 ## 📈 Quality Progression Timeline
 
 ### Week 1: Setup & Data Preparation
+
 - Collect and clean audio
 - Accurate transcriptions
 - Verify dataset quality
 - **Checkpoint**: Dataset ready
 
 ### Week 2: Initial Training
+
 - First training run (15 epochs)
 - Monitor validation loss
 - Generate samples every 5 epochs
 - **Checkpoint**: First working model
 
 ### Week 3: Iteration & Optimization
+
 - Adjust hyperparameters based on results
 - Collect more data if needed
 - Fine-tune with best checkpoint
 - **Checkpoint**: Optimized model
 
 ### Week 4: Evaluation & Refinement
+
 - Comprehensive quality testing
 - A/B comparisons
 - Final adjustments
@@ -250,12 +278,14 @@ REFERENCE_AUDIO = [
 ## 🎯 Hungarian Language Specific Tips
 
 ### Phonetic Considerations
+
 - Hungarian has 14 vowels (including long vowels)
 - Consonant clusters need clear articulation
 - Vowel harmony patterns
 - Characteristic intonation patterns
 
 ### Training Data Composition
+
 ```
 Recommended mix for quiz show voice:
 - 60% Questions (rising intonation)
@@ -265,6 +295,7 @@ Recommended mix for quiz show voice:
 ```
 
 ### Common Pitfalls
+
 ```
 ❌ English phoneme substitution
 ❌ Missing vowel length distinctions
@@ -275,16 +306,19 @@ Recommended mix for quiz show voice:
 ## 📚 Resources & References
 
 ### Papers
+
 - XTTS: [Massively Multilingual Zero-Shot Speech Synthesis](https://arxiv.org/abs/2309.08519)
 - VITS: [Conditional Variational Autoencoder with Adversarial Learning](https://arxiv.org/abs/2106.06103)
 
 ### Tools
+
 - Audacity: Audio editing and cleaning
 - Praat: Phonetic analysis
 - TensorBoard: Training monitoring
 - WaveSurfer: Visual waveform analysis
 
 ### Communities
+
 - Coqui TTS Discord
 - r/speechtech
 - Hungarian NLP communities
@@ -317,14 +351,14 @@ Before deploying your model:
 
 ## 🔧 Troubleshooting Quality Issues
 
-| Issue | Possible Cause | Solution |
-|-------|---------------|----------|
-| Robotic voice | Overfitting | More data, lower LR, early stopping |
-| Inconsistent quality | High temperature | Lower to 0.65-0.75 |
-| Wrong pronunciation | Bad transcriptions | Fix metadata.csv |
-| Artifacts/glitches | Noisy training data | Better preprocessing |
-| Loss of voice character | Not enough data | More diverse samples |
-| Slow/monotone | Lack of prosody variation | More expressive samples |
+| Issue                   | Possible Cause            | Solution                            |
+| ----------------------- | ------------------------- | ----------------------------------- |
+| Robotic voice           | Overfitting               | More data, lower LR, early stopping |
+| Inconsistent quality    | High temperature          | Lower to 0.65-0.75                  |
+| Wrong pronunciation     | Bad transcriptions        | Fix metadata.csv                    |
+| Artifacts/glitches      | Noisy training data       | Better preprocessing                |
+| Loss of voice character | Not enough data           | More diverse samples                |
+| Slow/monotone           | Lack of prosody variation | More expressive samples             |
 
 ---
 

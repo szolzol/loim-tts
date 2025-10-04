@@ -3,6 +3,7 @@
 ## 🎯 Probléma: Darabos/Szaggatott Beszéd (Choppy Speech)
 
 ### Mit jelent a "choppy" beszéd?
+
 - 🔊 Szavak közötti hirtelen szünetek
 - 📊 Egyenetlen ritmus és tempó
 - 🎭 Robothangzású kiejtés
@@ -10,9 +11,11 @@
 - 🎪 Természetellenes hanglejtés
 
 ### Miért van ez a zero-shot módszernél?
+
 A zero-shot klónozás **rövid referencia hangfelvételekből** tanul, és a pre-trained modell általános prozódiáját használja. Ez néha:
+
 - ❌ Túl agresszív mintavételezést okoz
-- ❌ Inkonzisztens prozódiát generál  
+- ❌ Inkonzisztens prozódiát generál
 - ❌ Túlzott variációt kényszerít ki
 
 ---
@@ -33,6 +36,7 @@ TEMPERATURE = 1.0   # Nagyon változatos, choppy lehet
 ```
 
 **Choppy beszédnél:**
+
 - ⬇️ **Csökkentsd 0.65-0.7-re** a simább flowhoz
 - Ez csökkenti a hirtelen változásokat
 - Stabilabb, következetesebb output
@@ -54,6 +58,7 @@ REPETITION_PENALTY = 10.0  # Túl erős, choppy output
 ```
 
 **Choppy beszédnél:**
+
 - ⬇️ **Csökkentsd 5.0-re** (volt 7.0)
 - Túl magas érték → túlzott variáció → choppy
 - Alacsonyabb → simább átmenetek
@@ -79,6 +84,7 @@ TOP_P = 0.95  # Több kreativitás, kevésbé stabil
 ```
 
 **Choppy beszédnél:**
+
 - ✅ **TOP_K = 50** → Limitálja a szóválasztást
 - ✅ **TOP_P = 0.85** → Stabil, de nem túl merev
 - Ezek együtt **simítják a beszédet**
@@ -99,6 +105,7 @@ SPEED = 1.2   # 20% gyorsabb (choppy lehet)
 ```
 
 **Choppy beszédnél:**
+
 - ✅ **SPEED = 1.0** → Természetes tempó
 - Gyorsabb sebesség → roboțikusabb hangzás
 - Lassabb sebesség → túl monoton lehet
@@ -110,6 +117,7 @@ SPEED = 1.2   # 20% gyorsabb (choppy lehet)
 ## 📊 Optimális Beállítások Típus Szerint
 
 ### Simább Beszéd (Jelenleg Aktív) ✅
+
 ```python
 TEMPERATURE = 0.7           # Stabil, természetes
 REPETITION_PENALTY = 5.0    # Kiegyensúlyozott
@@ -124,6 +132,7 @@ SPEED = 1.0                 # Normál sebesség
 ---
 
 ### Expresszívebb Beszéd (Ha túl monoton)
+
 ```python
 TEMPERATURE = 0.85          # Több variáció
 REPETITION_PENALTY = 6.0    # Erősebb diverzitás
@@ -138,6 +147,7 @@ SPEED = 1.05                # Kissé gyorsabb
 ---
 
 ### Kvíz Show Energia (Vágó István stílus)
+
 ```python
 TEMPERATURE = 0.75          # Jó egyensúly
 REPETITION_PENALTY = 5.5    # Közép
@@ -154,6 +164,7 @@ SPEED = 1.05                # Dinamikusabb
 ## 🎤 Referencia Audió Optimalizálás
 
 ### Jelenlegi Beállítás:
+
 ```python
 REFERENCE_AUDIO = [
     "vago_vagott_02.wav",  # Legenergetikusabb
@@ -165,26 +176,31 @@ REFERENCE_AUDIO = [
 ### Alternatívák Simább Beszédhez:
 
 **Opció 1: Kevesebb referencia (stabilabb)**
+
 ```python
 REFERENCE_AUDIO = [
     "vago_vagott_03.wav",  # Legsimább
 ]
 ```
+
 - ✅ Egységesebb stílus
 - ✅ Kevesebb konfliktus a minták között
 - ⚠️ Kevesebb variáció
 
 **Opció 2: Csak nyugodtabb klipek**
+
 ```python
 REFERENCE_AUDIO = [
     "vago_vagott_01.wav",  # Nyugodtabb
     "vago_vagott_04.wav",  # Kiegyensúlyozott
 ]
 ```
+
 - ✅ Simább alapstílus
 - ⚠️ Lehet kevésbé expresszív
 
 **Opció 3: Több referencia (jobb átlag)**
+
 ```python
 REFERENCE_AUDIO = [
     "vago_vagott_01.wav",
@@ -194,6 +210,7 @@ REFERENCE_AUDIO = [
     "vago_vagott_05.wav",
 ]
 ```
+
 - ✅ Több adatpont → simább átlag
 - ⚠️ Lassabb generálás
 
@@ -202,35 +219,42 @@ REFERENCE_AUDIO = [
 ## 🧪 Tesztelési Stratégia
 
 ### 1. Alapvonal Megállapítása
+
 ```powershell
 # Generálj 3 mintát a jelenlegi beállításokkal
 python scripts\zero_shot_inference.py
 ```
 
 Hallgasd meg:
+
 - [ ] Van-e choppy beszéd?
 - [ ] Természetes-e a ritmus?
 - [ ] Egyenletes-e a tempó?
 
 ### 2. Finomhangolás
+
 Ha még mindig choppy:
 
 **Lépés A: Csökkentsd a temperaturát**
+
 ```python
 TEMPERATURE = 0.65  # volt 0.7
 ```
 
 **Lépés B: Növeld a TOP_P-t**
+
 ```python
 TOP_P = 0.9  # volt 0.85
 ```
 
 **Lépés C: Csökkentsd a repetition penalty-t**
+
 ```python
 REPETITION_PENALTY = 4.5  # volt 5.0
 ```
 
 **Lépés D: Próbálj kevesebb referenciát**
+
 ```python
 REFERENCE_AUDIO = [
     "vago_vagott_03.wav",  # Csak egy
@@ -238,6 +262,7 @@ REFERENCE_AUDIO = [
 ```
 
 ### 3. A/B Tesztelés
+
 Generálj ugyanazt a szöveget különböző beállításokkal:
 
 ```python
@@ -265,13 +290,16 @@ Hasonlítsd össze és válaszd a legjobbat!
 ### Quick Wins (Gyors Javítások)
 
 **1. Lassítsd le kissé:**
+
 ```python
 SPEED = 0.95  # 5% lassabb
 ```
+
 - Több időt ad az átmeneteknek
 - Természetesebb hangzás
 
 **2. Használj hosszabb szöveget:**
+
 ```python
 # ❌ Rossz - túl rövid
 "Gratulálok!"
@@ -279,10 +307,12 @@ SPEED = 0.95  # 5% lassabb
 # ✅ Jó - teljes mondat
 "Gratulálok a helyes válaszhoz! Fantasztikus teljesítmény volt."
 ```
+
 - Több kontextus → simább prozódia
 - Jobb átmenetek a szavak között
 
 **3. Adj hozzá írásjeleket:**
+
 ```python
 # ❌ Rossz
 "Kérem a választ most döntsenek gyorsan"
@@ -290,18 +320,21 @@ SPEED = 0.95  # 5% lassabb
 # ✅ Jó
 "Kérem a választ! Most döntsenek... gyorsan!"
 ```
+
 - Írásjelek → természetes szünetek
 - Segít a modellnek értelmezni
 
 ### Advanced Tricks
 
 **1. Batch generálás stabil seedel:**
+
 ```python
 import torch
 torch.manual_seed(42)  # Reprodukálható output
 ```
 
 **2. Pre-processing a szövegen:**
+
 ```python
 # Normalizáld a szöveget
 text = text.strip()
@@ -310,6 +343,7 @@ text = text + "."  # Biztosítsd a lezárást
 ```
 
 **3. Post-processing az audión:**
+
 ```python
 # Simítsd a waveform-ot
 import scipy.signal
@@ -323,18 +357,21 @@ audio = scipy.signal.savgol_filter(audio, 51, 3)
 Ha a paraméter-hangolás után is choppy marad:
 
 ### Jelek, hogy fine-tuning kell:
+
 - ❌ Még TEMPERATURE=0.6-nál is instabil
 - ❌ Szavak közötti szünetek túl nagyok
 - ❌ Inkonzisztens hanglejtés mondatokon belül
 - ❌ "Robothangú" output paraméterektől függetlenül
 
 ### Mit ad a fine-tuning:
+
 - ✅ **Tanult prozódia** - megtanulja Vágó természetes ritmusát
 - ✅ **Simább átmenetek** - folyamatos beszédmintákat tanul
 - ✅ **Karakterisztikus stílus** - kvíz show energia beépül
 - ✅ **Jobb timing** - szünetek és hangsúlyok helyesen
 
 ### Minimális követelmény:
+
 - **10-15 perc** tiszta, energikus Vágó beszéd
 - Különböző érzelmek (kérdések, gratulációk, feszültség)
 - Professzionális minőség (TV felvételek)
@@ -393,6 +430,7 @@ for name, config in configs.items():
 5. 🎤 **Próbálj kevesebb/nyugodtabb referenciát**
 
 ### Jelenlegi optimalizált beállítások ✅:
+
 ```python
 TEMPERATURE = 0.7
 REPETITION_PENALTY = 5.0

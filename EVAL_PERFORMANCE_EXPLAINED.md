@@ -15,12 +15,14 @@ When you see this output during training:
 ### What Each Metric Means:
 
 #### 1. **avg_loader_time: 0.005 seconds**
+
 - **What it is:** Average time to load evaluation samples
 - **Change:** -0.001s (improved by 0.001 seconds)
 - **Interpretation:** Data loading is very fast (~5 milliseconds per sample)
 - **Good or Bad:** ✅ Excellent - No bottleneck in data loading
 
 #### 2. **avg_loss_text_ce: 0.0234**
+
 - **What it is:** Text Cross-Entropy Loss - Measures how well the model predicts text tokens
 - **Change:** -0.0000066 (tiny improvement)
 - **Range:** 0.0 (perfect) to infinity (terrible)
@@ -29,6 +31,7 @@ When you see this output during training:
 - **Target:** < 0.1 is good, < 0.05 is excellent
 
 #### 3. **avg_loss_mel_ce: 5.0455**
+
 - **What it is:** Mel-Spectrogram Cross-Entropy Loss - Measures audio quality prediction
 - **Change:** +0.169 (slightly worse than before)
 - **Range:** 0.0 (perfect) to ~10+ (poor)
@@ -38,6 +41,7 @@ When you see this output during training:
 - **Note:** This increased slightly, which can happen during training fluctuations
 
 #### 4. **avg_loss: 5.0689** (Total Loss)
+
 - **What it is:** Combined loss (text_ce + mel_ce)
 - **Change:** +0.169 (slightly worse)
 - **Your value:** **5.069 is DECENT** 👍
@@ -54,6 +58,7 @@ The numbers in parentheses show **change from previous evaluation**:
 - **Positive (+)** = Degradation (loss increased)
 
 ### Your Changes:
+
 - `avg_loader_time`: **-0.001** ✅ Faster loading
 - `avg_loss_text_ce`: **-0.0000066** ✅ Tiny improvement (essentially stable)
 - `avg_loss_mel_ce`: **+0.169** ⚠️ Slight increase (normal fluctuation)
@@ -64,11 +69,13 @@ The numbers in parentheses show **change from previous evaluation**:
 ## Is This Good or Bad?
 
 ### ✅ Good Signs:
+
 1. **Text loss (0.0234)** is excellent - model understands Hungarian text well
 2. **Loader time** is very fast - no training bottlenecks
 3. **Small fluctuations** are normal during training
 
 ### ⚠️ Areas to Monitor:
+
 1. **Mel loss (5.04)** could be lower - audio quality can improve
 2. **Slight increase (+0.169)** suggests possible overfitting or normal variance
 
@@ -77,16 +84,19 @@ The numbers in parentheses show **change from previous evaluation**:
 ## What Should You Do?
 
 ### If This Was During Training:
+
 - **Keep training** - Fluctuations are normal
 - **Check if loss continues to rise** - If mel_ce keeps going up for 3-5 evaluations, it may be overfitting
 - **Wait for final results** - Don't judge by single evaluation
 
 ### Expected Final Values (After 30 Epochs):
+
 - `avg_loss_text_ce`: **0.01 - 0.05** (you're almost there!)
 - `avg_loss_mel_ce`: **1.0 - 2.5** (target for small datasets)
 - `avg_loss`: **1.0 - 2.5** (overall goal)
 
 ### If Losses Stay High:
+
 - **Option 1:** Train more epochs (40-50)
 - **Option 2:** Add more diverse training data
 - **Option 3:** Adjust learning rate (try 5e-6 instead of 3e-6)
@@ -96,6 +106,7 @@ The numbers in parentheses show **change from previous evaluation**:
 ## Comparison to Your Training Run
 
 Looking at your first training step:
+
 ```
 --> TIME: 2025-10-02 23:20:45 -- STEP: 0/27 -- GLOBAL_STEP: 0
   | > loss_text_ce: 0.04028647020459175
@@ -104,6 +115,7 @@ Looking at your first training step:
 ```
 
 **Your evaluation shows:**
+
 - Text loss improved: **0.040 → 0.023** ✅ (43% better!)
 - Mel loss improved slightly: **5.38 → 5.05** ✅ (6% better)
 - Total loss improved: **5.42 → 5.07** ✅ (6.5% better)
@@ -122,4 +134,3 @@ Looking at your first training step:
 - **Recommendation:** Continue training to completion (30 epochs)
 
 The slight increase in this specific evaluation (+0.169) is normal variance. Look at the **overall trend** from start to finish, not individual evaluation steps.
-

@@ -3,6 +3,7 @@
 ## 🎯 Problem Analysis
 
 **Current Zero-Shot Issues:**
+
 - ❌ Speech is slow/monotone
 - ❌ Lacks energy and enthusiasm
 - ❌ Missing quiz show excitement
@@ -16,14 +17,14 @@
 
 ### 1. **Audio Duration** 🎤
 
-| Duration | Quality Level | Use Case |
-|----------|--------------|----------|
-| **1-5 min** | Poor | Testing only |
-| **5-10 min** | Acceptable | Basic voice clone |
-| **10-20 min** | Good | Decent quality |
-| **20-30 min** | Very Good | Commercial quality |
-| **30-60 min** | Excellent | Professional/ElevenLabs level |
-| **60+ min** | Best | Studio quality |
+| Duration      | Quality Level | Use Case                      |
+| ------------- | ------------- | ----------------------------- |
+| **1-5 min**   | Poor          | Testing only                  |
+| **5-10 min**  | Acceptable    | Basic voice clone             |
+| **10-20 min** | Good          | Decent quality                |
+| **20-30 min** | Very Good     | Commercial quality            |
+| **30-60 min** | Excellent     | Professional/ElevenLabs level |
+| **60+ min**   | Best          | Studio quality                |
 
 **Your Current Status:** ~1.7 minutes ⚠️  
 **Recommended Target:** **20-30 minutes minimum** for quiz show quality
@@ -35,6 +36,7 @@ For István Vágó quiz show voice, you need a **balanced mix**:
 #### Essential Content Types:
 
 **A. Questions (40%)** - Rising intonation, engagement
+
 ```
 Examples:
 - "Melyik évben történt...?"
@@ -45,6 +47,7 @@ Examples:
 ```
 
 **B. Excitement/Enthusiasm (25%)** - High energy, celebration
+
 ```
 Examples:
 - "Gratulálok! Helyes válasz!"
@@ -55,6 +58,7 @@ Examples:
 ```
 
 **C. Encouragement/Tension (20%)** - Building suspense
+
 ```
 Examples:
 - "Gondolkozzon csak..."
@@ -65,6 +69,7 @@ Examples:
 ```
 
 **D. Explanations (15%)** - Neutral, informative
+
 ```
 Examples:
 - "A helyes válasz a következő..."
@@ -73,6 +78,7 @@ Examples:
 ```
 
 **Why Diversity Matters:**
+
 - Teaches model different emotional registers
 - Captures prosody variations
 - Enables natural context-appropriate synthesis
@@ -81,6 +87,7 @@ Examples:
 ### 3. **Audio Quality Standards** 🔊
 
 #### Technical Requirements:
+
 - ✅ **Sample Rate:** 22050 Hz or 44100 Hz
 - ✅ **Bit Depth:** 16-bit minimum
 - ✅ **Format:** WAV (lossless)
@@ -89,6 +96,7 @@ Examples:
 - ✅ **Dynamic Range:** Preserve natural variation
 
 #### Content Quality:
+
 - ✅ **Clean speech:** No background music, minimal noise
 - ✅ **Single speaker:** Only István Vágó speaking
 - ✅ **Complete sentences:** No mid-sentence cuts
@@ -96,6 +104,7 @@ Examples:
 - ✅ **Consistent audio:** Similar recording conditions
 
 #### What to AVOID:
+
 - ❌ Background music or sound effects
 - ❌ Audience laughter/applause
 - ❌ Other speakers talking
@@ -108,14 +117,15 @@ Examples:
 
 **Optimal Clip Lengths:**
 
-| Length | Percentage | Purpose |
-|--------|-----------|----------|
-| 2-4 sec | 10% | Short reactions, single words |
-| 4-8 sec | 40% | **Optimal for training** |
-| 8-12 sec | 35% | Complete thoughts/questions |
-| 12-15 sec | 15% | Complex explanations |
+| Length    | Percentage | Purpose                       |
+| --------- | ---------- | ----------------------------- |
+| 2-4 sec   | 10%        | Short reactions, single words |
+| 4-8 sec   | 40%        | **Optimal for training**      |
+| 8-12 sec  | 35%        | Complete thoughts/questions   |
+| 12-15 sec | 15%        | Complex explanations          |
 
 **Why 4-8 seconds is optimal:**
+
 - Captures complete prosodic phrases
 - Easy for model to learn patterns
 - Reduces training time
@@ -128,12 +138,14 @@ Examples:
 **Critical for Quality:**
 
 #### Must Have:
+
 1. **Word-for-word accuracy** (100%)
 2. **Proper Hungarian diacritics** (á, é, í, ó, ö, ő, ú, ü, ű)
 3. **Natural punctuation** (for prosody)
 4. **Sentence structure** preserved
 
 #### Transcription Tips:
+
 ```
 ✅ GOOD:
 "Gratulálok! Ez a helyes válasz volt. Fantasztikus teljesítmény!"
@@ -148,6 +160,7 @@ Examples:
 ```
 
 #### Common Errors to Avoid:
+
 - Missing short words (a, az, és, hogy)
 - Wrong word boundaries
 - Incorrect diacritics (o vs ó, e vs é)
@@ -159,12 +172,14 @@ Examples:
 **What Makes a Good Dataset:**
 
 #### Audio Environment:
+
 - ✅ Same microphone/recording setup (if possible)
 - ✅ Similar room acoustics
 - ✅ Consistent speaking distance
 - ✅ Same audio processing chain
 
 #### Speaker Consistency:
+
 - ✅ Same speaking style (quiz show mode)
 - ✅ Energetic delivery throughout
 - ✅ Natural enthusiasm (not forced)
@@ -179,7 +194,9 @@ Examples:
 ### Primary Sources:
 
 #### 1. **YouTube** 🎥
+
 Search terms:
+
 - "Vágó István kvíz"
 - "Vágó István műsorvezető"
 - "Vágó István Póker"
@@ -187,17 +204,20 @@ Search terms:
 - "Vágó István Legyen Ön is milliomos"
 
 **Tips:**
+
 - Use clips from actual quiz shows (not interviews!)
 - Look for high-energy moments
 - Avoid clips with heavy music
 - Download highest quality available
 
 #### 2. **TV Archives** 📺
+
 - MTV (Magyar Televízió) archives
 - Commercial TV archives (TV2, RTL)
 - Online streaming services with quiz shows
 
 #### 3. **Official Sources**
+
 - Production companies
 - TV networks (with permission)
 - Public domain content
@@ -205,6 +225,7 @@ Search terms:
 ### Content Selection Criteria:
 
 **Prioritize:**
+
 1. ✅ Quiz show hosting (authentic style)
 2. ✅ Clear audio without music
 3. ✅ High energy moments
@@ -212,6 +233,7 @@ Search terms:
 5. ✅ Recent recordings (consistent voice)
 
 **Avoid:**
+
 - ❌ Political debates (wrong register)
 - ❌ Serious interviews (too somber)
 - ❌ Old recordings (voice may have changed)
@@ -222,9 +244,11 @@ Search terms:
 ## 📈 Recommended Collection Strategy
 
 ### Phase 1: Quick Improvement (5-10 minutes total)
+
 **Goal:** Double your dataset to ~10 minutes
 
 **Collect:**
+
 - 5-10 quiz questions (rising intonation)
 - 5-10 enthusiastic reactions ("Gratulálok!")
 - 3-5 tension-building phrases ("Az idő múlik...")
@@ -232,9 +256,11 @@ Search terms:
 **Expected Improvement:** Moderate prosody improvement
 
 ### Phase 2: Good Quality (15-20 minutes total)
+
 **Goal:** Reach commercial viability
 
 **Collect:**
+
 - 20-30 diverse quiz questions
 - 15-20 excitement/celebration clips
 - 10-15 explanations/transitions
@@ -243,9 +269,11 @@ Search terms:
 **Expected Improvement:** Good voice similarity, natural prosody
 
 ### Phase 3: Excellent Quality (30+ minutes total)
+
 **Goal:** ElevenLabs/Fish Audio level
 
 **Collect:**
+
 - 50+ varied questions (all types)
 - 30+ emotional responses (full spectrum)
 - 20+ explanations and transitions
@@ -258,6 +286,7 @@ Search terms:
 ## 🛠️ Practical Audio Collection Workflow
 
 ### Step 1: Download Videos
+
 ```powershell
 # Using yt-dlp (best YouTube downloader)
 pip install yt-dlp
@@ -267,7 +296,9 @@ yt-dlp -f bestaudio --extract-audio --audio-format wav --audio-quality 0 "https:
 ```
 
 ### Step 2: Extract Clips
+
 Use Audacity (free):
+
 1. Open downloaded audio
 2. Select Vágó speaking segments (without music/effects)
 3. Export selection as WAV
@@ -275,25 +306,32 @@ Use Audacity (free):
 5. Label each clip descriptively
 
 ### Step 3: Clean Audio
+
 In Audacity:
+
 1. **Noise Reduction:**
+
    - Select silent section
    - Effect > Noise Reduction > Get Noise Profile
    - Select all > Effect > Noise Reduction > OK
 
 2. **Normalize:**
+
    - Effect > Normalize > OK
 
 3. **Trim Silence:**
    - Effect > Truncate Silence
 
 ### Step 4: Transcribe
+
 Options:
+
 1. **Manual** (most accurate) ✅
 2. **Whisper AI** (then manual correction) ✅
 3. **YouTube captions** (often inaccurate) ⚠️
 
 ### Step 5: Organize
+
 ```
 source_clips/
 ├── questions/
@@ -317,6 +355,7 @@ source_clips/
 **Without collecting new audio**, you can improve results:
 
 ### 1. Adjust Inference Parameters
+
 ```python
 # In zero_shot_inference.py
 
@@ -327,6 +366,7 @@ REPETITION_PENALTY = 7.0  # Increase from 5.0
 ```
 
 ### 2. Use Better Reference Selection
+
 ```python
 # Use ONLY the most energetic clips
 REFERENCE_AUDIO = [
@@ -336,6 +376,7 @@ REFERENCE_AUDIO = [
 ```
 
 ### 3. Cherry-Pick Training Data
+
 - Remove monotone clips from dataset
 - Keep only energetic, clear speech
 - Even 5 minutes of HIGH QUALITY > 10 minutes of mediocre
@@ -344,13 +385,13 @@ REFERENCE_AUDIO = [
 
 ## 📊 Expected Training Results by Dataset Size
 
-| Dataset Size | Training Time | Voice Similarity | Prosody Quality | Recommended For |
-|--------------|---------------|------------------|-----------------|-----------------|
-| 1-5 min | 2-3 hours | 60-70% | Poor | Testing only |
-| 5-10 min | 3-4 hours | 70-80% | Acceptable | Basic apps |
-| **10-20 min** | **4-6 hours** | **80-90%** | **Good** | **Most apps** ⭐ |
-| 20-30 min | 6-8 hours | 90-95% | Very Good | Commercial |
-| 30-60 min | 8-12 hours | 95%+ | Excellent | Professional |
+| Dataset Size  | Training Time | Voice Similarity | Prosody Quality | Recommended For  |
+| ------------- | ------------- | ---------------- | --------------- | ---------------- |
+| 1-5 min       | 2-3 hours     | 60-70%           | Poor            | Testing only     |
+| 5-10 min      | 3-4 hours     | 70-80%           | Acceptable      | Basic apps       |
+| **10-20 min** | **4-6 hours** | **80-90%**       | **Good**        | **Most apps** ⭐ |
+| 20-30 min     | 6-8 hours     | 90-95%           | Very Good       | Commercial       |
+| 30-60 min     | 8-12 hours    | 95%+             | Excellent       | Professional     |
 
 **Your Current:** 1.7 min → Target: **15-20 min for quiz app quality**
 
@@ -359,16 +400,20 @@ REFERENCE_AUDIO = [
 ## 🚀 Action Plan for You
 
 ### Immediate (Today):
+
 1. ✅ **Test inference parameters** (adjust temperature, use energetic references)
 2. ✅ **Evaluate zero-shot results** (is it acceptable for MVP?)
 
 ### Short-term (This Week):
+
 1. 📥 **Collect 10-15 minutes** of energetic quiz show clips
+
    - Focus on questions and excitement
    - Use YouTube + yt-dlp
    - Clean and segment audio
 
 2. 📝 **Transcribe accurately** with proper Hungarian
+
    - Use Whisper + manual correction
    - Include proper punctuation for prosody
 
@@ -378,7 +423,9 @@ REFERENCE_AUDIO = [
    - Generate samples every few epochs
 
 ### Medium-term (Next 2 Weeks):
+
 1. 📈 **Iterative improvement**
+
    - Collect more diverse content
    - Target 20-30 minutes total
    - Retrain with expanded dataset
@@ -404,11 +451,13 @@ REFERENCE_AUDIO = [
 ## 🎓 Key Takeaway
 
 **For optimal István Vágó quiz show voice:**
+
 - **Minimum:** 15 minutes of diverse, energetic quiz show content
 - **Optimal:** 25-30 minutes with balanced questions/reactions
 - **Critical:** High energy, clear prosody, accurate transcriptions
 
 **Your path forward:**
+
 1. Collect 10-15 more minutes of energetic Vágó quiz clips
 2. Focus on questions, excitement, and tension
 3. Fine-tune with the expanded dataset

@@ -3,31 +3,39 @@
 ## Issues Fixed (2025-10-02)
 
 ### 1. ✅ Checkpoint Save Error
+
 **Problem:**
+
 ```
 RuntimeError: [enforce fail at inline_container.cc:603] . unexpected pos 4869443648 vs 4869443544
 ```
 
-**Root Cause:** 
+**Root Cause:**
+
 - Windows path length limit (260 chars) exceeded
 - Long run names caused checkpoint paths to be too deep
 
 **Solution:**
+
 - Shortened `RUN_NAME` from `XTTS_Vago_Milliomos_{timestamp}` to `XTTS_{timestamp}`
 - Shortened `PROJECT_NAME` from `Vago_Milliomos_QuizShow` to `Vago`
 - Result: Paths like `run/training_milliomos/XTTS_20251002_2253/` (much shorter)
 
 ### 2. ✅ Text Truncation Warning
+
 **Problem:**
+
 ```
 [!] Warning: The text length exceeds the character limit of 224 for language 'hu'
 ```
 
 **Root Cause:**
+
 - One transcript in metadata.csv was 271 characters long
 - Hungarian language limit is ~250 chars in XTTS
 
 **Solution:**
+
 - Identified the long text in `tension/tension_017.wav`
 - Trimmed from 271 chars to 132 chars while keeping natural speech
 - Original: "angol. Igen. Nem? A Clark, Clark Ádám vagy a William Tyler Clark. Két Clark is volt. Na most, ha két angol lenne, arról már tudnánk. Tehát nem angol. Viszont olyanok ezek a vastraverzek ott a Margit hídon meg nagyon emlékeztetnek egy párizsi épületre, az Eiffel toronyra."
@@ -35,11 +43,14 @@ RuntimeError: [enforce fail at inline_container.cc:603] . unexpected pos 4869443
 - Verified: All 80 texts now under 250 chars ✅
 
 ### 3. ✅ Terminal Progress Updates
+
 **Problem:**
+
 - User doesn't have TensorBoard installed
 - Needed real-time progress in terminal instead
 
 **Solution:**
+
 - Changed `print_step` from 50 to 1 (prints EVERY step)
 - Added custom training callback with detailed progress:
   - Step counter with percentage completion
@@ -69,6 +80,7 @@ Step 27/810 (3.3%) | Epoch 1/30
 ## Changes Summary
 
 ### scripts/train_xtts_milliomos.py
+
 - Shortened run name and project name (avoid path limits)
 - Set `print_step=1` for continuous progress
 - Set `save_step=100` (save every 100 steps)
@@ -76,6 +88,7 @@ Step 27/810 (3.3%) | Epoch 1/30
 - Progress shows: step/total, %, epoch, time, losses, GPU memory
 
 ### dataset_milliomos/metadata.csv
+
 - Fixed 1 text that was 271 chars → shortened to 132 chars
 - All texts now under 250 chars (Hungarian language limit)
 
@@ -110,7 +123,7 @@ python scripts\train_xtts_milliomos.py --auto-start
 ✅ Clear progress visible in terminal  
 ✅ Checkpoints save successfully  
 ✅ Final loss < 2.0 (ideally 0.8-1.5)  
-✅ GPU memory stable (~8-10GB)  
+✅ GPU memory stable (~8-10GB)
 
 ## Next Steps
 
@@ -121,5 +134,6 @@ python scripts\train_xtts_milliomos.py --auto-start
 5. Compare to zero-shot baseline
 
 ---
+
 **Status**: ✅ All issues fixed, ready to train!  
 **Date**: 2025-10-02 23:30

@@ -1,0 +1,146 @@
+﻿================================================================================
+ISTVÁN VÁGÓ VOICE CLONE - QUICK ACTION MENU
+================================================================================
+
+Your Current Status:
+   Dataset: 80 samples, properly classified into 7 categories
+   Model: Trained for 30 epochs (5.22 GB)
+   Quality: Good text understanding, moderate audio quality
+   Samples: 24 test files generated (v1 + v2)
+
+================================================================================
+OPTION 1: CONTINUE TRAINING (RECOMMENDED) 
+================================================================================
+Best for: Quick improvement without starting over
+
+Command:
+  python scripts\continue_training.py
+
+What it does:
+   Trains 20 more epochs (3050 total)
+   Improves audio smoothness
+   Reduces overfitting
+   Time: ~17 minutes
+
+Expected improvement:
+   Training loss: 2.15  1.5-1.8 (better quality)
+   Smoother, more natural speech
+   Better prosody consistency
+
+================================================================================
+OPTION 2: RETRAIN WITH NEW CLASSIFICATION 
+================================================================================
+Best for: Starting fresh with improved dataset
+
+Commands:
+  # Delete old training
+  Remove-Item -Recurse -Force "run\training_milliomos\XTTS_*"
+  
+  # Start new training
+  python scripts\train_xtts_milliomos.py
+
+What it does:
+   Trains from scratch with reclassified data
+   Better category-specific prosody
+   Time: ~26-35 minutes
+
+Use this if:
+   You want to test impact of new classification
+   Current model has fundamental issues
+   You have time for full training
+
+================================================================================
+OPTION 3: GENERATE MORE TEST SAMPLES 
+================================================================================
+Best for: Evaluating current model quality
+
+Commands:
+  # Generate with default params
+  python scripts\generate_samples.py
+  
+  # Generate with improved params (lower temp)
+  python scripts\regenerate_improved.py
+
+What it does:
+   Creates test samples for all categories
+   Helps you decide if more training needed
+   Time: 2-5 minutes per run
+
+Check for:
+   Voice similarity to István Vágó
+   Natural Hungarian pronunciation
+   Proper quiz show energy
+   Smooth vs choppy delivery
+
+================================================================================
+OPTION 4: EXPAND DATASET 
+================================================================================
+Best for: Achieving professional quality
+
+Current: 80 samples (14.8 min)
+Target: 150-200 samples (30+ min)
+
+Weak categories:
+   Confirmation: only 2 samples 
+   Excitement: only 7 samples
+   Greeting: only 6 samples
+
+If you have more audio:
+  python scripts\analyze_and_segment.py
+
+Benefits:
+   Much better voice consistency
+   More natural prosody
+   Less overfitting
+   Professional quality results
+
+================================================================================
+OPTION 5: DEPLOY FOR PRODUCTION 
+================================================================================
+Best for: If satisfied with current results
+
+Integration options:
+   REST API (Flask/FastAPI)
+   Desktop app (PyQt/Tkinter)
+   Batch processing
+   Discord/Telegram bot
+
+Model location:
+  run/training_milliomos/XTTS_20251002_2323-.../best_model.pth
+
+================================================================================
+MY RECOMMENDATION: START HERE 
+================================================================================
+
+Step 1: Listen to your samples (5 minutes)
+  Location: test_outputs/ and test_outputs_v2/
+  Question: Are they good enough for your use case?
+
+Step 2a: If satisfied  Deploy (Option 5)
+Step 2b: If needs minor improvement  Continue training (Option 1)
+Step 2c: If needs major improvement  Expand dataset (Option 4)
+
+Step 3: Generate fresh samples and re-evaluate
+
+================================================================================
+QUICK START: Most Common Path
+================================================================================
+
+# 1. Continue training to improve quality
+python scripts\continue_training.py
+
+# 2. Generate new test samples
+python scripts\generate_samples.py
+
+# 3. Listen and compare
+# Compare: test_outputs_v3/ vs test_outputs_v2/
+
+# 4. Decide: Good enough? Deploy! Not enough? Repeat or expand dataset.
+
+================================================================================
+
+Need help deciding? Tell me:
+  1. How do your generated samples sound? (good/okay/bad)
+  2. What's your goal? (app/testing/personal)
+  3. How much time can you invest? (quick/thorough)
+
