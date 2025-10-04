@@ -1,0 +1,312 @@
+audio_file|text|speaker_name
+greeting/greeting_001.wav|vannak és Teszák Sándor győzött. Kedves Sándor! Szeretettel várom! Gratulálok! Erre tessék! Kedves Sándor, Öné az alkalmazta, dresszét, hogy parancsoljon, foglaljon helyet. Legközelebb én is így|vago
+greeting/greeting_002.wav|jövök. Esküszöm. No hát sok szeretettel gratulálok! Nagyszerű, szép megfejtés volt. Szabad azt mondanom, hogy különösen egy tengerész tőle? Na de, hát az is azért egy jelentős élete, életesemény. Merrefele járt? Engem|vago
+greeting/greeting_003.wav|kedves Sándor, érdekes élet. Remélem, hogy érdekes játék lesz. Legyen Ön is milliomos! Lássuk az elsőt ötezerért. Milyen a szomszéd nője Jack Lemmon és Walter Matthau filmjének címe szerint? A szomszéd nője mindig szőkébb|vago
+transition/transition_012.wav|No, hát akkor erről ne beszéljünk többet. Mindenesetre egy mentővel úszott. Sajnálom. Maradt még kettő a következő adásra, amikor a hetedik kérdést fogom feltenni háromszázezer forintért. Szeretettel várom!|vago
+transition/transition_013.wav|Kivel érkezett most Sándor? Akkor jó estét kívánunk nekik is! És akkor folytatódjék a játék azzal, aki szinte az egész világot már bejárta. Itt a hetedik kérdés 300 ezer forintért.|vago
+question/question_024.wav|vagy Knezich Károly mondják Knézicsnek is. Kérdezzük meg a közönséget? Kérdezzük őket! Kedves közönség! A kérdés tehát egészen pontosan így szól, hogy ki nem volt az aradi vértanúk egyike?|vago
+greeting/greeting_007.wav|Gratulálok! Köszönöm. Ez igen! Sándor esküszöm úgy játszik, hogy feltételezem, hogy tudja, csak itten csinálja, hogy növelje a feszültséget. Azért|vago
+greeting/greeting_008.wav|Gratulálok! Jókor álltál.|vago
+transition/transition_014.wav|Tegyék időrendi sorrendbe az alábbi esztergomi érsekeket A. Mindszenti József, B. Bakócz Tamás, C. Paskay László, D. Pázmány Péter. És akkor máris mondom 1497-től.|vago
+neutral/neutral_012.wav|meg ez a Nyugat-Afrika izgat, de tudom, hogy arrafelé is járt. Ezek Afrika legszebb helyei. Igen, csak mert múlt időben mondja azóta, azóta ottan volt egy- Hol? Érdekes váltás. Kivel érkezett? Tehát van a fiú.|vago
+question/question_003.wav|A szomszéd nője mindig zöld. Érdekes cím. Megjelöljük a B-t. Ráadásul még igaz is. De volt egy folytatása, hogy milyen királyságnak nevezik a rövid ideig tartó hatalmat?|vago
+question/question_004.wav|huszonöt ezerért. Milyen gazdasági társulás nevét vette fel egy magyar rockegyüttes a nyolcvanas években? Afész,|vago
+question/question_005.wav|Mi a neve a Bánk bán intrikáló Lézengő Ritterének? Ő Solum|vago
+excitement/excitement_010.wav|Berlin, London. Hát ott németül beszélnek. De miért? És miért angol neve volna? Megjelöljük a C-t. [áthallás] Bizony. Csak szívesen hallottam ezt a történetet, hogy ezt meggyőződéssel mondja. Így van, erről van|vago
+neutral/neutral_013.wav|szó. Ugyanis melyik városban állítanának fel még egy ellenőrzőpontot, ugye? Nyilván egy olyan városban, amely ketté van osztva. Szörnyű történet volt. Itt a hatodik kétszázezerért.|vago
+neutral/neutral_014.wav|A reneszánsz, a gótika, a barokk vagy a klassicizmus? Itt vagyok én szívesen. Mondja, tudom, nem is nézek én oda. Melyik az a román? Tudja, melyik a román? Valaki oly szépen elmesélte nem is|vago
+question/question_009.wav|Hogyan? Hogyan? Hogyan fejlesztené tovább ezt a stílust, hogyha ön építész volna? Mert az milyen? Szép mind a négy. Tehát azt mondja, ha építésznak, a zömök falakat egy picit megvékonyítaná és ezeket|vago
+question/question_010.wav|a legömbölyített öhm hogy mondjam ablaktetőket, ezeket meghosszabbítaná? Így érti? És akkor most milyen stílust írtunk le?|vago
+question/question_011.wav|Mit jelent a reneszánsz? Újjászületés? Mi született ott újjá? Tehát a román stílus után újjászületik a román stílus? Melyiket? Tehát előbb voltak a vékony, finom, csúcsíves. Melyik?|vago
+confirmation/confirmation_002.wav|menc! Ha kíván segítséget, igénybe venni, természetesen. Igen? Jó. Megfelelően meg- megfelezi a számítógép. Vegyen el kettőt. A barokkról nem beszéltünk még. A barokkra mi a jellemző? Amikor azt mondják, hogy olyan barokkos,|vago
+neutral/neutral_015.wav|a románhoz képest tényleg nagy változás volna. A reneszánszban az ókori római művészetek születtek újjá. Ezt csak hozzáteszem, mert most már nyilvánvaló, hogy nem a reneszánszról van szó.|vago
+confirmation/confirmation_003.wav|tengerész volt. Úgy is mondhatom, hogy matróz. Valamitől ezt a foglalkozást misztikum övezi. Természetesen egy tengerpart nélküli országban,-- de most már nem azt csinálja. Mondja el, hogy miért váltott!|vago
+excitement/excitement_011.wav|és hát ezt bizonyára meg fogják jegyezni, a másik három is kapott ugyancsak szavazatot. Igen, ezek szerint. De hát még nem dőlt el. Milyen érdekes, hogy ismét ha már neveknél tartunk, nem mindegyik tipikusan magyar|vago
+question/question_016.wav|és nézzük, hogy ki nem volt az aradui-- az aradi vértanúk egyike.|vago
+question/question_017.wav|"egyrészről minek a birtokos esete a ""der"" elöljáró, és aztán, hogy ezek milyen nemű szavak a németben. Hát ez hosszú. Nahát, kit hívjunk? Horváth Jánosnént,"|vago
+neutral/neutral_016.wav|Sándor azért választotta magát, talán többek között, mert klasszikus zenében azt gondolja, hogy ön van otthon? Hát. Átadom akkor Sándornak a szót. Jó? Szép kérdés, Tessék, harminc másodperc.|vago
+question/question_019.wav|Ki nem volt a kerekasztal lovagja?|vago
+question/question_020.wav|Esendve kérem, valamit mondjon. Miért pont azt?|vago
+question/question_021.wav|Milyen származású volt a budapesti Margit híd tervezője?|vago
+neutral/neutral_017.wav|Sose ment még át a Margit híd alatt? Hát akkor meg akkor hallott róla. A sti-- hány híd alatt ment el? Hát a stílusából meg kell tudnia mondani. Igen.|vago
+tension/tension_018.wav|ez a kérdés, mert ugye tudja, hogy van egy hidunk, a Lánchíd, amelynek a tervezője|vago
+excitement/excitement_001.wav|biztos, hogy az jelenti, hogy én ezzel nem értek egyet. Itt az ötödik, és ez már garantált százezer ismét. Melyik város nevezetessége volt a Checkpoint Charlie? New York, San Francisco,|vago
+excitement/excitement_002.wav|hogy melyik követte a román stílust.Így is van. Helyes, helyes.|vago
+greeting/greeting_009.wav|Köszönjük szépen! Tessék parancsolni, Sándor! Köszönjük szépen! Tehát aki emlékszik Teszák Sándor múltkori játékára, az konstatálhatja, hogy eddig elég jól ment.|vago
+question/question_025.wav|Melyik városunkban van a Szúrakaténusz Játékmúzeum? Kecskeméten, Szegeden, Debrecenben vagy Egerben? Hát ehhez az országot kell járni, persze.|vago
+excitement/excitement_005.wav|de Szúrakaténusz Játékmúzeum. Reméljük, hogy van. Nézzük így van nem csak a múzeum, de játszóház is van. Helyes. Na itt a nyolcadik 500 ezer forintért. Milyen névet lett világhírű filmsztár Bernard Schwartz?|vago
+neutral/neutral_018.wav|származott el? Már úgy értem, nem személy szerint, hanem a családja. Nézzük meg! Nézzük. Jó lesz. Így van. Ha jól tudom, a szülei mentek ki. A papa volt szabó, a mama pedig vezette az üzletet.|vago
+excitement/excitement_007.wav|Igaza van, bizony bizony, de ugyanabban a korban élt Dembinski. Török, majd francia emigrációban élt, utána lengyeles a név. Helyes. Itt a tizedik másfél millióért, és ha ez megvan, ez már garantált nyeremény. Nézzük ezt!|vago
+tension/tension_019.wav|magának annyiban tudok segíteni, hogy adok egy telefonszámot. Azt mondta nem tudom.Kunz Der Fuge. Jól hangzik.|vago
+neutral/neutral_019.wav|Megjelöljük a fugát. Na most ezt ugye tudja Sándor, hogy ha nem jó, akkor százezer, tehát olyan nagyon nagy. Ez biztos, hogy így van. És hát én rettegek, mert azt mondta, hogy nem tudja|vago
+transition/transition_015.wav|Esztergomi esek Bakócz Tamás 1616-tól Pázmány Péter, 1945-től Mindszenti József, jelenleg pedig Paskay László, tehát B, D, A, C. Lássuk, hogy kinek sikerült ez a sorrend. Három, négyen|vago
+tension/tension_002.wav|vagy zöldebb, vagy teltebb vagy mélyebb dekoltázsú az a szomszéd nő?|vago
+tension/tension_003.wav|Húsvéti, karácsonyi ez a királyság pünkösdi vagy újévi? Megjelöljük a C-t, mert ez egy pünkösdi királyság. A rövid ideig tart. Remélem hosszabb ideig lesz. Itt a harmadik|vago
+transition/transition_016.wav|GMK, KFT vagy TS. A KFT együttes. Megjelöljük. Na jó, itt van a negyedik ötvenezerért.|vago
+tension/tension_005.wav|vagy Biberach, esetleg Tiborcz? A lézengő Ritter|vago
+neutral/neutral_020.wav|Magyarországon belül mennyit utazott? Elegendő erőt, érez és meggyőződést magában ahhoz, hogy meg is jelölje? Tehát menjen! Jó, Megjelöljük az A-t Kecskeméten, mert bár ott nincsen|vago
+tension/tension_007.wav|vagy Arnold Schwarzenegger? Melyiket tudja kizárni? Tehát elképzelhető, hogy ő meghosszabbította a nevét? Azt mondja, nem elképzelhető, hogy meghosszabbította. Rendben van. Mert úgy értem, a rendben van, hogy megértettem.|vago
+tension/tension_008.wav|Igen, gyorsan körbement és kizárta a másik hármat. Vagy Sándor, ha úgy ítéli meg, hogy tudja, hogy Tony Curtist úgy hívták régen, hogy Bernard Schwartz, akkor ne zaklassuk egymást tovább. Jelöljük meg a B-t és azt-- hát jó.|vago
+question/question_026.wav|név. De hát ezt tudjuk. Tehát tudja, ahol a Dembinski utca. Van egy hosszú Dembinski utca. Nem akarnám én untatni a nem budapesti nézőket. Megjelöljük a C-t, megjelöljük a C-t,|vago
+question/question_027.wav|vagy a szonáta művészetéről?|vago
+neutral/neutral_021.wav|Tehát ez a mű címe, hogy a valami művészete.|vago
+tension/tension_012.wav|Ismer valakit, akinek viszont a területe? Igen, az a rossz hírem, hogy ezt inkább német. Kicsit segítsek? Úgy kezdődik, hogy Kunst der. És ez egy birtokos eset.|vago
+tension/tension_013.wav|Hát tudom, ez a megérzése. Vagy tudja,|vago
+neutral/neutral_022.wav|vagy így olvasta, vagy így emlékszik a gyalog galoppból. Megjelöljük a C-t. Tessék. Ebben teljesen igaza van. Nyerni valója azonban mintegy másfél millió ezzel a bökéssel.|vago
+question/question_028.wav|orosz vagy francia?|vago
+transition/transition_017.wav|Most már nem adja fel, most tovább játsszuk. Hát ezt tudja. Egy. Először is víz fölött van, tehát otthon kell lennie benne.|vago
+transition/transition_018.wav|angol. Igen. Nem? A Clark, Clark Ádám vagy a William Tyler Clark. Két Clark is volt. Na most, ha két angol lenne, arról már tudnánk.|vago
+transition/transition_019.wav|Úgyhogy arra kérném szépen, hogy jelöljön meg akkor egy... [nevet] Igen? Na jó, rendben van, jelölje meg a belgát,|vago
+transition/transition_001.wav|hát akkor itt a következő sorkérdés a Népszabadság archívumából|vago
+neutral/neutral_023.wav|tudja, mit jelent az, hogy ritlovan? Az van rejten, de ön inkább angolosan a tengereket járta. És mit mondott? Igen, azt mondta. Jelöljük meg. Igen. Megjelöljük a C-t. Ha visszakérdezek, nem|vago
+transition/transition_003.wav|akkor azt hogy értik? Olyan barokkos, barokkos a stílusa, barokkos a megjelenése. Igen, jó. Megjelöljük a B-t. Barokkosra azt szokták mondani, hogy olyan túldíszített, túlcicomázott. Hát az|vago
+neutral/neutral_024.wav|most. Dembinski Henry kapott 66%-ot, de érdekes módon|vago
+neutral/neutral_025.wav|Hát az ön területe Togó és Elefántcsontpart, meg Malajzia és a többi.|vago
+neutral/neutral_026.wav|aki klasszikus zenében nagyon otthon van? Na de azért csak megbeszéltem, hogy akkor értem, és ő tudja, hogy ezért fogjuk őt zaklatni. Jó. Kezicsókolom, Vágó István vagyok. Horváth Jánosnét keresem. Kezicsókolom.|vago
+neutral/neutral_027.wav|és a vége foglalkozik a kantáta is ebben akkorban. Nézzük.|vago
+neutral/neutral_028.wav|Sándor! Hát mert ő spanyol nemzeti hős volt. Mert ő spanyol volt, nem angol, nem angolszász. Ez egy régi történet. Régi mondakör a kerekasztal. Megértem, itt a tizenkettedik ötmillióért.|vago
+question/question_029.wav|Nem érez meg magának három és fél millió forintot?|vago
+transition/transition_010.wav|Pedig hihetetlen érzékkel nyúlt bele. A játékon kívül mindenki ezt csinálja most az országban a játékon kívül, otthonról kell nézni a műsort, ott lehet játékon kívül. Kérem szépen. Rendben van. Hihetetlen volt idáig a játék.|vago
+excitement/excitement_012.wav|de kérem szépen-- elveszted. Így van. Bowen mérnök tervei szerint épült, és az Eiffel is egy picit benne volt, akár Tanács Adónak, akár nem, de benne volt. Franciák voltak.|vago
+question/question_030.wav|oly régen ebben a székben, hogy ilyen zömök falak, ilyen legömbölyített, mondjuk szamárháthívszerű öhm ablakfeje- fejezetek.|vago
+neutral/neutral_002.wav|tulajdonképpen elfogyott a gótikára, ugye? De vannak, akik meg arra emlékeznek, hogy|vago
+neutral/neutral_003.wav|Tony Curtis, Woody Allen|vago
+question/question_031.wav|nem volt az aradi vértanúk egyike?|vago
+question/question_032.wav|Minek a művészetéről írt nagyszabású zeneművet Johann Sebastian Bach?|vago
+neutral/neutral_006.wav|A fuga, a kantáta, a szvit|vago
+neutral/neutral_007.wav|átlátok ám magán. Itt a tizenegyedik. Hárommillióért, tessék.|vago
+neutral/neutral_008.wav|Parsifál, Gawain, Cid|vago
+tension/tension_020.wav|Nem megy el. Megmondja. Jaj ne vacakoljon már. De Belga meg francia meg nagyon hasonlít. Ezt nem tudom szétválasztani. Sándor azt csinál, amit akar. Én nagyon csalódott leszek.|vago
+question/question_033.wav|Nem, azzal nem szerezne örömet, ha elpukná. Azzal szerezne örömet, ha megnyerné. Nem éri meg?|vago
+neutral/neutral_011.wav|hittem, hogy végigmegy. Azért nem különösebben nehéz|vago
+long/speaker1_0001_Mondok_egy_nagyon_érdekeset_A_Vetélkedő.wav|Mondok egy nagyon érdekeset. A Vetélkedő az egy olyan műfaj, hogy általában a műsorvezető mindig tudja a választ. Hát|vago
+long/speaker1_0002_persze_Van_egy_kivétel_a_Legyen_Ön_is_.wav|persze. Van egy kivétel, a Legyen Ön is Milliomos!, ahol ezt megtiltották. Az a volt a koncepció, hogy a műsorvezető se|vago
+short/speaker1_0003_tudja_és_ezt_ellenőrizték.wav|tudja, és ezt ellenőrizték|vago
+long/speaker1_0004_a_licencadók_ott_voltak_a_felvételen.wav|a licencadók, ott voltak a felvételen... Mondok egy érdekeset, ezt nem tudom, hogy tudja-e, hogy be|vago
+short/speaker1_0005_voltunk_biztosítva_a_nagy_nyeremények_es.wav|voltunk biztosítva a nagy nyeremények esetére.|vago
+long/speaker1_0006_Tehát_a_biztosító_jót_állt_bizonyíték--.wav|Tehát a biztosító jót állt, bizonyíték-- nem tudom a részleteket. Ha valaki elviszi a negyven milliót, akkor a biztosító|vago
+long/speaker1_0007_ennek_egy_részét_összefedezte_Ott_ült_a.wav|ennek egy részét összefedezte. Ott ült a biztosítóember is, hogy nehogy én össze tudjak játszani a játékkal.|vago
+long/speaker1_0008_Így_van_De_ott_ült_és_nézte_Fegyveres_.wav|Így van. De ott ült és nézte. Fegyveres őrök vigyázták, még egyszer mondom. Fegyveres őrök vigyázták a|vago
+long/speaker1_0009_számítógéptermet_ahova_be_volt_táplálva.wav|számítógéptermet, ahova be volt táplálva mit tudom én harminc vagy ötvenezer kérdés. Gombnyomásra kijött tizenöt|vago
+long/speaker1_0010_kérdés_és_az_került_a_mindkettő_monitor.wav|kérdés, és az került a mindkettő monitorjára. De ha én tudtam volna a választ, ha én|vago
+long/speaker1_0011_indokolatlanul_vagy_váratlanul_tudtam_vo.wav|indokolatlanul vagy váratlanul tudtam volna a választ, és akkor én tudtam volna segíteni a játékosnak. Ezt akarták ők megelőzni, mert nagyon sok pénz forgott|vago
+long/speaker1_0012_kockán_Hát_igen_néha_tudtam_a_választ.wav|kockán. Hát igen, néha tudtam a választ, néha meg azt hittem, hogy az a válasz és nem az volt.|vago
+long/speaker1_0013_Én_meg_köszönöm_a_meghívást_és_máris_egy.wav|Én meg köszönöm a meghívást és máris egy kis helyreigazítást hadd tegyek! Sose voltam kvízprofesszor. Ez úgy törté-- van|vago
+long/speaker1_0014_ennek_egy_története_hogy_amikor_a_Legye.wav|ennek egy története, hogy amikor a Legyen Ön is Milliomos! Felvételén, az első felvételén túl voltunk, kimentünk a|vago
+long/speaker1_0015_stúdióból_Otthon_megnéztem_az_adást_és.wav|stúdióból. Otthon megnéztem az adást, és hallom, [köhög] hogy a narrátor azt mondja, aki soha nem hiányoz-- mindegy.|vago
+long/speaker1_0016_Vágó_ilyen--_kvízprofesszor_És_én_rögtö.wav|Vágó ilyen-- kvízprofesszor. És én rögtön mondtam, van is ennek nyoma írásban. Rögtön mondtam a producernek, hogy ezt soha többet ne tegye.|vago
+long/speaker1_0017_Ennek_a_szakmának_amit_akkor_én_éppen_b.wav|Ennek a szakmának, amit akkor én éppen betöltöttem, a kvízmester a nemzetközileg elfogadott neve. Tehát a kvízmester lehet,|vago
+medium/speaker1_0018_ez_a_beosztás_kvízprofesszor_ne_legyen.wav|ez a beosztás, kvízprofesszor ne legyen. Azóta állandóan olyanokat olvasok, hogy|vago
+long/speaker1_0019_aki_kvízprofesszornak_hivatja_magát_Soh.wav|aki kvízprofesszornak hivatja magát. Soha nem hívattam magam, sőt-- bocsánatot kérek--|vago
+medium/speaker1_0020_Ezt_nem_akartam_Nekem_ne_hízelegjenek_m.wav|Ezt nem akartam. Nekem ne hízelegjenek magával a titulussal.|vago
+question/speaker1_0021_Mennyi_időnk_van_nevet.wav|Mennyi időnk van? [nevet]|vago
+short/speaker1_0022_Iparkodni_fogok_Szóval_a_helyzet_az_ho.wav|Iparkodni fogok. Szóval a helyzet az, hogy|vago
+medium/speaker1_0023_én_amióta_az_eszemet_tudom_azóta_a_közé.wav|én amióta az eszemet tudom, azóta a közélet iránt érdeklődöm.|vago
+long/speaker1_0024_Ennél_többet_is_tettem_volna_hogyha_eng.wav|Ennél többet is tettem volna, hogyha engedte volna a Közszolgálati Televízió, akkor úgy hívták, hogy Magyar Televízió.|vago
+long/speaker1_0025_Nem_engedte_Tehát_ott_az_volt_az_állásp.wav|Nem engedte. Tehát ott az volt az álláspont, amíg én ott dolgoztam, hogy a televízió alkalmazottja ne foglaljon|vago
+medium/speaker1_0026_állást_semmiben_Onnan_elmentem_két_egy.wav|állást semmiben. Onnan elmentem két, egymás után|vago
+short/speaker1_0027_két_kereskedelmi_televízióba_Ott_sem_sz.wav|két kereskedelmi televízióba. Ott sem szerették. Hiszen|vago
+medium/speaker1_0028_nem_tudom_hogy_tapasztalták_e_már_hogy.wav|nem tudom, hogy tapasztalták e már, hogy ha egy közszolgá-- ha egy kereskedelmi|vago
+long/speaker1_0029_valamelyik_alkalmazott_kifejti_a_vélemén.wav|valamelyik alkalmazott kifejti a véleményét jobbra vagy balra, előre vagy hátra, akkor a fe-- legalább a nézők felét|vago
+medium/speaker1_0030_elveszíti_Tehát_a_kereskedelmi_televízi.wav|elveszíti. Tehát a kereskedelmi televízió saját|vago
+medium/speaker1_0031_üzleti_érdekéből_nem_szerette_hogyha_po.wav|üzleti érdekéből nem szerette, hogyha politizálnak az alkalmazottai. Én ennek|vago
+medium/speaker1_0032_ellenére_1990-től_1990-től_minden_kampá.wav|ellenére 1990-től, 1990-től minden kampányban részt vettem.|vago
+medium/speaker1_0033_Azzal_a_feltétellel_hogy_országos_médiá.wav|Azzal a feltétellel, hogy országos médiába ez nem kerülhet. Tehát se az éppen aktuális|vago
+medium/speaker1_0034_hazai_televíziócsatorna_se_az_országos_.wav|hazai televíziócsatorna, se az országos médium nem adhatott hírt arról, hogy én|vago
+medium/speaker1_0035_bármelyik_párt_mellett_kampányoltam_voln.wav|bármelyik párt mellett kampányoltam volna. Úgyhogy ez történt. Minden|vago
+long/speaker1_0036_kampányt_végigcsináltam_de_politikai_mű.wav|kampányt végigcsináltam, de politikai műsorban soha nem vettem részt. Tehát akkor, amikor engem azzal|vago
+long/speaker1_0037_próbálnak_ostorozni_hogy_nahát_feltűni.wav|próbálnak ostorozni, hogy nahát, feltűnik a Vágó a DK tévében, hogy lesz, hogy eddig azt játszotta, hogy ő pártatlan. Nem|vago
+medium/speaker1_0038_játszottam_Hanem_ez_volt_az_előírás_ho.wav|játszottam. Hanem ez volt az előírás, hogy én nem politizálhatok. Most viszont|vago
+long/speaker1_0039_politizálhatok_Tehát_röviden_ennyi_hog.wav|politizálhatok. Tehát röviden ennyi, hogy a vége felé már olyan szerződést kötöttem a munkaadóimmal, hogy|vago
+long/speaker1_0040_engem_engedni_fognak_kampányolni_engedn.wav|engem engedni fognak kampányolni, engedni fognak más területen öhm véleményt|vago
+long/speaker1_0041_alkotni_Jó_Adásban_sohaIgen_ezt_a_sz.wav|alkotni. Jó? Adásban soha!Igen, ezt a szerződést mindenki aláírta, úgyhogy én ki is használtam az|vago
+long/speaker1_0042_alkalmat_És_volt_egy_Playboy_interjú_.wav|alkalmat. És volt egy Playboy interjú, [nevet] ahol én elmondtam, hogy miről mit gondolok. És akkor vége lett az én|vago
+medium/speaker1_0043_státuszomnak_ami_a_legnépszerűbb_Nem_t.wav|státuszomnak, ami a legnépszerűbb. Nem televíziós, hanem legnépszerűbb közéleti szereplő|vago
+long/speaker1_0044_voltam_Tudtam_hogy_ennek_vége_lesz_és.wav|voltam. Tudtam, hogy ennek vége lesz, és vállaltam, mert úgy gondoltam, hogy ha nem|vago
+long/speaker1_0045_tudom_elmondani_mert-mert_néha_hallok_h.wav|tudom elmondani, mert-mert néha hallok híreket, néha hallok intézkedéseket is, és felforr bennem minden. Ha nem tudom|vago
+medium/speaker1_0046_kiadni_magamból_akkor_az_megfekszí_a_gy.wav|kiadni magamból, akkor az megfekszí a gyomromat, és az az egészségre káros.|vago
+medium/speaker1_0047_Igen_Szóval_a_lelkemnek_biztos_hogy_jó.wav|Igen. Szóval a lelkemnek biztos, hogy jót tett, minden egyébnek kevésbé.|vago
+long/speaker1_0048_De_mi_a_fontos_A_minden_egyéb_vagy_a_va.wav|De mi a fontos? A minden egyéb vagy a vagy a lelki béke? Én lelki békében vagyok, és hát húzom a hátrányait annak, hogy ennek ez az ára.|vago
+medium/speaker1_0049_Nem_merem_leírni_a_Facebookon_én_elég_i.wav|Nem merem leírni a Facebookon, én elég intenzív életet élek a Facebookon.|vago
+short/speaker1_0050_Nem_merem_leírni_azt_a_mondatot_amit_mo.wav|Nem merem leírni azt a mondatot, amit most el fogok mondani.|vago
+short/speaker1_0051_Veszek_egy_mély_levegőt.wav|Veszek egy mély levegőt.|vago
+medium/speaker1_0052_És_a_következőképpen_Én_nagyon_élvezem.wav|És a következőképpen. Én nagyon élvezem, amikor azok gyűlölködnek velem|vago
+long/speaker1_0053_szemben_akiket_én_magam_nem_szeretek_E.wav|szemben, akiket én magam nem szeretek. Ezt durvábban is ki tudnám fejezni. Tehát imádom, amikor gyűlölnek azok, akiket én|vago
+short/speaker1_0054_megvetek_Vannak_ilyenek.wav|megvetek. Vannak ilyenek.|vago
+medium/speaker1_0055_És_mivel_egy_nagyon_polarizált_társadalo.wav|És mivel egy nagyon polarizált társadalomban élünk, tehát középen állni nagyon nehéz.|vago
+short/speaker1_0056_Nagyon_nehéz_Ez_egy_olyan_ez_most_egy_.wav|Nagyon nehéz. Ez egy olyan, ez most egy olyan ország|vago
+medium/speaker1_0057_és_olyan_történelmi_szakasz_ahol_nagyon.wav|és olyan történelmi szakasz, ahol nagyon nehéz|vago
+medium/speaker1_0058_szívem_szerint_azt_mondanám_nem_lehet_k.wav|szívem szerint azt mondanám, nem lehet középen állni. Tehát vagy demokrácia, vagy illiberalizmus.|vago
+long/speaker1_0059_mezsgye_És_én_azt_hiszem_hogy_ha_én_ez.wav|mezsgye. És én azt hiszem, hogy ha én ezt elmondhatom, ha arról az oldalról engem olyan intenzíven, intenzíven támadnak, ahogy én ezt tapasztalom.|vago
+short/speaker1_0060_Hát_mondjuk_a_nácikat_nem_szeretem.wav|Hát mondjuk a nácikat nem szeretem.|vago
+medium/speaker1_0061_Nem_csak_a_nácik_támadnak_Elsősorban_rá.wav|Nem csak a nácik támadnak. Elsősorban rájuk gondolok, amikor ezt írom.|vago
+medium/speaker1_0062_Barát_nem_Nagyon_büszke_vagyok_rá_hogy.wav|Barát nem. Nagyon büszke vagyok rá, hogy barát, minden barátom megmaradt.|vago
+medium/speaker1_0063_Egy_kettő_talán_más_okokból_vagy_más_o.wav|Egy, kettő, talán más okokból vagy más okokból is. [köhög] Egy kicsit|vago
+short/speaker1_0064_ritkábban_látjuk_egymást_Igen_ilyen_va.wav|ritkábban látjuk egymást. Igen, ilyen van.|vago
+long/speaker1_0065_Az_hogy_hogy_hogy_sokkal_többen_vannak.wav|Az, hogy, hogy hogy sokkal többen vannak, akik engem nem szeretnek. Akkor is voltak, akik nem szerettek, amikor,|vago
+long/speaker1_0066_ennek_a_pályának_a_közkedvelt_figurája_v.wav|ennek a pályának a közkedvelt figurája voltam. Ők most megszaporodtak, ez kétségtelen. De erről az előbb elmondtam a|vago
+short/speaker1_0067_véleményemet_hogy_nem_bánom.wav|véleményemet, hogy nem bánom.|vago
+long/speaker1_0068_Valószínűleg_igen_Valószínű_Ugye_beszé.wav|Valószínűleg igen. Valószínű. Ugye beszéltünk már arról, hogy én mélységesen igazságtalannak tartom|vago
+long/speaker1_0069_azt_a_beállítást_amit_2006-ban_kezdett_.wav|azt a beállítást, amit 2006-ban kezdett a Fidesz, és gyakorlatilag elterjedt nemcsak a fideszesek körében, hanem még az|vago
+medium/speaker1_0070_ellenzék_körében_is_köhög_Ez_az_úgyne.wav|ellenzék körében is. [köhög] Ez az úgynevezett Gyurcsány-fóbia. Én ezt|vago
+long/speaker1_0071_indokolatlannak_tartottam_sőt_én_a_Gyu.wav|indokolatlannak tartottam, sőt, én a Gyurcsányban látok egy csomó olyan liberális vonást is, ami az én számomra nagyon fontos.|vago
+long/speaker1_0072_Alapvetően_természetesen_baloldali_de_e.wav|Alapvetően természetesen baloldali, de ez a baloldali liberális, ez nekem, ez nekem nagyon smakkol. A többi pártról ezt nem|vago
+short/speaker1_0073_tudtam_volna_elmondani.wav|tudtam volna elmondani.|vago
+long/speaker1_0074_nevet_Szóval_az_történt_hogy_2010-ben.wav|[nevet] Szóval az történt, hogy 2010-ben, ugye akkor már nyilvánvaló volt, hogy én hogyan gondolkodom. [ő]|vago
+medium/speaker1_0075_Májusban_jött_az_Orbán-kormány_november.wav|Májusban jött az Orbán-kormány, novemberben már ki is rúgtak a TV2-től.|vago
+long/speaker1_0076_Nem_nagyon_tudtam_hova_tenni_de_különbö.wav|Nem nagyon tudtam hova tenni, de különböző sejtéseim voltak. Azt gondoltam, hogy ennek politikai okai|vago
+medium/speaker1_0077_És_én_ennek_hangot_is_adtal_aminek_köve.wav|És én ennek hangot is adtal, aminek következménye a TV2 engem beperelt,|vago
+long/speaker1_0078_hogy_én_miért_hozom_őket_Miért_keltem_a.wav|hogy én miért hozom őket. Miért keltem azt a látszatot, hogy ők a jobboldalra, Fidesz holttudvarába kerültek? Ezt ma már|vago
+long/speaker1_0079_nem_kérnék_ki_magam--_maguknak_gondolom.wav|nem kérnék ki magam-- maguknak, gondolom. A dolognak az a lényege, hogy természetesen elvesztettem azt a bevételt, ami ezzel együtt járt.|vago
+long/speaker1_0080_fél_perc_lesz_Az_elején_még_a_műsorszer.wav|fél perc lesz. Az elején még a műsorszervezők, akik különböző helyszíneken vetélkedőket vagy, vagy, mit|vago
+long/speaker1_0081_tudom_én_önkormányzati_ünnepségeket_szer.wav|tudom én önkormányzati ünnepségeket szerveztek. Kérdezték, hogy én ráérek-e, vállalnám-e. Mondtam, nincs munkám.|vago
+long/speaker1_0082_Boldogan_Így_könnyű_Na_most_az_egyik_l.wav|Boldogan. Így könnyű. Na most az egyik legnagyobb magyar céggel meg is állapodtunk egészen addig, de-de nem|vago
+medium/speaker1_0083_aláírásig_amíg_jött_egy_email_és_az.wav|aláírásig, amíg jött egy email, és az,|vago
+medium/speaker1_0084_az_állt_benne_hogy_a_megrendelő_köszönj.wav|az állt benne, hogy a megrendelő köszönjük Vágó úr az|vago
+long/speaker1_0085_együttműködési_hajlandóságát_de_a_a_a.wav|együttműködési hajlandóságát, de a, a, a cég vezetői mással képzelik el|vago
+long/speaker1_0086_ennek_a_műsornak_a_lebonyolítását_Ilyen.wav|ennek a műsornak a lebonyolítását. Ilyen jött csőstül egymás után, amíg a szervezők is tudomásul nem vették, hogy a|vago
+long/speaker1_0087_Vágóval_nem_lehet_műsort_csinálni_mert_.wav|Vágóval nem lehet műsort csinálni, mert nem fogadja be őket vagy a, az az önkormányzat, vagy az a társaság, vagy az a|vago
+short/speaker1_0088_fontos_fontos_szerződési.wav|fontos, fontos szerződési|vago
+long/speaker1_0089_öhm_függésben_van_a_kormánytól_Egyszerű.wav|öhm függésben van a kormánytól. Egyszerűen nem mertek hozzá. Letiltottak egy reklámról. Azt mondta az egyik legnagyobb bank|vago
+long/speaker1_0090__kollégáimnak_hogy_vagy_leveszik_a_V.wav|... kollégáimnak, hogy vagy leveszik a Vágót a reklámból, vagy megszüntetik velük a kapcsolatot.|vago
+medium/speaker1_0091_Az_hogy_ilyen_mértékig_az_meglepett_A.wav|Az, hogy ilyen mértékig, az meglepett. Az, hogy ilyen gyávák legyenek|vago
+medium/speaker1_0092_cégek_Hogy_hogy_amíg_amíg_velem_nem_v.wav|cégek. Hogy, hogy amíg, amíg velem nem volt különösebben látható|vago
+long/speaker1_0093_baj_addig_boldogan_működtek_velem_együt.wav|baj, addig boldogan működtek velem együtt. Aztán egy varázsütésre mindenki, magyarán minden bevételemtől|vago
+long/speaker1_0094_megszabadultam_de_nem_estem_pánikba_Te.wav|megszabadultam, de nem estem pánikba. Tehát ha már említi ezt a Blikk cikket, ugye a Blikk, annak a címe az volt, hogy|vago
+medium/speaker1_0095_Vágó_az_utolsó_tartalékait_éli_fel.wav|Vágó az utolsó tartalékait éli fel.|vago
+long/speaker1_0096_Ez_az_Na_mostan_én_oly_mértékben_fel-bo.wav|Ez az! Na mostan én oly mértékben fel-bosszantottam magam, mert nem azt mondtam, hogy az utolsó tartalékaimat élem|vago
+long/speaker1_0097_fel_A_cikk_testében_a_korpuszban_már_.wav|fel. A cikk testében, a korpuszban már, már úgy van, ahogy én mondtam. Hanem azt mondtam, hogy a tartalékaimból élek. Semmi|vago
+short/speaker1_0098_baj_nincsen_Nincs_arról_szó_hogy_én_el.wav|baj nincsen. Nincs arról szó, hogy én előbb utóbb éhen halok.|vago
+long/speaker1_0099_Úgy_van_De_érdekes_története_van_ennek_.wav|Úgy van. De érdekes története van ennek a mondatnak. Ott volt nálam a Blikk újságírója,|vago
+long/speaker1_0100_és_kérdezi_hogy_hogy_élek_miből_élek_.wav|"és kérdezi, hogy hogy élek, miből élek. És ott volt a feleségem a konyhában, és kérdeztem tőle, hogy ""Mondd"|vago
+long/speaker1_0101_kedves_feleségem_más_néven_szólítottam.wav|"kedves feleségem,"" más néven szólítottam természetesen, ""Lesz e még nekünk reggelink a jövő hónapban is?"""|vago
+long/speaker1_0102_Azt_mondta_azt_mondta_a_felegna_áh_ne_.wav|"Azt mondta, azt mondta a felegna áh, ne véskedj már. És ez megütötte a fülét a kollégájának, és azt mondta, ""Azt mondja a"|vago
+long/speaker1_0103_Vágó_hogy_ennyire_nagy_a_baj_Nem_ezt_.wav|"Vágó, hogy ennyire nagy a baj."" Nem ezt mondtam. Vicceltem. Tudom, hogy lesz reggelink még a jövő hónapban, és még"|vago
+medium/speaker1_0104_mindig_van_annyi_Én_jól_keres--_én_nagy.wav|mindig van annyi. Én jól keres-- én nagyon jól kerestem 2010 előtt.|vago
+short/speaker1_0105_Sokat_tettem_félre_még_mindig_van_belől.wav|Sokat tettem félre, még mindig van belőle.|vago
+long/speaker1_0106_Jól_vagyok_nincsen_pánik_de_az_kétségt.wav|Jól vagyok, nincsen pánik, de az kétségtelen, hogy sokkal kevesebb a bevétel. Sokkal. Mondjam, hogy mennyivel?|vago
+short/speaker1_0107_nevet_Sokkal.wav|[nevet] Sokkal.|vago
+long/speaker1_0108_Szóval_sokkal_kisebb_a_bevételem_Nem_én.wav|Szóval sokkal kisebb a bevételem. Nem én fogok, nem én bánkódom emiatt, hanem majd az örökösöm.|vago
+short/speaker1_0109_Ezzel_hamar_fogunk_tudni_végezni_ezzel_a.wav|Ezzel hamar fogunk tudni végezni ezzel a témá-- Ez ennél nagyobb baromság.|vago
+long/speaker1_0110_Ez_csacsiság_nevet_Nem_is--_én_nem_to.wav|Ez csacsiság. [nevet] Nem is-- én nem tom értelmezni, mi az az aranybödön. Ugye én önkormányzati képviselő vagyok, és|vago
+short/speaker1_0111_dolgozom_is_eleget_sokat.wav|dolgozom is eleget, sokat.|vago
+long/speaker1_0112_Felkészülünk_bizottsági_ülések_vannak_.wav|Felkészülünk, bizottsági ülések vannak, testületi ülések vannak, el kell ezeket olvasni. Én elég aktív vagyok a|vago
+short/speaker1_0113_bizottságokban_nagyon_sok_tanúm_van_err.wav|bizottságokban, nagyon sok tanúm van erre.|vago
+medium/speaker1_0114_Meg_ugye_megkapjuk_ezeket_a_jegyzőkönyve.wav|Meg ugye megkapjuk ezeket a jegyzőkönyveket is. Tehát én azért|vago
+long/speaker1_0115_megdolgozom_és_ezért_én_kapok_Kapok_.wav|megdolgozom, és ezért én kapok... Kapok kétszáz valahány ezer forintot,|vago
+medium/speaker1_0116_plusz_a_bizottsági_helyek--_bizotságokba.wav|plusz a bizottsági helyek-- bizotságokban öhm eltöltött,|vago
+short/speaker1_0117_kifejtett_munkáért_Ez_sok.wav|kifejtett munkáért. Ez sok?|vago
+short/speaker1_0119_Na_az_a_minimálbér_Az_sok.wav|Na az a minimálbér. Az sok?|vago
+long/speaker1_0120_Igen_de_én_csak_egy_minimálbért_kapok_a.wav|Igen, de én csak egy minimálbért kapok a felügyelőbizottságban, tehát magyarán van bevétel. És még erre jön a kétszázezer forintos nyugdíjam.|vago
+short/speaker1_0121_Na_most_ennek_körülbelül_a_felét_elviszi.wav|Na most ennek körülbelül a felét elviszi a fűtési számla.|vago
+long/speaker1_0122_Jó_nem_fogok_panaszkodni_de_ez_az_agy-.wav|Jó, nem fogok panaszkodni, de ez az agy-- ez az aranybödön, ez valami egészen elképesztő kép. A nagy pénzek nem abban|vago
+medium/speaker1_0123_vannak_Mondjam_hogy_miben_vannak.wav|vannak. Mondjam, hogy miben vannak?|vago
+short/speaker1_0124_Interneten_kapcsoltak_mert_éppen_fertőz.wav|Interneten kapcsoltak, mert éppen fertőző voltam.|vago
+medium/speaker1_0125_Hát_öhm_valószínűleg_igen_Tehát_úgy.wav|Hát öhm, valószínűleg igen. Tehát úgy,|vago
+medium/speaker1_0126_még_nem_próbáltam_ki_magam_ebben_a_szere.wav|még nem próbáltam ki magam ebben a szerepben. Tehát lehet, hogy ha|vago
+medium/speaker1_0127_az_lesz_a_megítélés_hogy_ez_borzalmasan.wav|az lesz a megítélés, hogy ez borzalmasan sikerült, akkor azt mondják jöjjön valaki más.|vago
+short/speaker1_0128_Én_is_remélem_hogy_menni_fog_de.wav|Én is remélem, hogy menni fog, de|vago
+medium/speaker1_0129_azért_egy_mondatot_el_kellene_erről_mond.wav|azért egy mondatot el kellene erről mondani, hiszen elég nagy feltűnést keltett ez az első adás.|vago
+medium/speaker1_0130_azt_kéri_rajta_számon_hogy_nem_olyan_m.wav|azt kéri rajta számon, hogy nem olyan, mint a közszolgálat, mint a közszolgálati|vago
+long/speaker1_0131_médium_mint_a_mint_az_MTVA_adásai_az_.wav|médium, mint a, mint az MTVA adásai, az azt hiszem, hogy téved. Ugye a közszolgálatnak az lenne a dolga|vago
+long/speaker1_0132_törvény_szerint_mert_így_szól_a_törvény.wav|törvény szerint, mert így szól a törvény, hogy sokszínű és pártatlan legyen. Sok mindent lehet elmondani az MTVA|vago
+medium/speaker1_0133_műsorairól_Talán_nem_elég_sokszínű_és_n.wav|műsorairól. Talán nem elég sokszínű és nem elég pártatlan. Ugye ennyit mondhatok.|vago
+long/speaker1_0134_Ez_egy_párttelevízió_lesz_Tehát_mi_igye.wav|Ez egy párttelevízió lesz. Tehát mi igyekezni fogunk, én szerintem ez a cél. Elmondani a DK álláspontját bizonyos|vago
+short/speaker1_0135_dolgokról_Nem_leszünk_pártatlanok.wav|dolgokról. Nem leszünk pártatlanok.|vago
+long/speaker1_0136_Mi_nem_közszolgálatot_csinálunk_hanem_a.wav|Mi nem közszolgálatot csinálunk, hanem a DK álláspontját szeretnénk sokszínűen megvilágítani.|vago
+short/speaker1_0137_Jaj_Istenem_Jelzőt_kellene_választanom.wav|Jaj Istenem! Jelzőt kellene választanom. Szóval mi nem-|vago
+short/speaker1_0138_Az_semmi_más_mint_az_ellenfeleik_gyaláz.wav|Az semmi más, mint az ellenfeleik gyalázása.|vago
+long/speaker1_0139_Mi_se_fogunk_kesztyűs_kézzel_bánni_a_hat.wav|Mi se fogunk kesztyűs kézzel bánni a hatalommal. Na de mégiscsak egy kétharmados hatalom áll velünk szemben. És|vago
+medium/speaker1_0140_az_vicces_hogy_a_közszolgálat.wav|az vicces, hogy a közszolgálat|vago
+long/speaker1_0141_évi_százharminc_milliárd_forintból_lega.wav|évi százharminc milliárd forintból, legalábbis nekem úgy jön le, a legfontosabb szerepének azt tartja,|vago
+short/speaker1_0142_hogy_az_egyharmados_ellenzéket_bombázza_.wav|hogy az egyharmados ellenzéket bombázza minden erőből.|vago
+short/speaker1_0143_Tehát_ugyanazokat_a_képsorokat_ugyanazo.wav|Tehát ugyanazokat a képsorokat, ugyanazokat a híreket-|vago
+medium/speaker1_0144_De_én_szívesen_csináltam_volna_Csak_e.wav|De, én szívesen csináltam volna. Csak, ezt is mondtam, nem engedték a főnökeim. Se a közszolgálatban, se a kereskedelmi-|vago
+medium/speaker1_0145_De_de_egyet_is_értek_vele_Egyet_is_ért.wav|De, de egyet is értek vele. Egyet is értek vele, és én ennek meg is feleltem.|vago
+long/speaker1_0146_Abszolút_egyetértek_de_hála_Istennek_eg.wav|Abszolút egyetértek, de hála Istennek egy párttelevízióban szerepelhetek, ahol már ilyen gátlások nincsenek.|vago
+medium/speaker1_0147_Ne_várja_el_senki_hogy_a_közszolgálatot.wav|Ne várja el senki, hogy a közszolgálatot fogjuk szolgálni. Ez nem egy közszolgálati|vago
+medium/speaker1_0148_tévé_ez_a_DK-nak_az_álláspontja_Hol_vi.wav|tévé, ez a DK-nak az álláspontja. Hol vicces formában, hol komoly formában, hol|vago
+medium/speaker1_0149_meditatív_formában_köhög_És_mindig_le.wav|meditatív formában. [köhög] És mindig lesz egy vendég, úgy tudom, aki nem|vago
+short/speaker1_0150_DK-s_de_velünk_szemben_nem_ellenséges.wav|DK-s, de velünk szemben nem ellenséges.|vago
+short/speaker1_0151_Mivel_hetvenhárom_éves_vagyok_ezért_egy.wav|Mivel hetvenhárom éves vagyok, ezért egy kicsit|vago
+long/speaker1_0152_rossz_az_emlékezőképességem_Lehet_hogy.wav|rossz az emlékezőképességem. Lehet, hogy említettem már, hogy nagyon hamar felkapom a vizet. Még mindig. Na most, hogyha|vago
+long/speaker1_0153_látok_egy_olyat_amiről_tudom_hogy_hazu.wav|látok egy olyat, amiről tudom, hogy hazugság, amiről tudom, hogy hogy hogy sunyiság.|vago
+long/speaker1_0154_Én_arra_én_arra_Én_akkor_kiadom_magamb.wav|Én arra, én arra. Én akkor kiadom magamból. Tehát itt soha nem a személy az, aki engem zavar, hanem az, amit alaptalanul mond.|vago
+short/speaker1_0155_Ha_tutass--_egy_konkrétumot_felhozni_tu.wav|Ha tutass-- egy konkrétumot felhozni, tudnánk róla beszélni.|vago
+short/speaker1_0156_És_én_erre_reagáltam_valamit.wav|És én erre reagáltam valamit?|vago
+short/speaker1_0157_De_erről_leszóltunk_egymás_Puzsér_Róbert.wav|De erről leszóltunk egymás Puzsér Róberttel.|vago
+medium/speaker1_0158_Ugye_neki_köszönhetem_Igen_Ezt_a_Blikk.wav|Ugye neki köszönhetem? Igen. Ezt a Blikk hozta?|vago
+short/speaker1_0159_Puzsérnak_köszönheti_a_magyar.wav|Puzsérnak köszönheti a magyar|vago
+medium/speaker1_0160_engem_bíráló_közélet_azt_a_fantasztikus_.wav|engem bíráló közélet azt a fantasztikus találmányt, hogy én vagyok|vago
+long/speaker1_0161_a-Az_elmúlt_évtizedek_legnagyobb_médiaha.wav|a-Az elmúlt évtizedek legnagyobb médiahazugsága. Merthogy én ugye, mint egy tökkel ütött,|vago
+long/speaker1_0162_kultúrálatlan_barom_nem_tudtam_volna_vá.wav|kultúrálatlan barom, nem tudtam volna válaszolni egyel-e kérdésre se. Fel volt írva a monitoromra a válasz, és hogy nincs|vago
+long/speaker1_0163_felírva_a_monitoromra_a_válasz_akkor_én.wav|felírva a monitoromra a válasz, akkor én ott meghaltam volna. Mondok egy nagyon érdekeset. A vetélkedő az egy olyan műfaj,|vago
+medium/speaker1_0164_hogy_általában_a_műsorvezető_mindig_tudj.wav|hogy általában a műsorvezető mindig tudja a választ. Hát persze.|vago
+long/speaker1_0165_Van_egy_kivétel_a_Legyen_Ön_is_milliomos.wav|Van egy kivétel a Legyen Ön is milliomos!, ahol ezt megtiltották. Az a volt a koncepció, hogy a műsorvezető se tudja, és ezt ellenőrizték|vago
+short/speaker1_0166_a_licencadók_ott_voltak_a_felvételen.wav|a licencadók, ott voltak a felvételen.|vago
+long/speaker1_0167_Mondok_egy_érdekeset_ezt_nem_tudom_hog.wav|Mondok egy érdekeset, ezt nem tudom, hogy tudja-e, hogy be voltunk biztosítva a nagy nyeremények esetére.|vago
+long/speaker1_0168_Tehát_a_biztosító_jót_állt_bizonyítva_.wav|Tehát a biztosító jót állt, bizonyítva, nem tudom a részleteket. Ha valaki elviszi a negyven milliót, akkor a biztosító|vago
+long/speaker1_0169_ennek_nyelvhasogatás_egy_részét_összef.wav|ennek [nyelvhasogatás] egy részét összefedezte. Ott ült a biztosító ember is, hogy nehogy én össze tudjak játszani a játékos-|vago
+long/speaker1_0170_Így_van_De_ott_ott_ült_és_nézte_Fegyv.wav|Így van. De ott, ott ült és nézte. Fegyveres őrök vigyázták, még egyszer mondom, fegyveres őrök vigyázták a|vago
+medium/speaker1_0171_számítógép_termet_ahova_be_volt_táplálv.wav|számítógép termet, ahova be volt táplálva mit tudom én harminc vagy ötven ezer kérdés.|vago
+medium/speaker1_0172_Gombnyomásra_kijött_tizenöt_kérdés_és_a.wav|Gombnyomásra kijött tizenöt kérdés, és az került a mindkettő monitorjára. De ha én|vago
+long/speaker1_0173_tudtam_volna_a_választ_ha_én_indokolatl.wav|tudtam volna a választ, ha én indokolatlanul vagy váratlanul tudtam volna a választ, és akkor én tudtam volna|vago
+long/speaker1_0174_segíteni_a_játékosnak_Ezt_akarták_ők_me.wav|segíteni a játékosnak. Ezt akarták ők megelőzni, mert nagyon sok pénz forgott kockán. Hát igen, néha tudtam a választ,|vago
+short/speaker1_0175_néha_meg_azt_hittem_hogy_az_a_válasz_és.wav|néha meg azt hittem, hogy az a válasz és nem az volt.|vago
+short/speaker1_0176_Fegyveres_őrök_vigyáztak_erre.wav|Fegyveres őrök vigyáztak erre.|vago
+long/speaker1_0177_De_hát_néha_azért_tudtam_nevet_néha_t.wav|De hát néha azért tudtam, [nevet] néha tudtam a választ. Na mindegy, ennek az imént említett Puzsér úrnak köszönhetően, ez szétspriccelt az|vago
+short/speaker1_0178_engem_bírálók_közösségében_és_rendszeres.wav|engem bírálók közösségében és rendszeresen megkapom.|vago
+long/speaker1_0179_Én_is_szeretném_ha_tudná_hogy_én_most_.wav|Én is szeretném, ha tudná, hogy én most azért mondok komplett mondatokat, mert fel van írva a monitoromra, és azt is Gyurcsány írta.|vago
+short/speaker1_0180_Hatékony_volt_az_agymosás_szoktuk_erre_.wav|Hatékony volt az agymosás, szoktuk erre mi mondani.|vago
+long/speaker1_0181_Hát_ami_most_áprilisban_történt_abban_a.wav|Hát ami most áprilisban történt, abban a legkevesebb, hiszen maga Márki-Zay Péter tiltotta őt el az intenzív jelenléttől.|vago
+long/speaker1_0182_Az_intenzív_jelenléttől_Tehát_Márki-Zay.wav|Az intenzív jelenléttől. Tehát Márki-Zay például Gyurcsánnyal, ha jól tudom, soha nem kampányolt együtt. Erre ő nagyon|vago
+long/speaker1_0183_vigyázott_köhög_Április_harmadikának_.wav|vigyázott. [köhög] Április harmadikának az elemzését is hagyjuk meg az okosabbaknak, de azért egy, egy|vago
+long/speaker1_0184_mondatot_szeretnék_mondani_amivel_vádol.wav|mondatot szeretnék mondani, amivel vádolják Gyurcsány Ferencet, ma, aminek következtében ő most nagyon|vago
+medium/speaker1_0185_népszerűtlen_Ennek_a_többszörösét_követ.wav|népszerűtlen. Ennek a többszörösét követte már el Orbán Viktor|vago
+short/speaker1_0186_ennek_a_kudarcnak_az_okát_mint_sokan_má.wav|ennek a kudarcnak az okát, mint sokan mások.|vago
+long/speaker1_0187_előzetes_felmérések_alapján_a_mi_jelöltü.wav|előzetes felmérések alapján a mi jelöltünk nyert volna, neki volt többsége. Április harmadika előtt egy-két nappal,|vago
+short/speaker1_0188_kormánypártiak_telefonon_felhívták.wav|kormánypártiak telefonon felhívták|vago
+long/speaker1_0189_a_választókat_és_azt_mondták_hogy_ha_á.wav|a választókat, és azt mondták, hogy ha április harmadikán nyer a baloldal-- ugye az ennél sokkal komplikáltabb. Nyer a|vago
+medium/speaker1_0190_baloldal_akkor_az_ön_az_ön_két_unokájá.wav|baloldal, akkor az ön, az ön két unokáját, azt is tudták, hogy két unokája|vago
+medium/speaker1_0191_van_Behívják_katonának_és_elküldik_Ukra.wav|van. Behívják katonának és elküldik Ukrajnába.|vago
+long/speaker1_0192_Ezt_én_onnan_tudom_hogy_maga_a_nagypapa.wav|Ezt én onnan tudom, hogy maga a nagypapa mondta el, és, és azzal szabódott a mi jelöltünkkel szemben, hogy ne|vago
+medium/speaker1_0193_haragudjon_nem_magára_fogok_szavazni_A.wav|haragudjon, nem magára fogok szavazni. Addig mindent csinált, aktivista volt|vago
+medium/speaker1_0194_a_mi_jelöltünk_mellett_Ne_haragudjon_n.wav|a mi jelöltünk mellett. Ne haragudjon, nem magára fogok szavazni, mert|vago
+medium/speaker1_0195_maguk_az_én_két_unokámat_behívják_katon.wav|maguk, az én két unokámat behívják katonának|vago
+short/speaker1_0196_és_elküldik_Ukrajnába.wav|és elküldik Ukrajnába.|vago
+short/speaker1_0197_Ezt_az_aljasságot_nem_lenne_szabad_hagyn.wav|Ezt az aljasságot nem lenne szabad hagyni. Tehát magyarán|vago
+long/speaker1_0198_nem_Gyurcsány_miatt_nem_nem_ide_szavaz.wav|nem Gyurcsány miatt, nem, nem ide szavazott, hanem a telefon miatt, amit meg onnan kapott.|vago
+medium/speaker1_0199_És_hát_egyre_többet_fogok_azt_hiszem_m.wav|És hát egyre többet fogok, azt hiszem, mert már öt éves a gyermek.|vago
+medium/speaker1_0200_És_hihetetlenül_hihetetlenül_élvezem_a.wav|És hihetetlenül, hihetetlenül élvezem, ahogy bomlik ki az a, bomlik ki|vago
+long/speaker1_0201_a-a-a_az_agya_az_agyműködése_a_világlá.wav|a-a-a az agya, az agyműködése, a világlátása és így tovább. Tehát amikor elindul a miért korszak, akkor átveszem a|vago
+long/speaker1_0202_gyereket_hogy_miért_ég_miért_ég_a_lámp.wav|gyereket, hogy miért ég, miért ég a lámpa, alig várom, hogy ilyeneket kérdezzen. Hogy miért, miért folyik a víz. Hát|vago
+medium/speaker1_0203_ilyeneket_kérdeznek_már_És_én_ezt_el_fo.wav|ilyeneket kérdeznek már. És én ezt el fogom neki magyarázni, amíg elegem nem lesz.|vago
+medium/speaker1_0204_Én_ezt_kérdeztem_tőle_de_ő-ő_elzárkózot.wav|Én ezt kérdeztem tőle, de ő-ő elzárkózott. Nézd, az-az ő egész|vago
+medium/speaker1_0205_baráti_köre_nyilvánvalóan_egy_baráti_kör.wav|baráti köre nyilvánvalóan egy baráti kör, tehát onnan ezt ő nem kapja meg.|vago
+long/speaker1_0206_Tehát_azt_hiszem_hogy_ő_ebből_a_szempon.wav|Tehát azt hiszem, hogy ő ebből a szempont, és hát mióta Magyarország, mióta van Magyarországon. Szerintem a|vago
+short/speaker1_0207_Tehát_ő_már_magyarnak_számít.wav|Tehát ő már magyarnak számít.|vago
+long/speaker1_0208_Én_nagyon_remélem_hogy_csak_attól_mert.wav|Én nagyon remélem, hogy csak attól, mert ő orosz származású, vagy orosz. Ettől azért az ő személyisége nem változik meg. Én|vago
+long/speaker1_0209_tudom_hogy_van_ez_az_Van_ez_a_jelenség.wav|tudom, hogy van ez az. Van ez a jelenség, amit említsz. És ez világméretekben nagy vita tárgya.|vago
+short/speaker1_0210_Amikor_orosz_művészeket_tiltanak_le.wav|Amikor orosz művészeket tiltanak le|vago
+short/speaker1_0211_De_az_esetek_többségében.wav|De az esetek többségében,|vago
+long/speaker1_0212_legalábbis_amikről_én_tudok_lehet_hogy.wav|legalábbis amikről én tudok, lehet, hogy ezt nem, nem átfogóan látom. Ezek az orosz művészek ki is álltak Putyin mellett. És|vago
+long/speaker1_0213_odáig_én_is_eljutottam_hogy_Putyin_mell.wav|odáig én is eljutottam, hogy Putyin mellett nem illik kiállni. Mert azt gondolom, hogy ennek az egész konfliktusnak van egy olyan egyszerű|vago
+long/speaker1_0214_megoldási_módja_Menjenek_ki_az_oroszok_.wav|megoldási módja. Menjenek ki az oroszok Ukrajnából és passz. Ennyi az egész. Aki ezt nem|vago
+short/speaker1_0215_várja_el_Putyintól_hogy_hagyja_abba.wav|várja el Putyintól, hogy hagyja abba,|vago
+long/speaker1_0216_Hát_azzal_azzal_vannak_konfliktusok_Ne.wav|Hát azzal, azzal vannak konfliktusok. Nekem is ez kétségtelen. De csak attól, hogy hogy hogy orosz és ezért ne lépjen fel, ez nem jó.|vago
+long/speaker1_0217_Azt_hiszem_a_tolerancia_Az_elfogadás_E.wav|Azt hiszem a tolerancia. Az elfogadás. Ez egy liberális érték, és én szerintem ez a házasságban is kell, hogy érvényesüljön.|vago
+short/speaker1_0218_Természetesen_mindig_vannak_problémák_v.wav|Természetesen mindig vannak problémák, vannak viták,|vago
+short/speaker1_0219_utána_meg_ki_kell_békülni_és_akkor_még_j.wav|utána meg ki kell békülni és akkor még jobb lesz.|vago
+medium/speaker1_0220_Erről_talán_ő_többet_tudna_mondani_Szer.wav|Erről talán ő többet tudna mondani. Szerintem igen. Szerintem igen. Én nem vagyok egy könnyű pali,|vago
+medium/speaker1_0221_nem_És_nem_tudom_hogy_mondtam_e_már_h.wav|nem. És nem tudom, hogy mondtam e már, hirtelen haragú is vagyok.|vago
+long/speaker1_0222_Én_a_politikát_élvezem_Ez_egy_egészen_k.wav|Én a politikát élvezem. Ez egy egészen különös műfaj.|vago
+long/speaker1_0223_sóhaj_Ha_nem_tehetném_akkor_akkor_me.wav|[sóhaj] Ha nem tehetném, akkor, akkor megfeküdné a gyomromat. Úgy érzem, hogy tenni kell. Ez így nem-- ha valaki úgy|vago
+long/speaker1_0224_érzi_én_így_érzem_hogy_ez_így_nem_mehe.wav|érzi, én így érzem, hogy ez így nem mehet tovább. Hát megyünk a szakadék felé. Hát mi lesz itt generációkra?|vago
+long/speaker1_0225_vesztesei_annak_ami_a_lelkekben_történi.wav|vesztesei annak, ami a lelkekben történik. Hogy így, hogy így beszélünk egymásról, ahogy Puzsér például rólam. Én róla soha, soha nem beszéltem így.|vago
+medium/speaker1_0226_Nem_tud_békés_lenni_ha_úgy_érzem_hogy_.wav|Nem tud békés lenni, ha úgy érzem, hogy tenni kell ez ellen.|vago
+short/speaker1_0227_Egyébként_azt_hiszem_hogy.wav|Egyébként azt hiszem, hogy|vago
+short/speaker1_0228_nyílt_ajtókkal_dönget_Így_kell_mondani.wav|nyílt ajtókkal dönget. Így kell mondani?|vago
+short/speaker1_0229_Előbb_utóbb_abba_fogom_menni.wav|Előbb utóbb abba fogom menni.|vago
+long/speaker1_0230_nevet_Ez_jó_De_hát_előbb_utóbb_én_nem.wav|[nevet] Ez jó! De hát előbb utóbb én nem-- én is látom, hogy a-a hogy mondjam a-- az intenzív jelenlét,|vago
+medium/speaker1_0231_az_nyilván_előbb_utóbb_megszűnik_úgyhog.wav|az nyilván előbb utóbb megszűnik, úgyhogy maradok én az|vago
+long/speaker1_0232_otthoni_számítógép_mellett_és_a_Facebook.wav|otthoni számítógép mellett és a Facebookról nem fogok lekopni. Amíg lehet tiltanak. Ott legalább elmondom.|vago
