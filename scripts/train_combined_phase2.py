@@ -13,7 +13,7 @@ from TTS.tts.layers.xtts.trainer.gpt_trainer import GPTArgs, GPTTrainer, GPTTrai
 
 # Configuration
 OUTPUT_PATH = "run/training_combined_phase2"
-DATASET_PATH = "dataset_combined"  # Combined Milliomos + Blikk
+DATASET_PATH = "prepared_sources"  # Combined Milliomos + Blikk
 RESUME_CHECKPOINT = "run/training_combined_phase2/XTTS_Combined_Phase2-October-04-2025_01+28PM-fb239cd/checkpoint_1900.pth"
 
 # Training parameters - PHASE 2 (more aggressive)

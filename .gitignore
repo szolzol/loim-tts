@@ -50,6 +50,7 @@ tensorboard/
 # Large audio source files (>100MB)
 new_source/*.wav
 source_clips/*.wav
+source_audio/**/*.wav
 
 
 # Dataset
@@ -67,6 +68,10 @@ dataset/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Backup (obsolete scripts and old files moved here)
+backup_obsolete/
+backup*/
 
 # Temporary
 temp/

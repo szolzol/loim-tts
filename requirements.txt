@@ -1,22 +1,28 @@
 # Core TTS requirements
 TTS==0.22.0
 
-# PyTorch - Windows CUDA 11.8 (RTX 4070)
---extra-index-url https://download.pytorch.org/whl/cu118
-torch==2.1.0+cu118
-torchaudio==2.1.0+cu118
-torchvision==0.16.0+cu118
+# PyTorch - CRITICAL: RTX 5070 Ti (Blackwell sm_120) requires PyTorch 2.7.0+ with CUDA 12.8+
+# For RTX 5070 Ti and newer Blackwell GPUs, use nightly build:
+--extra-index-url https://download.pytorch.org/whl/nightly/cu128
+torch>=2.10.0.dev20251006+cu128
+torchaudio>=2.8.0.dev20251007+cu128
+
+# For older GPUs (RTX 4070 and earlier), use stable CUDA 11.8:
+# --extra-index-url https://download.pytorch.org/whl/cu118
+# torch==2.1.0+cu118
+# torchaudio==2.1.0+cu118
+# torchvision==0.16.0+cu118
 
 # Audio processing
 librosa==0.10.1
-soundfile==0.12.1
+soundfile==0.12.1  # CRITICAL: Used to bypass torchaudio/torchcodec issues
 audioread==3.0.1
 pydub==0.25.1
 noisereduce==3.0.0
 pyloudnorm==0.1.1
 
 # Data processing
-numpy==1.24.3
+numpy>=1.26.4  # Compatible with both torch 2.1.0 and 2.10.0
 pandas==2.0.3
 scipy==1.11.3
 
