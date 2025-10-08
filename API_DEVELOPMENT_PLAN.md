@@ -3,11 +3,13 @@
 ## ✅ JELENLEGI ÁLLAPOT
 
 ### Multi-Reference Inference: **MŰKÖDIK** ✅
+
 - **3 referencia audio** egyidejű használata (neutral, excitement, question)
 - Természetes hanglejtés kombinálás
 - CUDA akceleráció (RTX 5070 Ti)
 
 ### Batch Generálás: **MŰKÖDIK** ✅
+
 - JSON alapú input fájl rendszer
 - Egyszerű és szegmentált generálási módok
 - MP3/WAV kimenet
@@ -18,15 +20,18 @@
 ## 📦 Elkészült Komponensek
 
 ### 1. `input_samples.json` - Input Sablon
+
 ✅ Szerkeszthető JSON konfiguráció
 ✅ 5 példa sample:
-  - Nyitó üdvözlés
-  - Irodalmi kérdés
-  - Szegmentált kvíz kérdés (6 részből)
-  - Helyes válasz visszajelzés
-  - Helytelen válasz visszajelzés
+
+- Nyitó üdvözlés
+- Irodalmi kérdés
+- Szegmentált kvíz kérdés (6 részből)
+- Helyes válasz visszajelzés
+- Helytelen válasz visszajelzés
 
 ### 2. `batch_generate.py` - Batch Generátor
+
 ✅ JSON config betöltés
 ✅ Model kezelés (XTTS)
 ✅ Multi-reference speaker latents
@@ -36,6 +41,7 @@
 ✅ Részletes progress logolás
 
 ### 3. `BATCH_GENERATOR_README.md` - Dokumentáció
+
 ✅ Teljes használati útmutató
 ✅ JSON példák
 ✅ Paraméter leírások
@@ -50,7 +56,9 @@
 **Cél**: Egyszerű REST API endpoint a TTS generáláshoz
 
 **Feladatok**:
+
 1. **FastAPI project inicializálás**
+
    ```
    tts-api/
    ├── main.py          # FastAPI app
@@ -61,6 +69,7 @@
    ```
 
 2. **Alapvető endpointok**:
+
    ```python
    POST /generate/simple
    {
@@ -92,6 +101,7 @@
 ### Fázis 2B: API Fejlesztés
 
 **Feladatok**:
+
 1. **Request validation** (Pydantic)
 2. **Error handling**
 3. **File response** (StreamingResponse)
@@ -104,7 +114,9 @@
 ### Fázis 3: Containerizálás & Deployment
 
 **Feladatok**:
+
 1. **Dockerfile**:
+
    ```dockerfile
    FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
    # Python 3.11
@@ -114,6 +126,7 @@
    ```
 
 2. **Railway deployment**:
+
    - Environment variables
    - Model fájlok storage (S3/Railway volumes)
    - Health check endpoint
@@ -129,6 +142,7 @@
 ## 🔍 Technikai Részletek
 
 ### Jelenlegi Stack:
+
 - **Python**: 3.11.13
 - **PyTorch**: 2.10.0.dev20251006+cu128
 - **TTS**: 0.22.0
@@ -136,6 +150,7 @@
 - **GPU**: RTX 5070 Ti (sm_120)
 
 ### API Stack (tervezett):
+
 - **Framework**: FastAPI
 - **ASGI Server**: Uvicorn
 - **Validation**: Pydantic
@@ -148,6 +163,7 @@
 ## 📊 Batch Generálás Eredmények
 
 ### Generált Fájlok (2025.10.08 20:42):
+
 ```
 sample_001.mp3           116.8 KB   5.9s  - Nyitó üdvözlés
 sample_002.mp3            79.7 KB   4.0s  - Irodalmi kérdés
@@ -157,6 +173,7 @@ sample_005.mp3            64.3 KB   3.2s  - Helytelen válasz
 ```
 
 ### Szegmentált Generálás Teljesítmény:
+
 - **6 szegmens**: kérdés + transition + 4 válasz
 - **Explicit szünetek**: 0.5s (question), 0.5s (transition), 0.7s (answers)
 - **Teljes hossz**: 14.3 másodperc
@@ -169,11 +186,13 @@ sample_005.mp3            64.3 KB   3.2s  - Helytelen válasz
 ### Mit fogsz csinálni?
 
 1. **Döntsd el az API struktúrát**:
+
    - Egy endpoint minden funkcióhoz?
    - Külön simple/segmented endpoints?
    - Async/sync működés?
 
 2. **Model handling stratégia**:
+
    - Singleton (egy model instance az egész app-nak)
    - Request-based (minden kéréshez új instance) - **NEM ajánlott**
    - Pool-based (worker pool) - komplexebb
@@ -225,11 +244,13 @@ async def health():
 Kérdezz rám:
 
 1. **API Design**:
+
    - Milyen endpointokat szeretnél? (simple + segmented, vagy egy univerzális?)
    - JSON input vagy form-data?
    - File upload támogatás (custom reference audio)?
 
 2. **Deployment**:
+
    - Railway használata biztos?
    - Model fájlokat hova rakjuk? (baked into container, vagy external storage?)
    - Költséghatékonyság vs sebesség?

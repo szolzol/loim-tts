@@ -1,85 +1,85 @@
 {
-  "generation_config": {
-    "model_checkpoint": "best_model_1901.pth",
-    "output_format": "mp3",
-    "output_directory": "generated_output",
-    "sample_rate": 24000,
-    "language": "hu",
-    "multi_reference": true,
-    "references": [
-      "prepared_sources/vago_samples_first_source/neutral/neutral_002.wav",
-      "prepared_sources/vago_samples_first_source/excitement/excitement_005.wav",
-      "prepared_sources/vago_samples_first_source/question/question_003.wav"
-    ],
-    "parameters": {
-      "temperature": 0.4,
-      "top_p": 0.88,
-      "top_k": 50,
-      "repetition_penalty": 6.5,
-      "length_penalty": 1.25
-    }
-  },
-  "samples": [
-    {
-      "id": "sample_001",
-      "text": "Üdvözöllek a Legyen Ön is Milliomos kvízjátékban! Készülj fel izgalmas kérdésekre!",
-      "description": "Nyitó üdvözlés",
-      "segmented": false
-    },
-    {
-      "id": "sample_002",
-      "text": "Ki írta a Rómeó és Júlia című drámát?",
-      "description": "Irodalmi kérdés - egyszerű",
-      "segmented": false
-    },
-    {
-      "id": "sample_003_segmented",
-      "description": "Kvíz kérdés válaszokkal - szegmentált",
-      "segmented": true,
-      "segments": [
-        {
-          "type": "question",
-          "text": "Melyik városban található az Eiffel-torony?",
-          "pause_after": 0.5
-        },
-        {
-          "type": "transition",
-          "text": "A válaszlehetőségek:",
-          "pause_after": 0.5
-        },
-        {
-          "type": "answer",
-          "text": "Áá, London.",
-          "pause_after": 0.7
-        },
-        {
-          "type": "answer",
-          "text": "Béé, Párizs.",
-          "pause_after": 0.7
-        },
-        {
-          "type": "answer",
-          "text": "Céé, Berlin.",
-          "pause_after": 0.7
-        },
-        {
-          "type": "answer",
-          "text": "Déé, Róma.",
-          "pause_after": 0.0
+    "generation_config": {
+        "model_checkpoint": "best_model_1901.pth",
+        "output_format": "mp3",
+        "output_directory": "generated_output",
+        "sample_rate": 24000,
+        "language": "hu",
+        "multi_reference": true,
+        "references": [
+            "prepared_sources/vago_samples_first_source/neutral/neutral_002.wav",
+            "prepared_sources/vago_samples_first_source/excitement/excitement_005.wav",
+            "prepared_sources/vago_samples_first_source/question/question_003.wav"
+        ],
+        "parameters": {
+            "temperature": 0.4,
+            "top_p": 0.88,
+            "top_k": 50,
+            "repetition_penalty": 6.5,
+            "length_penalty": 1.25
         }
-      ]
     },
-    {
-      "id": "sample_004",
-      "text": "Gratulálok! Helyesen válaszoltál! Folytatjuk a következő kérdéssel.",
-      "description": "Helyes válasz visszajelzés",
-      "segmented": false
-    },
-    {
-      "id": "sample_005",
-      "text": "Sajnos ez nem a helyes válasz. Próbáld meg újra!",
-      "description": "Helytelen válasz visszajelzés",
-      "segmented": false
-    }
-  ]
+    "samples": [
+        {
+            "id": "sample_001",
+            "text": "Üdvözöllek a Legyen Ön is Milliomos kvízjátékban! Készülj fel izgalmas kérdésekre!",
+            "description": "Nyitó üdvözlés",
+            "segmented": false
+        },
+        {
+            "id": "sample_002",
+            "text": "Ki írta a Rómeó és Júlia című drámát?",
+            "description": "Irodalmi kérdés - egyszerű",
+            "segmented": false
+        },
+        {
+            "id": "sample_003_segmented",
+            "description": "Kvíz kérdés válaszokkal - szegmentált",
+            "segmented": true,
+            "segments": [
+                {
+                    "type": "question",
+                    "text": "Melyik városban található az Eiffel-torony?",
+                    "pause_after": 0.5
+                },
+                {
+                    "type": "transition",
+                    "text": "A válaszlehetőségek:",
+                    "pause_after": 0.5
+                },
+                {
+                    "type": "answer",
+                    "text": "Áá, London.",
+                    "pause_after": 0.7
+                },
+                {
+                    "type": "answer",
+                    "text": "Béé, Párizs.",
+                    "pause_after": 0.7
+                },
+                {
+                    "type": "answer",
+                    "text": "Céé, Berlin.",
+                    "pause_after": 0.7
+                },
+                {
+                    "type": "answer",
+                    "text": "Déé, Róma.",
+                    "pause_after": 0.0
+                }
+            ]
+        },
+        {
+            "id": "sample_004",
+            "text": "Gratulálok! Helyesen válaszoltál! Folytatjuk a következő kérdéssel.",
+            "description": "Helyes válasz visszajelzés",
+            "segmented": false
+        },
+        {
+            "id": "sample_005",
+            "text": "Sajnos ez nem a helyes válasz. Próbáld meg újra!",
+            "description": "Helytelen válasz visszajelzés",
+            "segmented": false
+        }
+    ]
 }

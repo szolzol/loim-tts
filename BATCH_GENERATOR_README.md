@@ -3,6 +3,7 @@
 ## ✅ Állapot: **MŰKÖDIK**
 
 ### Multi-reference Inference: ✅ SIKERES
+
 - 3 referencia audio egyidejű használata
 - Természetes hanglejtés kombinálás
 - Szegmentált generálás támogatással
@@ -12,6 +13,7 @@
 ## 📋 Áttekintés
 
 Ez a rendszer lehetővé teszi:
+
 1. **JSON alapú input fájlokból** TTS generálást
 2. **Egyszerű** és **szegmentált** (explicit szünetek) módot
 3. **MP3 vagy WAV** kimenetet
@@ -116,16 +118,19 @@ Szerkeszd az `input_samples.json` fájlt:
 ## 🎬 Generálás Futtatása
 
 ### Alapértelmezett (input_samples.json használata):
+
 ```bash
 python batch_generate.py
 ```
 
 ### Egyedi input fájl:
+
 ```bash
 python batch_generate.py custom_input.json
 ```
 
 ### WAV kimenet kényszerítése (MP3 helyett):
+
 ```bash
 python batch_generate.py input_samples.json --format wav
 ```
@@ -173,25 +178,25 @@ GENERATING 5 SAMPLES
 
 ### `generation_config` mezők:
 
-| Paraméter | Típus | Leírás | Alapértelmezett |
-|-----------|-------|--------|-----------------|
-| `model_checkpoint` | string | Model fájl neve | `best_model_1901.pth` |
-| `output_format` | string | `mp3` vagy `wav` | `mp3` |
-| `output_directory` | string | Kimenet mappa | `generated_output` |
-| `sample_rate` | int | Mintavételi ráta (Hz) | `24000` |
-| `language` | string | Nyelv kód | `hu` |
-| `multi_reference` | bool | Multi-reference használata | `true` |
-| `references` | array | Referencia audio fájlok útvonalai | `[...]` |
+| Paraméter          | Típus  | Leírás                            | Alapértelmezett       |
+| ------------------ | ------ | --------------------------------- | --------------------- |
+| `model_checkpoint` | string | Model fájl neve                   | `best_model_1901.pth` |
+| `output_format`    | string | `mp3` vagy `wav`                  | `mp3`                 |
+| `output_directory` | string | Kimenet mappa                     | `generated_output`    |
+| `sample_rate`      | int    | Mintavételi ráta (Hz)             | `24000`               |
+| `language`         | string | Nyelv kód                         | `hu`                  |
+| `multi_reference`  | bool   | Multi-reference használata        | `true`                |
+| `references`       | array  | Referencia audio fájlok útvonalai | `[...]`               |
 
 ### `parameters` mezők:
 
-| Paraméter | Típus | Leírás | Ajánlott érték |
-|-----------|-------|--------|----------------|
-| `temperature` | float | Kreativitás vs stabilitás | `0.4` |
-| `top_p` | float | Nucleus sampling | `0.88` |
-| `top_k` | int | Top-K sampling | `50` |
-| `repetition_penalty` | float | Ismétlés büntetése | `6.5` |
-| `length_penalty` | float | Hossz büntetése | `1.25` |
+| Paraméter            | Típus | Leírás                    | Ajánlott érték |
+| -------------------- | ----- | ------------------------- | -------------- |
+| `temperature`        | float | Kreativitás vs stabilitás | `0.4`          |
+| `top_p`              | float | Nucleus sampling          | `0.88`         |
+| `top_k`              | int   | Top-K sampling            | `50`           |
+| `repetition_penalty` | float | Ismétlés büntetése        | `6.5`          |
+| `length_penalty`     | float | Hossz büntetése           | `1.25`         |
 
 ---
 
@@ -229,11 +234,13 @@ generated_output/
 ## 🎯 Következő Lépések - API Fejlesztés
 
 ### Fázis 1: ✅ Input Fájl Sablon Rendszer (KÉSZ)
+
 - JSON alapú konfigurációk
 - Batch generálás
 - Egyszerű + szegmentált módok
 
 ### Fázis 2: FastAPI Wrapper (KÖVETKEZŐ)
+
 ```python
 POST /generate
 {
@@ -244,6 +251,7 @@ POST /generate
 ```
 
 ### Fázis 3: Railway Deployment
+
 - Dockerfile
 - Model betöltés optimalizálás
 - API endpoint dokumentáció
@@ -284,14 +292,17 @@ POST /generate
 ## 🐛 Hibaelhárítás
 
 ### "Model not found"
+
 - Ellenőrizd a `MODEL_DIR` útvonalat a `batch_generate.py`-ban
 - Bizonyosodj meg róla, hogy `best_model_1901.pth` létezik
 
 ### "Reference not found"
+
 - Ellenőrizd a `references` útvonalakat az `input_samples.json`-ban
 - Használj relatív útvonalakat a project root-hoz képest
 
 ### "CUDA out of memory"
+
 - Csökkentsd a `batch_size`-t (ha van)
 - Generálj kevesebb sample-t egyszerre
 - Használj rövidebb szövegeket

@@ -28,17 +28,20 @@
 ## ✨ Key Features
 
 ### 1. Multi-Reference Inference ✅
+
 - **3 reference audios** used simultaneously for natural prosody
 - Combines neutral, excitement, and question intonations
 - Better quality than single-reference approach
 
 ### 2. Batch Generation from JSON ✅
+
 - Edit `input_samples.json` template
 - Generate multiple samples in one run
 - Support for simple and segmented modes
 - Automatic MP3 conversion
 
 ### 3. Segmented Generation ✅
+
 - Explicit pause control (0.5s - 0.7s)
 - Perfect for quiz questions with answer options
 - No more rushed speech between answers
@@ -80,10 +83,10 @@ python batch_generate.py
       "id": "quiz_question",
       "segmented": true,
       "segments": [
-        {"text": "Ki írta a Rómeó és Júliát?", "pause_after": 0.5},
-        {"text": "A válaszlehetőségek:", "pause_after": 0.5},
-        {"text": "Áá, Shakespeare.", "pause_after": 0.7},
-        {"text": "Béé, Dickens.", "pause_after": 0.0}
+        { "text": "Ki írta a Rómeó és Júliát?", "pause_after": 0.5 },
+        { "text": "A válaszlehetőségek:", "pause_after": 0.5 },
+        { "text": "Áá, Shakespeare.", "pause_after": 0.7 },
+        { "text": "Béé, Dickens.", "pause_after": 0.0 }
       ]
     }
   ]
@@ -306,10 +309,10 @@ Carefully tuned inference parameters:
 ```json
 {
   "segments": [
-    {"text": "Question?", "pause_after": 0.5},
-    {"text": "A válaszlehetőségek:", "pause_after": 0.5},
-    {"text": "Áá, Answer 1.", "pause_after": 0.7},
-    {"text": "Béé, Answer 2.", "pause_after": 0.7}
+    { "text": "Question?", "pause_after": 0.5 },
+    { "text": "A válaszlehetőségek:", "pause_after": 0.5 },
+    { "text": "Áá, Answer 1.", "pause_after": 0.7 },
+    { "text": "Béé, Answer 2.", "pause_after": 0.7 }
   ]
 }
 ```
@@ -317,6 +320,7 @@ Carefully tuned inference parameters:
 Each segment generates separately, then concatenates with **explicit silence** (0.5s - 0.7s).
 
 **Results**:
+
 - ✅ Clear pauses between answers
 - ✅ Natural pacing
 - ✅ No rushed speech
@@ -343,10 +347,12 @@ python scripts\prepare_dataset.py
 This script creates `metadata.csv` with audio+transcript pairs in the correct format for training.
 
 **Input:**
+
 - Raw audio files in `source_audio/` or any folder
 - Transcripts (text files or manual entry)
 
 **Output:**
+
 - `prepared_sources/metadata.csv`
 - Organized audio files in categorized folders
 
@@ -356,7 +362,8 @@ This script creates `metadata.csv` with audio+transcript pairs in the correct fo
 python scripts\train_combined_phase2.py
 ```
 
-**Purpose:** 
+**Purpose:**
+
 - **Initial Training**: Train a new voice model from scratch
 - **Fine-tuning (Phase 2)**: Continue training from an existing checkpoint to improve quality
 
@@ -380,6 +387,7 @@ LEARNING_RATE = 1e-6  # Lower for fine-tuning, higher (5e-6) for initial trainin
 ```
 
 **Training Process:**
+
 1. Loads dataset from `prepared_sources/`
 2. Automatically downloads DVAE and mel_stats if needed
 3. Resumes from checkpoint (if specified) or starts fresh
@@ -388,6 +396,7 @@ LEARNING_RATE = 1e-6  # Lower for fine-tuning, higher (5e-6) for initial trainin
 6. Final model saved as `best_model.pth`
 
 **Expected Results:**
+
 - Phase 1 (Initial): Mel CE ~3.5 after 1500-2000 steps
 - Phase 2 (Fine-tune): Mel CE ~2.97 after additional 2000-3000 steps
 - Training time: ~10-15 hours per phase on RTX 4070/5070 Ti
@@ -511,6 +520,7 @@ python scripts\generate_questions_and_answers.py
 **Current Status**: Infrastructure complete, ready for API wrapper
 
 **Planned Features**:
+
 1. FastAPI REST endpoints
 2. POST `/generate/simple` - Single text to MP3
 3. POST `/generate/segmented` - Quiz questions with pauses
