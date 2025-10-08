@@ -1,6 +1,16 @@
-# István Vágó Voice Clone - Production Ready 🎯
+# István Vágó Voice Clone - TTS API Ready 🎯
 
-**Phase 2 training complete! GPU-optimized production-ready voice model.**
+**Production-ready voice model with multi-reference inference and batch generation capabilities.**
+
+---
+
+## 🎉 Latest Updates (2025.10.08)
+
+✅ **Multi-Reference Inference** - Successfully implemented 3-reference audio system  
+✅ **Batch Generation** - JSON-based template system for mass production  
+✅ **Segmented Mode** - Explicit pause control between answer options  
+✅ **MP3/WAV Output** - Flexible output formats  
+✅ **API Development Ready** - Prepared for FastAPI wrapper and Railway deployment
 
 ---
 
@@ -10,22 +20,88 @@
 - **Total Improvement**: -41.1% from baseline
 - **Quality Rating**: 9/10 (production-ready)
 - **Training**: 311 samples (Milliomos + Blikk), 4400+ steps
+- **Multi-Reference**: 3 audio files (neutral, excitement, question)
 - **Inference**: GPU-accelerated (~3-5 seconds per question on RTX 5070 Ti)
 
 ---
 
-## 🚀 Quick Start - Generate Quiz Questions
+## ✨ Key Features
 
-### Interactive Mode (Recommended)
+### 1. Multi-Reference Inference ✅
+- **3 reference audios** used simultaneously for natural prosody
+- Combines neutral, excitement, and question intonations
+- Better quality than single-reference approach
+
+### 2. Batch Generation from JSON ✅
+- Edit `input_samples.json` template
+- Generate multiple samples in one run
+- Support for simple and segmented modes
+- Automatic MP3 conversion
+
+### 3. Segmented Generation ✅
+- Explicit pause control (0.5s - 0.7s)
+- Perfect for quiz questions with answer options
+- No more rushed speech between answers
+- Clean, distinct pauses
+
+---
+
+## 🚀 Quick Start
+
+### Method 1: Batch Generation from JSON (Recommended) ⭐
+
+Edit `input_samples.json` and run:
+
+```powershell
+python batch_generate.py
+```
+
+**Example JSON config:**
+
+```json
+{
+  "generation_config": {
+    "model_checkpoint": "best_model_1901.pth",
+    "output_format": "mp3",
+    "multi_reference": true,
+    "parameters": {
+      "temperature": 0.4,
+      "top_p": 0.88,
+      "repetition_penalty": 6.5
+    }
+  },
+  "samples": [
+    {
+      "id": "greeting",
+      "text": "Üdvözöllek a kvízjátékban!",
+      "segmented": false
+    },
+    {
+      "id": "quiz_question",
+      "segmented": true,
+      "segments": [
+        {"text": "Ki írta a Rómeó és Júliát?", "pause_after": 0.5},
+        {"text": "A válaszlehetőségek:", "pause_after": 0.5},
+        {"text": "Áá, Shakespeare.", "pause_after": 0.7},
+        {"text": "Béé, Dickens.", "pause_after": 0.0}
+      ]
+    }
+  ]
+}
+```
+
+**Output**: MP3 files in `generated_output/` directory  
+**See**: `BATCH_GENERATOR_README.md` for full documentation
+
+---
+
+### Method 2: Quiz Questions Generator
+
+#### Interactive Mode
 
 ```powershell
 python scripts\generate_questions_and_answers.py
 ```
-
-The script will prompt you for:
-
-1. **Topic selection** (1-10): Choose from 9 specialized topics or "Vegyes" (mixed)
-2. **Question quantity**: How many questions to generate
 
 **Available Topics:**
 
@@ -38,21 +114,19 @@ The script will prompt you for:
 7. Film
 8. Természet (Nature)
 9. Technológia (Technology)
-10. **Vegyes** - Random mixed questions from all topics
+10. **Vegyes** - Random mixed questions
 
-### Command-Line Mode
+#### Command-Line Mode
 
 ```powershell
 # Generate 5 music questions
 python scripts\generate_questions_and_answers.py 6 5
 
-# Generate 20 mixed questions from all topics
+# Generate 20 mixed questions
 python scripts\generate_questions_and_answers.py 10 20
 ```
 
-### Output
-
-Samples are saved to `test_samples/` with format: `q001_topic.wav`, `q002_topic.wav`, etc.
+**Output**: WAV files in `test_samples/` directory
 
 ---
 
@@ -134,9 +208,11 @@ Download the Phase 2 trained model (30 GB):
 
 ### 4. Verify Reference Audio
 
-Ensure reference audio exists:
+Ensure multi-reference audio exists:
 
-- `prepared_sources/neutral/neutral_002.wav`
+- `prepared_sources/vago_samples_first_source/neutral/neutral_002.wav`
+- `prepared_sources/vago_samples_first_source/excitement/excitement_005.wav`
+- `prepared_sources/vago_samples_first_source/question/question_003.wav`
 
 ---
 
@@ -144,36 +220,40 @@ Ensure reference audio exists:
 
 ```
 tts-2/
+├── batch_generate.py                     ⭐⭐ NEW: Batch generator from JSON
+├── input_samples.json                    ⭐⭐ NEW: Editable template file
+│
 ├── run/training_combined_phase2/
 │   └── XTTS_Combined_Phase2-.../
-│       ├── best_model_1901.pth   ⭐ Production model (5.22 GB)
+│       ├── best_model_1901.pth           ⭐ Production model (5.22 GB)
 │       ├── config.json
 │       └── vocab.json
 │
 ├── scripts/
-│   ├── generate_questions_and_answers.py  ⭐ Quiz generator (GPU-optimized)
-│   ├── prepare_dataset.py                 ⭐ Dataset preparation
-│   └── train_combined_phase2.py           ⭐ Phase 2 training/fine-tuning
+│   ├── generate_questions_and_answers.py ⭐ Quiz generator (multi-ref + segmented)
+│   ├── prepare_dataset.py                Dataset preparation
+│   └── train_combined_phase2.py          Phase 2 training/fine-tuning
 │
 ├── models/
 │   ├── dvae.pth                          ⭐ Required for training
 │   └── mel_stats.pth                     ⭐ Required for training
 │
-├── prepared_sources/                     ⭐ Prepared training audio (288 MB)
-│   ├── metadata.csv                      Audio + transcript pairs
-│   ├── neutral/neutral_002.wav           Reference audio for inference
-│   └── [confirmation, excitement, question, etc.]/ Categorized samples
+├── prepared_sources/
+│   └── vago_samples_first_source/        ⭐⭐ Multi-reference audios
+│       ├── neutral/neutral_002.wav       Neutral tone
+│       ├── excitement/excitement_005.wav Excited tone
+│       └── question/question_003.wav     Question intonation
 │
-├── source_audio/                         📁 Full-length source recordings
-│   └── Full quiz show WAV files with speaker voice
+├── generated_output/                     ⭐⭐ NEW: Batch generator output (MP3)
+│   └── sample_001.mp3, sample_002.mp3, ...
 │
-├── test_samples/                         📁 Script output folder
-│   └── Generated quiz question samples (q001_topic.wav, etc.)
+├── test_samples/                         📁 Quiz generator output (WAV)
+│   └── q001_irodalom.wav, q002_irodalom.wav, ...
 │
-├── backup_obsolete/                      📁 Old files (gitignored)
-│   └── Obsolete scripts, test samples, old documentation
-│
-└── Documentation:
+├── Documentation:
+│   ├── README.md                         ⭐ This file
+│   ├── BATCH_GENERATOR_README.md         ⭐⭐ Batch generation guide
+│   └── API_DEVELOPMENT_PLAN.md           ⭐⭐ API development roadmap
     ├── README.md                         ⭐ This file
     ├── requirements.txt                  Dependencies
     ├── .gitignore                        Git ignore rules
@@ -196,17 +276,51 @@ tts-2/
 
 ## 🎤 Generation Features
 
+### Multi-Reference Inference ⭐⭐ NEW
+
+The system now uses **3 reference audios simultaneously** for better prosody:
+
+- **neutral_002.wav**: Baseline calm tone
+- **excitement_005.wav**: Enthusiastic intonation
+- **question_003.wav**: Question prosody
+
+This creates more natural-sounding speech compared to single-reference mode.
+
 ### Optimized Parameters
 
-The script uses optimized inference parameters discovered through extensive testing:
+Carefully tuned inference parameters:
 
 - **Temperature**: 0.4 (ultra-stable, no waviness)
 - **Top_p**: 0.88
 - **Top_k**: 50
-- **Repetition penalty**: 6.5
+- **Repetition penalty**: 6.5 (prevents "uhhh" and repetitions)
 - **Length penalty**: 1.25
-- **Text splitting**: Enabled (handles long texts better)
-- **Reference**: Single `neutral_002.wav` (best quality)
+- **Text splitting**: Enabled for long texts
+
+### Segmented Generation Mode ⭐⭐ NEW
+
+**Problem**: Previous versions rushed through answer options without pauses
+
+**Solution**: Segmented generation with explicit silence
+
+```json
+{
+  "segments": [
+    {"text": "Question?", "pause_after": 0.5},
+    {"text": "A válaszlehetőségek:", "pause_after": 0.5},
+    {"text": "Áá, Answer 1.", "pause_after": 0.7},
+    {"text": "Béé, Answer 2.", "pause_after": 0.7}
+  ]
+}
+```
+
+Each segment generates separately, then concatenates with **explicit silence** (0.5s - 0.7s).
+
+**Results**:
+- ✅ Clear pauses between answers
+- ✅ Natural pacing
+- ✅ No rushed speech
+- ✅ Professional quiz show quality
 
 ### Automatic Phonetic Conversion
 
@@ -215,13 +329,6 @@ English names are automatically converted to phonetic Hungarian:
 - "William Shakespeare" → "Vilyem Sékszpír"
 - "Harrison Ford" → "Heriszon Ford"
 - "Wolfgang Amadeus Mozart" → "Volfgáng Amádéusz Móczárt"
-
-### Pause Structure
-
-Natural pauses for quiz show format:
-
-- **7 dots** after question: `"Kérdés?......."` (~1.5s pause)
-- **5 dots** between answers: `"Áá. Válasz1..... Béé. Válasz2....."` (~0.8s pause)
 
 ---
 
@@ -387,10 +494,31 @@ python scripts\generate_questions_and_answers.py
 
 ✅ **Production-ready model** with 9/10 quality rating  
 ✅ **41.1% improvement** from baseline (Mel CE: 5.046 → 2.971)  
+✅ **Multi-reference inference** (3 audios for natural prosody) ⭐⭐ NEW  
+✅ **Batch generation** from JSON templates ⭐⭐ NEW  
+✅ **Segmented mode** with explicit pauses ⭐⭐ NEW  
+✅ **MP3/WAV output** flexibility ⭐⭐ NEW  
 ✅ **GPU-optimized inference** (~3-5 seconds per question on RTX 5070 Ti)  
 ✅ **9 specialized topics** + mixed mode for varied content  
 ✅ **Automatic phonetic conversion** for English names  
-✅ **RTX 5070 Ti Blackwell (sm_120) support** fully working
+✅ **RTX 5070 Ti Blackwell (sm_120) support** fully working  
+✅ **API-ready architecture** - prepared for FastAPI wrapper
+
+---
+
+## 🚀 Next Steps - API Development
+
+**Current Status**: Infrastructure complete, ready for API wrapper
+
+**Planned Features**:
+1. FastAPI REST endpoints
+2. POST `/generate/simple` - Single text to MP3
+3. POST `/generate/segmented` - Quiz questions with pauses
+4. Railway deployment with Docker
+5. Model caching and optimization
+6. Rate limiting and authentication
+
+**See**: `API_DEVELOPMENT_PLAN.md` for detailed roadmap
 
 ---
 
@@ -405,9 +533,10 @@ This is a personal research project for educational purposes.
 - [Coqui TTS Documentation](https://docs.coqui.ai/)
 - [XTTS-v2 Paper](https://arxiv.org/abs/2309.08519)
 - [PyTorch CUDA Compatibility](https://pytorch.org/get-started/locally/)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
 
 ---
 
 _Model: best_model_1901.pth (Mel CE: 2.971)_  
-_Status: Production-Ready ✅_  
+_Status: Production-Ready + API-Ready ✅_  
 _Last Updated: October 8, 2025_
