@@ -617,7 +617,53 @@ This is a personal research project for educational purposes.
 
 ---
 
+## 🚀 Future Development - Fish Speech Migration Plan
+
+### Why Fish Speech is the Perfect Next Step
+
+**Current Situation:**
+- XTTS-v2 Phase 4: Excellent quality (Mel CE: 2.943) but facing pitch/artifacts challenges
+- 40 curated samples ready and proven
+- Multi-reference knowledge and parameter optimization experience
+- Infrastructure and repository structure stable
+
+**Fish Speech Advantages:**
+- 🎯 **Better Voice Quality** - Superior prosody and natural intonation
+- 🎯 **Lower Resource Usage** - Faster inference, smaller models
+- 🎯 **Advanced Architecture** - VQGAN + Llama-based for better coherence
+- 🎯 **Dataset Ready** - 40 curated samples perfect for Fish Speech fine-tuning
+- 🎯 **Infrastructure Compatible** - Repository structure expandable without redesign
+- 🎯 **Knowledge Transfer** - Multi-reference and parameter tuning experience applicable
+
+### 48-Hour Action Plan
+
+**Tonight (2025.10.09 21:00-23:00):**
+- Fish Speech setup - Environment + model download (2 hours)
+- Zero-shot test - Generate 5 questions with neutral_002.wav (30 min)
+
+**Tomorrow (2025.10.10):**
+- Dataset conversion - 40 samples → Fish Speech format (4 hours)
+- Transcriptions - Manual or Whisper-based (2 hours)
+- Fine-tuning start - Training launch evening (overnight)
+
+**Day After (2025.10.11):**
+- Fine-tuning completion - Results evaluation (morning)
+- A/B test - 20 questions XTTS vs Fish Speech (2 hours)
+- API integration - Batch generator Fish Speech support (4 hours)
+
+### Decision Points
+
+1. **Start Fish Speech setup tonight?** (2-hour investment)
+2. **Which samples are most critical** from the 40 for Fish Speech?
+3. **Parallel or sequential development?** (XTTS remains production fallback)
+4. **A/B test criteria** - Which metrics determine the winner?
+
+**Recommendation:** Start with Fish Speech environment setup and zero-shot test tonight. If results are promising, proceed with full migration pipeline tomorrow.
+
+---
+
 **Current Model**: `best_model_2735.pth` (Phase 4 - Mel CE: 2.943) ⭐  
 **Baseline Model**: `best_model_1901.pth` (Phase 2 - Mel CE: 2.971)  
 **Status**: Production-Ready ✅  
+**Next**: Fish Speech Migration (Planned)  
 **Last Updated**: October 9, 2025
