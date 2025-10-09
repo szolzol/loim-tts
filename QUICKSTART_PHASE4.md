@@ -35,11 +35,11 @@ TRANSCRIPTIONS = {
     "excitement/excitement1.wav": "YOUR EXACT TRANSCRIPTION HERE",
     "excitement/excitement2.wav": "YOUR EXACT TRANSCRIPTION HERE",
     # ... (all 10)
-    
+
     # NEUTRAL - Listen and update!
     "neutral/neutral1.wav": "YOUR EXACT TRANSCRIPTION HERE",
     # ... (all 14)
-    
+
     # QUESTION - Listen and update!
     "question/question1.wav": "YOUR EXACT TRANSCRIPTION HERE",
     # ... (all 16)
@@ -47,6 +47,7 @@ TRANSCRIPTIONS = {
 ```
 
 **How to do it:**
+
 1. Play each audio file
 2. Write down EXACTLY what is said
 3. Include punctuation (. ? !)
@@ -63,6 +64,7 @@ TRANSCRIPTIONS = {
 ```
 
 This will:
+
 1. ✅ Prepare dataset (resample, create metadata)
 2. ✅ Load checkpoint 1901
 3. ✅ Train for 50 epochs (~2-4 hours)
@@ -108,16 +110,17 @@ Get-ChildItem run/training_phase4_continuation/XTTS_Phase4_Continuation/best_mod
 
 ## ⏱️ What To Expect
 
-| Phase | Duration | What's Happening |
-|-------|----------|------------------|
-| Dataset Prep | 5 min | Resampling audio, creating metadata |
-| Model Loading | 2 min | Loading checkpoint 1901 |
-| Epoch 1-10 | 30 min | Initial convergence |
-| Epoch 11-30 | 1 hour | Main optimization |
-| Epoch 31-50 | 1 hour | Fine refinement |
-| **Total** | **2-4 hours** | Full training run |
+| Phase         | Duration      | What's Happening                    |
+| ------------- | ------------- | ----------------------------------- |
+| Dataset Prep  | 5 min         | Resampling audio, creating metadata |
+| Model Loading | 2 min         | Loading checkpoint 1901             |
+| Epoch 1-10    | 30 min        | Initial convergence                 |
+| Epoch 11-30   | 1 hour        | Main optimization                   |
+| Epoch 31-50   | 1 hour        | Fine refinement                     |
+| **Total**     | **2-4 hours** | Full training run                   |
 
 **Progress Indicators:**
+
 - ✅ Mel CE decreasing → Good!
 - ✅ Text CE stable → Good!
 - ❌ Mel CE increasing → Stop and check
@@ -160,18 +163,24 @@ Listen to the generated samples and compare with checkpoint 1901 samples.
 ## 🎯 Success = Mel CE < 2.5
 
 ### If Mel CE < 2.5:
+
 🎉 **SUCCESS!** Your model is now excellent quality!
+
 - Use it for production
 - Generate full quiz question set
 - Archive checkpoint 1901 as backup
 
 ### If Mel CE 2.5 - 2.9:
+
 ✅ **GOOD!** Improvement achieved, but can be better.
+
 - Try continuing for 25 more epochs
 - Or add 10-20 more diverse samples
 
 ### If Mel CE > 2.9:
+
 ⚠️ **NO IMPROVEMENT** - Need different approach:
+
 1. Check transcriptions accuracy (most common issue)
 2. Try lower learning rate (3e-7)
 3. Add more diverse samples (60-80 total)
@@ -182,18 +191,23 @@ Listen to the generated samples and compare with checkpoint 1901 samples.
 ## 🔥 Common Issues & Fixes
 
 ### "Checkpoint not found"
+
 **Fix:** Update `RESUME_CHECKPOINT` path in `train_phase4_continuation.py`
 
 ### "Dataset not found"
+
 **Fix:** Run `prepare_phase4_dataset.py` first
 
 ### Training stops immediately
+
 **Fix:** Check GPU memory, close other applications
 
 ### Mel CE not improving
+
 **Fix:** Verify transcriptions are 100% accurate
 
 ### Out of memory
+
 **Fix:** Reduce `BATCH_SIZE` from 2 to 1 in training script
 
 ---
@@ -207,6 +221,7 @@ Listen to the generated samples and compare with checkpoint 1901 samples.
 ---
 
 **Quick Reference:**
+
 - Starting checkpoint: `best_model_1901.pth` (Mel CE: 2.971)
 - Target: Mel CE < 2.5
 - Dataset: 40 samples (10 excitement, 14 neutral, 16 question)

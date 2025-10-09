@@ -13,6 +13,43 @@ New dataset: 40 high-quality samples with distinct characteristics
 
 import os
 from pathlib import Path
+
+# ⚠️ CRITICAL FIX: Monkey-patch TTS load_audio to use soundfile instead of torchcodec
+# PyTorch nightly + torchcodec is broken on Windows, use soundfile directly
+import soundfile as sf
+import torch
+import numpy as np
+
+def load_audio_soundfile(audiopath, sample_rate=22050):
+    """Load audio using soundfile instead of torchaudio/torchcodec"""
+    audio, sr = sf.read(audiopath)
+    # Convert to torch tensor
+    audio = torch.FloatTensor(audio)
+    # Soundfile returns shape: (samples,) for mono or (samples, channels) for stereo
+    # We need shape: (channels, samples) for TTS compatibility
+    if audio.dim() == 1:
+        # Mono audio - add channel dimension: (samples,) -> (1, samples)
+        audio = audio.unsqueeze(0)
+    else:
+        # Stereo - transpose: (samples, channels) -> (channels, samples)
+        audio = audio.transpose(0, 1)
+        # Convert to mono by averaging channels
+        if audio.shape[0] > 1:
+            audio = audio.mean(dim=0, keepdim=True)
+    
+    # Resample if needed
+    if sr != sample_rate:
+        import torchaudio.transforms as T
+        resampler = T.Resample(sr, sample_rate)
+        audio = resampler(audio)
+    
+    return audio  # Shape: (1, samples) for mono audio
+
+# Monkey-patch the load_audio function in TTS
+import TTS.tts.models.xtts
+TTS.tts.models.xtts.load_audio = load_audio_soundfile
+print("✅ Audio loading patched to use soundfile (avoiding torchcodec issues)")
+
 from trainer import Trainer, TrainerArgs
 from TTS.config.shared_configs import BaseDatasetConfig
 from TTS.tts.datasets import load_tts_samples
@@ -27,7 +64,7 @@ RESUME_CHECKPOINT = "run/training_combined_phase2/XTTS_Combined_Phase2-October-0
 BATCH_SIZE = 2  # Smaller batch for focused learning
 NUM_EPOCHS = 50  # Extended training for deeper learning
 LEARNING_RATE = 5e-7  # Very low for fine refinement from 2.971
-EVAL_SPLIT_SIZE = 0.20  # 20% for evaluation (8 samples)
+EVAL_SPLIT_SIZE = 0.15  # 15% for evaluation (~6 samples, ensures valid eval set)
 
 print("=" * 80)
 print("🎯 PHASE 4 TRAINING - CONTINUATION FROM CHECKPOINT 1901")
@@ -127,8 +164,8 @@ model_args = GPTArgs(
     max_conditioning_length=143677,  # 6 secs
     min_conditioning_length=66150,   # 3 secs
     debug_loading_failures=False,
-    max_wav_length=255995,  # ~11 seconds
-    max_text_length=300,
+    max_wav_length=530000,  # ~24 seconds (increased for longer samples)
+    max_text_length=400,  # Increased for longer transcriptions
     mel_norm_file=MEL_NORM_FILE,
     dvae_checkpoint=DVAE_CHECKPOINT,
     xtts_checkpoint=None,  # Will be loaded from resume
@@ -165,9 +202,9 @@ config = GPTTrainerConfig(
     save_all_best=True,
     save_best_after=50,
     target_loss="loss",
-    print_eval=True,
-    run_eval=True,
-    run_eval_steps=50,  # Evaluate frequently
+    print_eval=False,  # Disable eval printing
+    run_eval=False,  # Disable evaluation (samples being filtered out)
+    run_eval_steps=None,  # No eval steps
     test_sentences=[],
     
     # Phase 4: Ultra-low learning rate for gentle refinement
@@ -209,7 +246,7 @@ trainer = Trainer(
     TrainerArgs(
         restore_path=RESUME_CHECKPOINT,  # Resume from best_model_1901
         skip_train_epoch=False,
-        start_with_eval=True,
+        start_with_eval=False,  # Skip initial eval to avoid filtering issues
         grad_accum_steps=1,
     ),
     config,

@@ -37,32 +37,39 @@ xtts_module.load_audio = load_audio_sf
 # ========================================
 
 PROJECT_ROOT = Path("i:/CODE/tts-2")
-MODEL_DIR = PROJECT_ROOT / "run" / "training_combined_phase2" / "XTTS_Combined_Phase2-October-04-2025_03+00PM-fb239cd"
-MODEL_PATH = MODEL_DIR / "best_model_1901.pth"
+
+# PHASE 2 MODEL (Production - Baseline)
+# MODEL_DIR = PROJECT_ROOT / "run" / "training_combined_phase2" / "XTTS_Combined_Phase2-October-04-2025_03+00PM-fb239cd"
+# MODEL_PATH = MODEL_DIR / "best_model_1901.pth"  # Phase 2 - Baseline (Mel CE: 2.971)
+
+# PHASE 4 MODEL (Latest - Fine-tuned with 40 curated samples)
+MODEL_DIR = PROJECT_ROOT / "run" / "training_phase4_continuation" / "XTTS_Phase4_Continuation-October-09-2025_07+54PM-f634425"
+MODEL_PATH = MODEL_DIR / "best_model_2735.pth"  # Phase 4 - Training Mel CE: 2.943 (peak), Eval Mel CE: 3.006
+
 OUTPUT_DIR = PROJECT_ROOT / "test_samples"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-# CONTROLLED NATURAL PROFILE
-# Moderate temperature (0.45) - balanced between consistency and naturalness
-# Moderate repetition_penalty (5.0) - prevents repetition without overemphasis
-# Moderate top_k (40) - more controlled token selection
-# Higher top_p (0.88) for smooth transitions
-# LOWER length_penalty (0.85) to prevent end-of-sequence stress/overemphasis
+# CONTROLLED NATURAL PROFILE - Anti-Artifact Settings v2
+# Higher temperature (0.65) - prevents repetitive vowel artifacts
+# Lower repetition_penalty (3.5) - reduces unnatural elongations
+# Moderate top_k (50) - better token diversity
+# Higher top_p (0.90) for smoother transitions
+# MUCH higher length_penalty (1.5) - strongly prevents end-of-sequence elongation
 PARAMS = {
-    "temperature": 0.45,
-    "top_p": 0.88,
-    "top_k": 40,
-    "repetition_penalty": 5.0,
-    "length_penalty": 0.85,
+    "temperature": 0.5,
+    "top_p": 0.90,
+    "top_k": 50,
+    "repetition_penalty": 3.5,
+    "length_penalty": 1.5,
 }
 
 # Multi-reference inference - 3 STRONG Vágó-characteristic references
 # Using question + excitement + neutral to preserve Vágó's voice timbre
 # Fewer references = stronger voice identity preservation
 REFERENCES = [
-    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/question/question_025.wav",      # Primary - quiz tone
-    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/excitement/excitement_001.wav",  # Energy variation
-    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/neutral/neutral_021.wav",        # Stable baseline
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question1.wav",      # Primary - quiz tone
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/excitement1.wav",    # Energy variation
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/neutral1.wav",       # Stable baseline
 ]
 
 # ========================================
@@ -357,10 +364,12 @@ def main():
             question_text = text.split('?')[0].strip() + '?'
             answers_text = text.split('?')[1].strip()
             
-            # Split answers by semicolon
+            # Split answers by semicolon and rejoin with commas for natural pauses
             answer_parts = [a.strip() for a in answers_text.rstrip('.').split(';')]
+            # Join answers with commas (natural pause) instead of generating separately
+            answers_joined = ", ".join(answer_parts) + "."
             
-            # Generate each part separately with explicit pauses
+            # Generate in two parts: question, then all answers together
             audio_segments = []
             
             # 1. Generate question
@@ -377,27 +386,23 @@ def main():
                 enable_text_splitting=False
             )
             audio_segments.append(out["wav"] if isinstance(out["wav"], np.ndarray) else out["wav"].cpu().numpy())
-            # Add 0.7 sec silence after question (16800 samples at 24kHz)
-            audio_segments.append(np.zeros(16800, dtype=np.float32))
+            # Add 0.5 sec silence after question (12000 samples at 24kHz)
+            audio_segments.append(np.zeros(12000, dtype=np.float32))
             
-            # 2. Generate each answer with pauses between them
-            for answer_idx, answer in enumerate(answer_parts):
-                out = model.inference(
-                    text=answer + ".",
-                    language="hu",
-                    gpt_cond_latent=gpt_cond_latent,
-                    speaker_embedding=speaker_embedding,
-                    temperature=PARAMS["temperature"],
-                    top_p=PARAMS["top_p"],
-                    top_k=PARAMS["top_k"],
-                    repetition_penalty=PARAMS["repetition_penalty"],
-                    length_penalty=PARAMS["length_penalty"],
-                    enable_text_splitting=False
-                )
-                audio_segments.append(out["wav"] if isinstance(out["wav"], np.ndarray) else out["wav"].cpu().numpy())
-                # Add 0.9 sec silence between answers (21600 samples at 24kHz)
-                if answer_idx < len(answer_parts) - 1:
-                    audio_segments.append(np.zeros(16800, dtype=np.float32))
+            # 2. Generate all answers together (comma-separated for natural pauses)
+            out = model.inference(
+                text=answers_joined,
+                language="hu",
+                gpt_cond_latent=gpt_cond_latent,
+                speaker_embedding=speaker_embedding,
+                temperature=PARAMS["temperature"],
+                top_p=PARAMS["top_p"],
+                top_k=PARAMS["top_k"],
+                repetition_penalty=PARAMS["repetition_penalty"],
+                length_penalty=PARAMS["length_penalty"],
+                enable_text_splitting=False
+            )
+            audio_segments.append(out["wav"] if isinstance(out["wav"], np.ndarray) else out["wav"].cpu().numpy())
             
             # Concatenate all segments
             audio_numpy = np.concatenate(audio_segments)
