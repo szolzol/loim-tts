@@ -17,6 +17,7 @@
 ## 📊 Model Performance
 
 ### Phase 4 (CURRENT) - Recommended ⭐
+
 - **Model**: `best_model_2735.pth`
 - **Mel CE**: 2.943 (training best), 3.006 (eval avg)
 - **Training**: 40 curated samples, 834 steps from checkpoint 1901
@@ -25,6 +26,7 @@
 - **References**: 16 question-type samples for consistent tone
 
 ### Phase 2 (Baseline)
+
 - **Model**: `best_model_1901.pth`
 - **Mel CE**: 2.971
 - **Training**: 311 samples (Milliomos + Blikk), 4400+ steps
@@ -349,11 +351,13 @@ English names are automatically converted to phonetic Hungarian:
 ### Phase 4 Training (Recommended for Continuation)
 
 **Quick Start:**
+
 ```powershell
 .\START_PHASE4_TRAINING.ps1
 ```
 
 **What Phase 4 Does:**
+
 - Continues from Phase 2 checkpoint (best_model_1901.pth)
 - Uses 40 curated samples (10 excitement, 14 neutral, 16 question)
 - Ultra-low learning rate (5e-7) for precision refinement
@@ -361,12 +365,14 @@ English names are automatically converted to phonetic Hungarian:
 - Result: best_model_2735.pth (Mel CE: 2.943)
 
 **Key Improvements:**
+
 - ✅ Superior prosody diversity across question types
 - ✅ Better handling of complex sentences
 - ✅ More natural intonation patterns
 - ✅ Consistent quality across all topics
 
 **Requirements:**
+
 - Phase 2 checkpoint exists (best_model_1901.pth)
 - 40 samples in `prepared_sources/vago_samples_selected/`
 - Transcriptions updated in `scripts/prepare_phase4_dataset.py`
@@ -510,6 +516,7 @@ python scripts\generate_questions_and_answers.py
 **Symptom**: `'NoneType' object has no attribute 'encode'`
 
 **Solution**: Copy vocab.json from Phase 2 to Phase 4 directory:
+
 ```powershell
 Copy-Item "run/training_combined_phase2/XTTS_Combined_Phase2-.../vocab.json" "run/training_phase4_continuation/XTTS_Phase4_Continuation-.../vocab.json"
 ```
@@ -517,11 +524,13 @@ Copy-Item "run/training_combined_phase2/XTTS_Combined_Phase2-.../vocab.json" "ru
 ### Phase 4 Training Issues
 
 **RecursionError during training:**
+
 - Cause: PyTorch nightly + torchcodec incompatibility on Windows
 - Solution: Script automatically uses soundfile workaround (lines 17-38 in train_phase4_continuation.py)
 - No action needed - fix is already implemented
 
 **Checkpoint Format:**
+
 - Phase 4 checkpoints use `xtts.gpt.*` format (correct for inference)
 - No conversion needed - directly compatible with inference
 - GPTTrainer automatically saves in inference-compatible format
@@ -530,16 +539,16 @@ Copy-Item "run/training_combined_phase2/XTTS_Combined_Phase2-.../vocab.json" "ru
 
 ## 💾 Disk Usage
 
-| Component                 | Size       | Required      |
-| ------------------------- | ---------- | ------------- |
-| Phase 4 Model (Current)   | 5.22 GB    | ✅ Yes        |
-| Phase 2 Model (Baseline)  | 5.22 GB    | Optional      |
-| prepared_sources/         | 288 MB     | ✅ Yes        |
-| models/ (dvae, mel_stats) | ~1 GB      | Training only |
-| Generated Samples         | Varies     | No            |
-| Documentation             | <1 MB      | No            |
-| **Total (Minimum)**       | **~6.5 GB** |               |
-| **Total (Both Models)**   | **~11.7 GB** |             |
+| Component                 | Size         | Required      |
+| ------------------------- | ------------ | ------------- |
+| Phase 4 Model (Current)   | 5.22 GB      | ✅ Yes        |
+| Phase 2 Model (Baseline)  | 5.22 GB      | Optional      |
+| prepared_sources/         | 288 MB       | ✅ Yes        |
+| models/ (dvae, mel_stats) | ~1 GB        | Training only |
+| Generated Samples         | Varies       | No            |
+| Documentation             | <1 MB        | No            |
+| **Total (Minimum)**       | **~6.5 GB**  |               |
+| **Total (Both Models)**   | **~11.7 GB** |               |
 
 ---
 
@@ -554,34 +563,37 @@ Copy-Item "run/training_combined_phase2/XTTS_Combined_Phase2-.../vocab.json" "ru
 ## 🏆 Key Achievements
 
 ### Training Progress
+
 ✅ **Phase 4 Complete** - Best model: 2.943 Mel CE (49% better than Phase 2)  
 ✅ **4-Phase Evolution** - From baseline 5.046 → 2.943 (41.7% total improvement)  
 ✅ **Production Quality** - 9.5/10 rating with superior prosody diversity  
-✅ **Efficient Training** - 834 steps, ~6 minutes on RTX 5070 Ti  
+✅ **Efficient Training** - 834 steps, ~6 minutes on RTX 5070 Ti
 
 ### Technical Features
+
 ✅ **16-Reference Inference** - All question samples for maximum consistency  
 ✅ **Optimized Parameters** - Balanced settings for stable generation  
 ✅ **Unified Answer Generation** - No artifacts, smooth transitions  
 ✅ **GPU-Optimized** - RTX 5070 Ti Blackwell (sm_120) fully supported  
-✅ **Soundfile Workaround** - Automatic fix for torchcodec issues  
+✅ **Soundfile Workaround** - Automatic fix for torchcodec issues
 
 ### Content Generation
+
 ✅ **9 Specialized Topics** - Geography, History, Science, Literature, Sports, Music, Film, Nature, Technology  
 ✅ **Mixed Mode** - Random question generation across all topics  
 ✅ **Automatic Phonetics** - English names converted to Hungarian pronunciation  
-✅ **Quality Control** - Artifact-free with proper sentence completion  
+✅ **Quality Control** - Artifact-free with proper sentence completion
 
 ---
 
 ## 📈 Training Evolution Summary
 
-| Phase | Mel CE | Samples | Key Achievement |
-|-------|--------|---------|-----------------|
-| Baseline | 5.046 | - | Starting point |
-| Phase 1 | ~3.5 | 80 Milliomos | Initial training |
-| Phase 2 | 2.971 | 311 (Milliomos + Blikk) | Production baseline |
-| **Phase 4** | **2.943** | **40 curated** | **Best quality** ⭐ |
+| Phase       | Mel CE    | Samples                 | Key Achievement     |
+| ----------- | --------- | ----------------------- | ------------------- |
+| Baseline    | 5.046     | -                       | Starting point      |
+| Phase 1     | ~3.5      | 80 Milliomos            | Initial training    |
+| Phase 2     | 2.971     | 311 (Milliomos + Blikk) | Production baseline |
+| **Phase 4** | **2.943** | **40 curated**          | **Best quality** ⭐ |
 
 **Total Improvement**: 41.7% from baseline  
 **Phase 4 vs Phase 2**: 49% better (lower Mel CE)
