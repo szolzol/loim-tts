@@ -83,3 +83,6 @@ tmp/
 .env
 secrets.json
 api_keys.txt
+
+# Archived documentation
+docs_archive/

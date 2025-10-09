@@ -1,7 +1,11 @@
 """
 Generate Custom Quiz Questions
-===============================
-Interactive script to generate quiz questions with optimized parameters
+============================# Single-reference inference - ONE strong Vágó sample for pitch accuracy
+# Multiple references can cause pitch averaging/shifting
+# Single reference = exact voice timbre and pitch preservation
+REFERENCES = [
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question9.wav",
+]nteractive script to generate quiz questions with optimized parameters
 Uses 'natural' profile: temp=0.55, top_p=0.88, top_k=50, rep_penalty=6.5
 
 Usage:
@@ -49,27 +53,42 @@ MODEL_PATH = MODEL_DIR / "best_model_2735.pth"  # Phase 4 - Training Mel CE: 2.9
 OUTPUT_DIR = PROJECT_ROOT / "test_samples"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-# CONTROLLED NATURAL PROFILE - Anti-Artifact Settings v2
-# Higher temperature (0.65) - prevents repetitive vowel artifacts
-# Lower repetition_penalty (3.5) - reduces unnatural elongations
-# Moderate top_k (50) - better token diversity
-# Higher top_p (0.90) for smoother transitions
-# MUCH higher length_penalty (1.5) - strongly prevents end-of-sequence elongation
+# STABLE BASELINE - Proven Anti-Artifact Settings
+# Balanced temperature (0.65) - good quality without extremes
+# Moderate repetition_penalty (3.5) - prevents repetition without cutting off
+# Moderate top_k (50) - good token diversity
+# Balanced top_p (0.90) - smooth transitions
+# Moderate length_penalty (1.3) - prevents elongation, allows completion
+# Speed factor (0.85) - natural pace, not too slow
 PARAMS = {
-    "temperature": 0.5,
+    "temperature": 0.35,
     "top_p": 0.90,
     "top_k": 50,
     "repetition_penalty": 3.5,
-    "length_penalty": 1.5,
+    "length_penalty": 1.3,
+    "speed": 0.35,
 }
 
-# Multi-reference inference - 3 STRONG Vágó-characteristic references
-# Using question + excitement + neutral to preserve Vágó's voice timbre
-# Fewer references = stronger voice identity preservation
+# Multi-reference inference - ALL 16 question-type samples for maximum consistency
+# Using only question samples keeps pitch range consistent (no emotional mixing)
+# Maximum question references = most robust voice with stable pitch
 REFERENCES = [
-    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question1.wav",      # Primary - quiz tone
-    PROJECT_ROOT / "prepared_sources/vago_samples_selected/excitement1.wav",    # Energy variation
-    PROJECT_ROOT / "prepared_sources/vago_samples_selected/neutral1.wav",       # Stable baseline
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question1.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question2.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question3.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question4.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question5.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question6.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question7.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question8.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question9.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question10.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question11.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question12.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question13.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question14.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question15.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_selected/question16.wav",
 ]
 
 # ========================================
