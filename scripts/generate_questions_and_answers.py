@@ -42,21 +42,27 @@ MODEL_PATH = MODEL_DIR / "best_model_1901.pth"
 OUTPUT_DIR = PROJECT_ROOT / "test_samples"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-# OPTIMIZED NATURAL PROFILE
+# CONTROLLED NATURAL PROFILE
+# Moderate temperature (0.45) - balanced between consistency and naturalness
+# Moderate repetition_penalty (5.0) - prevents repetition without overemphasis
+# Moderate top_k (40) - more controlled token selection
+# Higher top_p (0.88) for smooth transitions
+# LOWER length_penalty (0.85) to prevent end-of-sequence stress/overemphasis
 PARAMS = {
-    "temperature": 0.4,
+    "temperature": 0.45,
     "top_p": 0.88,
-    "top_k": 50,
-    "repetition_penalty": 6.5,
-    "length_penalty": 1.25,
+    "top_k": 40,
+    "repetition_penalty": 5.0,
+    "length_penalty": 0.85,
 }
 
-# Multi-reference inference for better prosody variation
-# Using 3 different tones: neutral, excitement, question
+# Multi-reference inference - 3 STRONG Vágó-characteristic references
+# Using question + excitement + neutral to preserve Vágó's voice timbre
+# Fewer references = stronger voice identity preservation
 REFERENCES = [
-    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/neutral/neutral_002.wav",
-    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/excitement/excitement_005.wav",
-    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/question/question_003.wav",
+    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/question/question_025.wav",      # Primary - quiz tone
+    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/excitement/excitement_001.wav",  # Energy variation
+    PROJECT_ROOT / "prepared_sources/vago_samples_first_source/neutral/neutral_021.wav",        # Stable baseline
 ]
 
 # ========================================
@@ -65,67 +71,67 @@ REFERENCES = [
 
 QUESTION_TEMPLATES = {
     "földrajz": [
-        "Melyik ország fővárosa Budapest? A válaszlehetőségek: Áá, Lengyelország; Béé, Ausztria; Céé, Magyarország; Déé, Csehország.",
-        "Melyik kontinensen található Egyiptom? A válaszlehetőségek: Áá, Ázsia; Béé, Afrika; Céé, Európa; Déé, Dél-Amerika.",
-        "Melyik a világ leghosszabb folyója? A válaszlehetőségek: Áá, Amazonas; Béé, Nílus; Céé, Misszipi; Déé, Jangce.",
-        "Melyik ország területe a legnagyobb? A válaszlehetőségek: Áá, Kanada; Béé, Kína; Céé, Oroszország; Déé, Amerikai Egyesült Államok.",
-        "Melyik óceán a legnagyobb? A válaszlehetőségek: Áá, Atlanti-óceán; Béé, Csendes-óceán; Céé, Indiai-óceán; Déé, Jeges-tenger.",
+        "Melyik ország fővárosa Budapest? Lengyelország; Ausztria; Magyarország; Csehország.",
+        "Melyik kontinensen található Egyiptom? Ázsia; Afrika; Európa; Dél-Amerika.",
+        "Melyik a világ leghosszabb folyója? Amazonas; Nílus; Misszipi; Jangce.",
+        "Melyik ország területe a legnagyobb? Kanada; Kína; Oroszország; Amerikai Egyesült Államok.",
+        "Melyik óceán a legnagyobb? Atlanti-óceán; Csendes-óceán; Indiai-óceán; Jeges-tenger.",
     ],
     "történelem": [
-        "Melyik évben fedezte fel Kolumbusz Kristóf Amerikát? A válaszlehetőségek: Áá, Ezernégyszázkilencvenkettő; Béé, Ezerötszáz; Céé, Ezernégyszáznyolcvannyolc; Déé, Ezerötszáztíz.",
-        "Melyik évben tört ki az első világháború? A válaszlehetőségek: Áá, Ezerkilencszáztíz; Béé, Ezerkilencszáztizennégy; Céé, Ezerkilencszáztizennyolc; Déé, Ezerkilencszázhúsz.",
-        "Ki volt Magyarország első királya? A válaszlehetőségek: Áá, Géza fejedelem; Béé, Szent István; Céé, Szent László; Déé, Árpád fejedelem.",
-        "Melyik évben értek véget a második világháború? A válaszlehetőségek: Áá, Ezerkilencszáznegyvennégy; Béé, Ezerkilencszáznegyvenöt; Céé, Ezerkilencszáznegyvenhát; Déé, Ezerkilencszáznegyvennyolc.",
-        "Ki volt az Egyesült Államok első elnöke? A válaszlehetőségek: Áá, Támász Dzsefferszon; Béé, Dzsórdzsz Vósingtön; Céé, Bendzsámin Frenklin; Déé, Dzsón Ádámsz.",
+        "Melyik évben fedezte fel Kolumbusz Kristóf Amerikát? Ezernégyszázkilencvenkettő; Ezerötszáz; Ezernégyszáznyolcvannyolc; Ezerötszáztíz.",
+        "Melyik évben tört ki az első világháború? Ezerkilencszáztíz; Ezerkilencszáztizennégy; Ezerkilencszáztizennyolc; Ezerkilencszázhúsz.",
+        "Ki volt Magyarország első királya? Géza fejedelem; Szent István; Szent László; Árpád fejedelem.",
+        "Melyik évben értek véget a második világháború? Ezerkilencszáznegyvennégy; Ezerkilencszáznegyvenöt; Ezerkilencszáznegyvenhát; Ezerkilencszáznegyvennyolc.",
+        "Ki volt az Egyesült Államok első elnöke? Támász Dzsefferszon; Dzsórdzsz Vósingtön; Bendzsámin Frenklin; Dzsón Ádámsz.",
     ],
     "tudomány": [
-        "Mi a fény sebessége vákuumban? A válaszlehetőségek: Áá, Kétszáznyolcvanezer kilométer per szekundum; Béé, Háromszázezer kilométer per szekundum; Céé, Háromszázötven kilométer per szekundum; Déé, Négyszázezer kilométer per szekundum.",
-        "Melyik elem vegyjele az Au? A válaszlehetőségek: Áá, Ezüst; Béé, Arany; Céé, Alumínium; Déé, Arzén.",
-        "Hány bolygó van a Naprendszerünkben? A válaszlehetőségek: Áá, Hat bolygó; Béé, Hét bolygó; Céé, Nyolc bolygó; Déé, Kilenc bolygó.",
-        "Mi a víz kémiai képlete? A válaszlehetőségek: Áá, H kettő O; Béé, C O kettő; Céé, N H három; Déé, O kettő.",
-        "Ki fedezte fel a gravitációt? A válaszlehetőségek: Áá, Albert Einstein; Béé, Isaac Newton; Céé, Galileo Galilei; Déé, Stephen Hawking.",
+        "Mi a fény sebessége vákuumban? Kétszáznyolcvanezer kilométer per szekundum; Háromszázezer kilométer per szekundum; Háromszázötven kilométer per szekundum; Négyszázezer kilométer per szekundum.",
+        "Melyik elem vegyjele az Au? Ezüst; Arany; Alumínium; Arzén.",
+        "Hány bolygó van a Naprendszerünkben? Hat bolygó; Hét bolygó; Nyolc bolygó; Kilenc bolygó.",
+        "Mi a víz kémiai képlete? H kettő O; C O kettő; N H három; O kettő.",
+        "Ki fedezte fel a gravitációt? Albert Einstein; Isaac Newton; Galileo Galilei; Stephen Hawking.",
     ],
     "irodalom": [
-        "Ki írta a Rómeó és Júlia című drámát? A válaszlehetőségek: Áá, Csárlz Dikensz; Béé, Vilyem Sékszpír; Céé, Márk Tvén; Déé, Oszkár Vajld.",
-        "Ki írta a Toldi című eposztrílógiát? A válaszlehetőségek: Áá, Petőfi Sándor; Béé, Arany János; Céé, Vörösmarty Mihály; Déé, Jókai Mór.",
-        "Melyik magyar író kapta meg először a Nobel-díjat? A válaszlehetőségek: Áá, Márai Sándor; Béé, Kosztolányi Dezső; Céé, Kertész Imre; Déé, Krúdy Gyula.",
-        "Ki írta az Egri csillagok című regényt? A válaszlehetőségek: Áá, Gárdonyi Géza; Béé, Mikszáth Kálmán; Céé, Móricz Zsigmond; Déé, Herczeg Ferenc.",
-        "Melyik Sékszpír darab főszereplője Hámlet? A válaszlehetőségek: Áá, A velencei kalmár; Béé, Othelló; Céé, Hámlet dán királyfi; Déé, Lír király.",
+        "Ki írta a Rómeó és Júlia című drámát? Csárlz Dikensz; Vilyem Sékszpír; Márk Tvén; Oszkár Vajld.",
+        "Ki írta a Toldi című eposztrílógiát? Petőfi Sándor; Arany János; Vörösmarty Mihály; Jókai Mór.",
+        "Melyik magyar író kapta meg először a Nobel-díjat? Márai Sándor; Kosztolányi Dezső; Kertész Imre; Krúdy Gyula.",
+        "Ki írta az Egri csillagok című regényt? Gárdonyi Géza; Mikszáth Kálmán; Móricz Zsigmond; Herczeg Ferenc.",
+        "Melyik Sékszpír darab főszereplője Hámlet? A velencei kalmár; Othelló; Hámlet dán királyfi; Lír király.",
     ],
     "sport": [
-        "Hány játékos van egy kosárlabda csapatban a pályán egyszerre? A válaszlehetőségek: Áá, Négy játékos; Béé, Öt játékos; Céé, Hat játékos; Déé, Hét játékos.",
-        "Hány pont ér egy touchdown az amerikai futballban? A válaszlehetőségek: Áá, Négy pont; Béé, Öt pont; Céé, Hat pont; Déé, Hét pont.",
-        "Hány játékrész van egy tenisz mérkőzésben? A válaszlehetőségek: Áá, Kettő vagy három szett; Béé, Három vagy négy szett; Céé, Három vagy öt szett; Déé, Négy vagy öt szett.",
-        "Melyik évben rendezték az első modern olimpiát? A válaszlehetőségek: Áá, Ezernyolcszázkilencvenkettő; Béé, Ezernyolcszázkilencvenhat; Céé, Ezerkilencszáz; Déé, Ezerkilencszáznégy.",
-        "Hány méter hosszú az olimpiai úszómedence? A válaszlehetőségek: Áá, Huszonöt méter; Béé, Ötven méter; Céé, Száz méter; Déé, Kétszáz méter.",
+        "Hány játékos van egy kosárlabda csapatban a pályán egyszerre? Négy játékos; Öt játékos; Hat játékos; Hét játékos.",
+        "Hány pont ér egy touchdown az amerikai futballban? Négy pont; Öt pont; Hat pont; Hét pont.",
+        "Hány játékrész van egy tenisz mérkőzésben? Kettő vagy három szett; Három vagy négy szett; Három vagy öt szett; Négy vagy öt szett.",
+        "Melyik évben rendezték az első modern olimpiát? Ezernyolcszázkilencvenkettő; Ezernyolcszázkilencvenhat; Ezerkilencszáz; Ezerkilencszáznégy.",
+        "Hány méter hosszú az olimpiai úszómedence? Huszonöt méter; Ötven méter; Száz méter; Kétszáz méter.",
     ],
     "zene": [
-        "Melyik híres zeneszerző komponálta A négy évszak című művet? A válaszlehetőségek: Áá, Volfgáng Amádéusz Móczárt; Béé, Lúdvig ván Bétóven; Céé, Antónyó Viváldi; Déé, Jóhan Sebástián Bakh.",
-        "Ki írta a Kilencedik szimfóniát? A válaszlehetőségek: Áá, Volfgáng Amádéusz Móczárt; Béé, Lúdvig ván Bétóven; Céé, Johánnesz Brámz; Déé, Fránc Súbert.",
-        "Melyik hangszeren játszott Liszt Ferenc? A válaszlehetőségek: Áá, Hegedű; Béé, Zongora; Céé, Orgona; Déé, Cselló.",
-        "Ki komponálta a Varázsfuvola című operát? A válaszlehetőségek: Áá, Móczárt; Béé, Verdi; Céé, Vágner; Déé, Pucsíni.",
-        "Hány húrja van egy hegedűnek? A válaszlehetőségek: Áá, Három húr; Béé, Négy húr; Céé, Öt húr; Déé, Hat húr.",
+        "Melyik híres zeneszerző komponálta A négy évszak című művet? Volfgáng Amádéusz Móczárt; Lúdvig ván Bétóven; Antónyó Viváldi; Jóhan Sebástián Bakh.",
+        "Ki írta a Kilencedik szimfóniát? Volfgáng Amádéusz Móczárt; Lúdvig ván Bétóven; Johánnesz Brámz; Fránc Súbert.",
+        "Melyik hangszeren játszott Liszt Ferenc? Hegedű; Zongora; Orgona; Cselló.",
+        "Ki komponálta a Varázsfuvola című operát? Móczárt; Verdi; Vágner; Pucsíni.",
+        "Hány húrja van egy hegedűnek? Három húr; Négy húr; Öt húr; Hat húr.",
     ],
     "film": [
-        "Melyik filmben szerepel a híres mondat: Frenklin máj díör áj dónt giv ö dem? A válaszlehetőségek: Áá, Kázáblánká; Béé, Elfújta a szél; Céé, Az Óz, a csodák csodája; Déé, Szitizen Kéjn.",
-        "Ki rendezte a Keresztapa című filmet? A válaszlehetőségek: Áá, Mártin Szkorszézi; Béé, Frenszisz Ford Kopolá; Céé, Sztíven Szpílberg; Déé, Szténli Kjúbrik.",
-        "Melyik film nyerte az Oszkár-díjat ezerkilencszázkilencvenhetedik évben? A válaszlehetőségek: Áá, Tajtánik; Béé, Foreszt Gámp; Céé, Sindlerz Liszt; Déé, A néma tanú.",
-        "Ki játszotta Indiána Dzsónszt? A válaszlehetőségek: Áá, Tom Henksz; Béé, Heriszon Ford; Céé, Brúsz Vilisz; Déé, Mel Gibszon.",
-        "Melyik évben készült az első Sztár Vorsz film? A válaszlehetőségek: Áá, Ezerkilencszázhetvennégy; Béé, Ezerkilencszázhetvenhét; Céé, Ezerkilencszáznyolcvan; Déé, Ezerkilencszáznyolcvanhárnom.",
+        "Jöjjön a következő kérdés ötvenmillióforintért. Melyik napon született a világhírű gyermek-gitáros, Vince Zsombor? Áá: Szeptember tizenötödikén; Béé: November ötödikén; Céé: Február huszonötödikén; vagy: Déé: Október kilencedikén; Nehéz kérdés, mert a többi válaszlehetőség is egy-egy híresség születési dátumát jelöli.; Kérdezzük meg a közönséget?",
+        "Ki rendezte a Keresztapa című filmet? Mártin Szkorszézi; Frenszisz Ford Kopolá; Sztíven Szpílberg; Szténli Kjúbrik.",
+        "Jöjjön a következő kérdés ötvenmillióforintért. Melyik napon találkozzunk a világhírű vovjátékossal, Lovász Líviusszal? Áá: Vasárnap hattól; Béé: Pénteken nyolctól; Céé: Mindkét napon; vagy: Déé: Rohadjon meg!; Nehéz kérdés. Kérdezzük meg a közönséget?",
+        "Ki játszotta Indiána Dzsónszt? Tom Henksz; Heriszon Ford; Brúsz Vilisz; Mel Gibszon.",
+        "Melyik évben készült az első Sztár Vorsz film? Ezerkilencszázhetvennégy; Ezerkilencszázhetvenhét; Ezerkilencszáznyolcvan; Ezerkilencszáznyolcvanhárnom.",
     ],
     "természet": [
-        "Mi a legnagyobb élő állat a Földön? A válaszlehetőségek: Áá, Az afrikai elefánt; Béé, A fehér cápa; Céé, A kék bálna; Déé, A zsiráf.",
-        "Melyik állat a leggyorsabb szárazföldön? A válaszlehetőségek: Áá, Az oroszlán; Béé, A gepárd; Céé, Az antilop; Déé, A strucc.",
-        "Hány szárnya van egy pillangónak? A válaszlehetőségek: Áá, Kettő; Béé, Négy; Céé, Hat; Déé, Nyolc.",
-        "Melyik az egyetlen emlős, amely tud repülni? A válaszlehetőségek: Áá, A repülő mókus; Béé, A denevér; Céé, A sugar glider; Déé, A repülő hal.",
-        "Melyik madár tud hátrafelé repülni? A válaszlehetőségek: Áá, A kolibri; Béé, A papagáj; Céé, A sólyom; Déé, A veréb.",
+        "Mi a legnagyobb élő állat a Földön? Az afrikai elefánt; A fehér cápa; A kék bálna; A zsiráf.",
+        "Melyik állat a leggyorsabb szárazföldön? Az oroszlán; A gepárd; Az antilop; A strucc.",
+        "Hány szárnya van egy pillangónak? Kettő; Négy; Hat; Nyolc.",
+        "Melyik az egyetlen emlős, amely tud repülni? A repülő mókus; A denevér; A sugar glider; A repülő hal.",
+        "Melyik madár tud hátrafelé repülni? A kolibri; A papagáj; A sólyom; A veréb.",
     ],
     "technológia": [
-        "Ki alapította a Májkroszoft céget Bill Géjtsz-szel együtt? A válaszlehetőségek: Áá, Sztív Dzsóbsz; Béé, Léri Pédzs; Céé, Pol Álen; Déé, Márk Zákerberg.",
-        "Melyik évben alapították a Féjszbukkot? A válaszlehetőségek: Áá, Kétezer-kettő; Béé, Kétezer-négy; Céé, Kétezer-hat; Déé, Kétezer-nyolc.",
-        "Ki találta fel a villanykörtet? A válaszlehetőségek: Áá, Nikolá Teszlá; Béé, Támász Ediszon; Céé, Alekszánder Gréjám Bell; Déé, Bendzsámin Frenklin.",
-        "Melyik cég gyártja az Áj-Fónt? A válaszlehetőségek: Áá, Szemszung; Béé, Ápl; Céé, Gúgl; Déé, Májkroszoft.",
-        "Mi volt az első keresőmotor az interneten? A válaszlehetőségek: Áá, Jáhú; Béé, Gúgl; Céé, Árki; Déé, ÁltáVisztá.",
+        "Ki alapította a Májkroszoft céget Bill Géjtsz-szel együtt? Sztív Dzsóbsz; Léri Pédzs; Pol Álen; Márk Zákerberg.",
+        "Melyik évben alapították a Féjszbukkot? Kétezer-kettő; Kétezer-négy; Kétezer-hat; Kétezer-nyolc.",
+        "Ki találta fel a villanykörtet? Nikolá Teszlá; Támász Ediszon; Alekszánder Gréjám Bell; Bendzsámin Frenklin.",
+        "Melyik cég gyártja az Áj-Fónt? Szemszung; Ápl; Gúgl; Májkroszoft.",
+        "Mi volt az első keresőmotor az interneten? Jáhú; Gúgl; Árki; ÁltáVisztá.",
     ],
 }
 
@@ -343,12 +349,13 @@ def main():
         print(f"Text: {text[:80]}...")
         
         # Split text into question and answer segments
-        # Pattern: "Question? A válaszlehetőségek: Áá, Ans1; Béé, Ans2; Céé, Ans3; Déé, Ans4."
+        # New pattern: "Question? Ans1; Ans2; Ans3; Ans4."
         import re
-        parts = text.split("A válaszlehetőségek:")
-        if len(parts) == 2:
-            question_text = parts[0].strip()
-            answers_text = parts[1].strip()
+        
+        # Split by question mark to separate question from answers
+        if '?' in text:
+            question_text = text.split('?')[0].strip() + '?'
+            answers_text = text.split('?')[1].strip()
             
             # Split answers by semicolon
             answer_parts = [a.strip() for a in answers_text.rstrip('.').split(';')]
@@ -370,27 +377,10 @@ def main():
                 enable_text_splitting=False
             )
             audio_segments.append(out["wav"] if isinstance(out["wav"], np.ndarray) else out["wav"].cpu().numpy())
-            # Add 0.5 sec silence (12000 samples at 24kHz)
-            audio_segments.append(np.zeros(12000, dtype=np.float32))
+            # Add 0.7 sec silence after question (16800 samples at 24kHz)
+            audio_segments.append(np.zeros(16800, dtype=np.float32))
             
-            # 2. Generate transition phrase
-            out = model.inference(
-                text="A válaszlehetőségek:",
-                language="hu",
-                gpt_cond_latent=gpt_cond_latent,
-                speaker_embedding=speaker_embedding,
-                temperature=PARAMS["temperature"],
-                top_p=PARAMS["top_p"],
-                top_k=PARAMS["top_k"],
-                repetition_penalty=PARAMS["repetition_penalty"],
-                length_penalty=PARAMS["length_penalty"],
-                enable_text_splitting=False
-            )
-            audio_segments.append(out["wav"] if isinstance(out["wav"], np.ndarray) else out["wav"].cpu().numpy())
-            # Add 0.5 sec silence
-            audio_segments.append(np.zeros(12000, dtype=np.float32))
-            
-            # 3. Generate each answer with pauses between them
+            # 2. Generate each answer with pauses between them
             for answer_idx, answer in enumerate(answer_parts):
                 out = model.inference(
                     text=answer + ".",
@@ -405,7 +395,7 @@ def main():
                     enable_text_splitting=False
                 )
                 audio_segments.append(out["wav"] if isinstance(out["wav"], np.ndarray) else out["wav"].cpu().numpy())
-                # Add 0.7 sec silence between answers (16800 samples at 24kHz)
+                # Add 0.9 sec silence between answers (21600 samples at 24kHz)
                 if answer_idx < len(answer_parts) - 1:
                     audio_segments.append(np.zeros(16800, dtype=np.float32))
             
